@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="global_keyline_16">16dp</dimen>
+	<dimen name="global_keyline_32">32dp</dimen>
+	<dimen name="global_keyline_72">72dp</dimen>
+
+	<dimen name="global_spacing_8">8dp</dimen>
+	<dimen name="global_spacing_16">16dp</dimen>
+	<dimen name="global_spacing_24">24dp</dimen>
+	<dimen name="global_spacing_32">32dp</dimen>
+	<dimen name="global_spacing_48">48dp</dimen>
+	<dimen name="global_spacing_56">56dp</dimen>
+	<dimen name="global_spacing_72">72dp</dimen>
+
+	<dimen name="global_elevation_2">2dp</dimen>
+	<dimen name="global_elevation_4">4dp</dimen>
+	<dimen name="global_elevation_6">6dp</dimen>
+	<dimen name="global_elevation_8">8dp</dimen>
+	<dimen name="global_elevation_12">12dp</dimen>
+	<dimen name="global_elevation_16">16dp</dimen>
+	<dimen name="global_elevation_24">24dp</dimen>
+
+	<dimen name="global_text_size_display_4">112sp</dimen>
+	<dimen name="global_text_size_display_3">56sp</dimen>
+	<dimen name="global_text_size_display_2">45sp</dimen>
+	<dimen name="global_text_size_display_1">34sp</dimen>
+	<dimen name="global_text_size_headline">24sp</dimen>
+	<dimen name="global_text_size_title">20sp</dimen>
+	<dimen name="global_text_size_subhead">16sp</dimen>
+	<dimen name="global_text_size_body_2">14sp</dimen>
+	<dimen name="global_text_size_body_1">14sp</dimen>
+	<dimen name="global_text_size_caption">12sp</dimen>
+	<dimen name="global_text_size_button">14sp</dimen>
+	<dimen name="global_text_size_menu">16sp</dimen>
+</resources>

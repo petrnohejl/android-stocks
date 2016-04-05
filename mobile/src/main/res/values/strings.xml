@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name" translatable="false">Stocks</string>
+	<string name="app_store_uri" translatable="false">https://play.google.com/store/apps/details?id=%1$s</string>
+
+	<string name="global_network_offline">No Internet connection available</string>
+	<string name="global_network_fail">Communication with server failed</string>
+	<string name="global_network_unknown_host">Cannot establish a connection to the server</string>
+	<string name="global_network_not_found">Resource not found</string>
+	<string name="global_network_timeout">Connection timed out</string>
+	<string name="global_network_parse_fail">Unable to process response from server</string>
+
+	<string name="title_example">Example title</string>
+
+	<string name="menu_example">Example menu</string>
+
+	<string name="permission_example">Permission to example is required</string>
+
+	<string name="placeholder_empty">No data</string>
+	<string name="placeholder_offline">No network</string>
+
+	<string name="fragment_example_title">Example fragment title</string>
+
+	<string name="dialog_example_title">Example dialog title</string>
+
+	<string name="notification_example_title">Example notification title</string>
+</resources>

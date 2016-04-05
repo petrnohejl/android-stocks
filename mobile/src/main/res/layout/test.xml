@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello TextView" />
+
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Hello Button" />
+
+	<RadioButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello RadioButton" />
+
+	<CheckBox
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello CheckBox" />
+
+	<Switch
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello Switch" />
+
+	<ToggleButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Hello ToggleButton" />
+
+	<ImageButton
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:adjustViewBounds="true"
+		android:scaleType="fitCenter"
+		android:src="@mipmap/ic_launcher" />
+
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@mipmap/ic_launcher" />
+
+	<ProgressBar
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+
+	<ProgressBar
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:progress="50"
+		style="?android:attr/progressBarStyleHorizontal" />
+
+	<SeekBar
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:progress="50" />
+
+	<RatingBar
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:progress="50" />
+
+	<Spinner
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:prompt="@string/app_name" />
+
+	<EditText
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:inputType="text"
+		android:text="Hello EditText" />
+
+	<SearchView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:queryHint="Hello SearchView" />
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:background="@color/global_bg_front">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Display4"
+			android:text="D4" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Display3"
+			android:text="Display3" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Display2"
+			android:text="Display2" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Display1"
+			android:text="Display1" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Headline"
+			android:text="Text Appearance Headline" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Title"
+			android:text="Text Appearance Title" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Subhead"
+			android:text="Text Appearance Subhead" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Body2"
+			android:text="Text Appearance Body2" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Body1"
+			android:text="Text Appearance Body1" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Caption"
+			android:text="Text Appearance Caption" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Button"
+			android:text="Text Appearance Button" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Menu"
+			android:text="Text Appearance Menu" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:background="@color/global_bg_front_inverse">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Display4.Inverse"
+			android:text="D4 I" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Display3.Inverse"
+			android:text="Display3 I" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Display2.Inverse"
+			android:text="Display2 I" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Display1.Inverse"
+			android:text="Display1 I" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Headline.Inverse"
+			android:text="Text Appearance Headline I" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Title.Inverse"
+			android:text="Text Appearance Title Inverse" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Subhead.Inverse"
+			android:text="Text Appearance Subhead Inverse" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Body2.Inverse"
+			android:text="Text Appearance Body2 Inverse" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Body1.Inverse"
+			android:text="Text Appearance Body1 Inverse" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Caption.Inverse"
+			android:text="Text Appearance Caption Inverse" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Button.Inverse"
+			android:text="Text Appearance Button Inverse" />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.Stocks.Menu.Inverse"
+			android:text="Text Appearance Menu Inverse" />
+
+	</LinearLayout>
+</LinearLayout>
