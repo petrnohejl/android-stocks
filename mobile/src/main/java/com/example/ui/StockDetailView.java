@@ -2,10 +2,8 @@ package com.example.ui;
 
 import android.view.View;
 
-import eu.inloop.viewmodel.IView;
 
-
-public interface StockDetailView extends IView
+public interface StockDetailView extends BaseView
 {
 	void onClick(View view);
 }
