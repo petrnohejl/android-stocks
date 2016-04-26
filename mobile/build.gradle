@@ -2,8 +2,8 @@
 // 
 // Usage: gradlew assembleDebug           Build debug APK
 //        gradlew assembleRelease         Build release APK
-//        gradlew test                    Run unit test
-//        gradlew connectedAndroidTest    Run android test
+//        gradlew test                    Run local unit test
+//        gradlew connectedAndroidTest    Run instrumented unit test
 
 
 final VERSION_MAJOR = 1 // max two digits
@@ -17,13 +17,19 @@ apply plugin: 'com.android.application'
 
 dependencies
 {
-	compile 'com.android.support:support-v4:23.2.1'
-	compile 'com.android.support:appcompat-v7:23.2.1'
-	compile 'com.android.support:design:23.2.1'
+	compile 'com.android.support:support-v4:23.3.0'
+	compile 'com.android.support:appcompat-v7:23.3.0'
+	compile 'com.android.support:design:23.3.0'
 	compile 'com.google.android.gms:play-services-base:8.4.0'
+	compile 'com.google.code.gson:gson:2.6.2'
+	compile 'com.squareup.okhttp3:okhttp:3.2.0'
+	compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+	compile 'com.squareup.retrofit2:retrofit:2.0.2'
+	compile 'com.squareup.retrofit2:converter-gson:2.0.2'
 	compile 'eu.inloop:androidviewmodel:0.4.1'
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 	testCompile 'junit:junit:4.12'
+	testCompile 'org.mockito:mockito-core:1.10.19'
 }
 
 
@@ -32,13 +38,9 @@ android
 	compileSdkVersion 23
 	buildToolsVersion "23.0.3"
 
-	dataBinding
-	{
-		enabled = true
-	}
-
 	defaultConfig
 	{
+		applicationId "com.example"
 		minSdkVersion 16
 		targetSdkVersion 23
 		versionCode VERSION_MAJOR*10000000 + VERSION_MINOR*100000 + VERSION_PATCH*1000 + VERSION_BUILD
@@ -80,25 +82,36 @@ android
 		}
 	}
 
+	compileOptions
+	{
+		sourceCompatibility JavaVersion.VERSION_1_7
+		targetCompatibility JavaVersion.VERSION_1_7
+	}
+
+	dataBinding
+	{
+		enabled = true
+	}
+
 	applicationVariants.all
 	{
 		variant ->
 			if(variant.buildType.name.equals("release"))
 			{
-				variant.outputs.each
-				{
-					output ->
-						def outputFile = output.outputFile
-						def date = new Date()
-						if(outputFile!=null && outputFile.name.endsWith('.apk'))
-						{
-							def fileName = outputFile.name.replace(
-									"mobile",
-									"stocks-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + date.format('yyyyMMdd'))
-							output.outputFile = new File((String) outputFile.parent, (String) fileName)
-						}
-				}
+				renameArtifact(variant)
 			}
+	}
+}
+
+
+def renameArtifact(variant)
+{
+	variant.outputs.each
+	{
+		output ->
+			def date = new Date().format('yyyyMMdd')
+			def fileName = "stocks-${project.name}-${variant.versionName}-${variant.versionCode}-${date}-${variant.name}.apk"
+			output.outputFile = new File((String) output.outputFile.parent, fileName)
 	}
 }
 
