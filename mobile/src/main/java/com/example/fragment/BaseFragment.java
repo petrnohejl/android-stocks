@@ -2,18 +2,21 @@ package com.example.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.ui.BaseView;
 import com.example.utility.Logcat;
 
 import eu.inloop.viewmodel.AbstractViewModel;
-import eu.inloop.viewmodel.IView;
 import eu.inloop.viewmodel.base.ViewModelBaseFragment;
 
 
-public abstract class BaseFragment<T extends IView, R extends AbstractViewModel<T>> extends ViewModelBaseFragment<T, R>
+public abstract class BaseFragment<T extends BaseView, R extends AbstractViewModel<T>> extends ViewModelBaseFragment<T, R> implements BaseView
 {
 	@Override
 	public void onAttach(Context context)
@@ -109,5 +112,39 @@ public abstract class BaseFragment<T extends IView, R extends AbstractViewModel<
 	{
 		Logcat.d("");
 		super.onDetach();
+	}
+
+
+	@Override
+	public void showToast(@StringRes int stringRes)
+	{
+		Toast.makeText(getActivity(), stringRes, Toast.LENGTH_LONG).show();
+	}
+
+
+	@Override
+	public void showToast(String message)
+	{
+		Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+	}
+
+
+	@Override
+	public void showSnackbar(@StringRes int stringRes)
+	{
+		if(getView() != null)
+		{
+			Snackbar.make(getView(), stringRes, Snackbar.LENGTH_LONG).show();
+		}
+	}
+
+
+	@Override
+	public void showSnackbar(String message)
+	{
+		if(getView() != null)
+		{
+			Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
+		}
 	}
 }

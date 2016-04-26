@@ -3,14 +3,15 @@ package com.example.viewmodel;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 
+import com.example.ui.BaseView;
 import com.example.utility.Logcat;
 
 import eu.inloop.viewmodel.AbstractViewModel;
-import eu.inloop.viewmodel.IView;
 
 
-public abstract class BaseViewModel<T extends IView> extends AbstractViewModel<T>
+public abstract class BaseViewModel<T extends BaseView> extends AbstractViewModel<T>
 {
 	@Override
 	public void onCreate(@Nullable Bundle arguments, @Nullable Bundle savedInstanceState)
@@ -57,5 +58,23 @@ public abstract class BaseViewModel<T extends IView> extends AbstractViewModel<T
 	{
 		Logcat.d("");
 		super.onModelRemoved();
+	}
+
+
+	public void handleError(String message)
+	{
+		if(getView() != null)
+		{
+			getView().showToast(message);
+		}
+	}
+
+
+	public void handleFail(@StringRes int stringRes)
+	{
+		if(getView() != null)
+		{
+			getView().showToast(stringRes);
+		}
 	}
 }
