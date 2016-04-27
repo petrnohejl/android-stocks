@@ -46,7 +46,7 @@ public final class RetrofitClient
 	private static Retrofit buildRetrofit()
 	{
 		Retrofit.Builder builder = new Retrofit.Builder();
-		builder.baseUrl(StocksConfig.REST_DEV ? StocksConfig.REST_BASE_URL_DEV : StocksConfig.REST_BASE_URL_PROD);
+		builder.baseUrl(StocksConfig.DEV_ENVIRONMENT ? StocksConfig.REST_BASE_URL_DEV : StocksConfig.REST_BASE_URL_PROD);
 		builder.client(buildClient());
 		builder.addConverterFactory(createConverterFactory());
 		return builder.build();
