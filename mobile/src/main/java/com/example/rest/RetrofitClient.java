@@ -1,9 +1,13 @@
 package com.example.rest;
 
 import com.example.StocksConfig;
+import com.example.rest.http.GzipRequestInterceptor;
+import com.example.rest.http.HeaderRequestInterceptor;
 import com.example.utility.Logcat;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -56,7 +60,12 @@ public final class RetrofitClient
 	private static OkHttpClient buildClient()
 	{
 		OkHttpClient.Builder builder = new OkHttpClient.Builder();
-		builder.addInterceptor(createLoggingInterceptor());
+		builder.connectTimeout(30, TimeUnit.SECONDS);
+		builder.readTimeout(30, TimeUnit.SECONDS);
+		builder.writeTimeout(30, TimeUnit.SECONDS);
+		builder.addInterceptor(new HeaderRequestInterceptor());
+		builder.addInterceptor(new GzipRequestInterceptor());
+		builder.addNetworkInterceptor(createLoggingInterceptor());
 		return builder.build();
 	}
 
