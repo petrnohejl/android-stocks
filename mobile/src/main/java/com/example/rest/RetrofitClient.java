@@ -9,6 +9,7 @@ import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.CertificatePinner;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -50,7 +51,7 @@ public final class RetrofitClient
 	private static Retrofit buildRetrofit()
 	{
 		Retrofit.Builder builder = new Retrofit.Builder();
-		builder.baseUrl(StocksConfig.DEV_ENVIRONMENT ? StocksConfig.REST_BASE_URL_DEV : StocksConfig.REST_BASE_URL_PROD);
+		builder.baseUrl(StocksConfig.REST_BASE_URL);
 		builder.client(buildClient());
 		builder.addConverterFactory(createConverterFactory());
 		return builder.build();
@@ -63,9 +64,20 @@ public final class RetrofitClient
 		builder.connectTimeout(30, TimeUnit.SECONDS);
 		builder.readTimeout(30, TimeUnit.SECONDS);
 		builder.writeTimeout(30, TimeUnit.SECONDS);
+		builder.certificatePinner(buildCertificatePinner());
 		builder.addInterceptor(new HeaderRequestInterceptor());
 		builder.addInterceptor(new GzipRequestInterceptor());
 		builder.addNetworkInterceptor(createLoggingInterceptor());
+		return builder.build();
+	}
+
+
+	private static CertificatePinner buildCertificatePinner()
+	{
+		CertificatePinner.Builder builder = new CertificatePinner.Builder();
+		builder.add("*.markitondemand.com", "sha256/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=");
+		builder.add("*.markitondemand.com", "sha256/yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy=");
+		builder.add("*.markitondemand.com", "sha256/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz=");
 		return builder.build();
 	}
 
