@@ -21,9 +21,20 @@ public class RestSubscriber<T extends Response<?>> extends Subscriber<T>
 	private Action0 mOnCompletedAction;
 
 
+	public RestSubscriber(SubscriberManager subscriberManager, String callType, Action1<? super T> onNextAction)
+	{
+		this(subscriberManager, callType, onNextAction, null, null);
+	}
+
+
+	public RestSubscriber(SubscriberManager subscriberManager, String callType, Action1<? super T> onNextAction, Action1<Throwable> onErrorAction)
+	{
+		this(subscriberManager, callType, onNextAction, onErrorAction, null);
+	}
+
+
 	public RestSubscriber(SubscriberManager subscriberManager, String callType, Action1<? super T> onNextAction, Action1<Throwable> onErrorAction, Action0 onCompletedAction)
 	{
-		checkArguments(onNextAction, onErrorAction, onCompletedAction);
 		mSubscriberManager = subscriberManager;
 		mCallType = callType;
 		mOnNextAction = onNextAction;
@@ -46,7 +57,7 @@ public class RestSubscriber<T extends Response<?>> extends Subscriber<T>
 		logSuccess(response, mSubscriberManager.getCallType(this));
 
 		// callback
-		mOnNextAction.call(response);
+		if(mOnNextAction != null) mOnNextAction.call(response);
 	}
 
 
@@ -64,7 +75,7 @@ public class RestSubscriber<T extends Response<?>> extends Subscriber<T>
 		}
 
 		// callback
-		mOnErrorAction.call(throwable);
+		if(mOnErrorAction != null) mOnErrorAction.call(throwable);
 
 		// unregister subscriber
 		mSubscriberManager.unregisterSubscriber(this);
@@ -75,27 +86,10 @@ public class RestSubscriber<T extends Response<?>> extends Subscriber<T>
 	public void onCompleted()
 	{
 		// callback
-		mOnCompletedAction.call();
+		if(mOnCompletedAction != null) mOnCompletedAction.call();
 
 		// unregister subscriber
 		mSubscriberManager.unregisterSubscriber(this);
-	}
-
-
-	private void checkArguments(Action1<? super T> onNextAction, Action1<Throwable> onErrorAction, Action0 onCompletedAction)
-	{
-		if(onNextAction == null)
-		{
-			throw new IllegalArgumentException("onNextAction cannot be null");
-		}
-		else if(onErrorAction == null)
-		{
-			throw new IllegalArgumentException("onErrorAction cannot be null");
-		}
-		else if(onCompletedAction == null)
-		{
-			throw new IllegalArgumentException("onCompletedAction cannot be null");
-		}
 	}
 
 
