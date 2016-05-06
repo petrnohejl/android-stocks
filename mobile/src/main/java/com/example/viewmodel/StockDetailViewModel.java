@@ -4,11 +4,12 @@ import android.databinding.ObservableField;
 
 import com.example.StocksApplication;
 import com.example.entity.QuoteEntity;
-import com.example.rest.BaseCallback;
-import com.example.rest.CallManager;
+import com.example.rest.call.BaseCallback;
+import com.example.rest.call.CallManager;
 import com.example.rest.provider.StocksProvider;
 import com.example.ui.StockDetailView;
 import com.example.utility.NetworkUtility;
+import com.example.utility.RestUtility;
 import com.example.view.StatefulLayout;
 
 import retrofit2.Call;
@@ -79,6 +80,19 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 	}
 
 
+	private void setState(ObservableField<QuoteEntity> data)
+	{
+		if(data.get() != null)
+		{
+			state.set(StatefulLayout.State.CONTENT);
+		}
+		else
+		{
+			state.set(StatefulLayout.State.EMPTY);
+		}
+	}
+
+
 	private class QuoteCallback extends BaseCallback<QuoteEntity>
 	{
 		public QuoteCallback(CallManager callManager)
@@ -91,36 +105,23 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 		public void onSuccess(Call<QuoteEntity> call, Response<QuoteEntity> response)
 		{
 			quote.set(response.body());
-			setState();
+			setState(quote);
 		}
 
 
 		@Override
 		public void onError(Call<QuoteEntity> call, Response<QuoteEntity> response)
 		{
-			handleError(getErrorMessage(response));
-			setState();
+			handleError(RestUtility.getErrorMessage(response));
+			setState(quote);
 		}
 
 
 		@Override
 		public void onFail(Call<QuoteEntity> call, Throwable throwable)
 		{
-			handleFail(getFailMessage(throwable));
-			setState();
-		}
-
-
-		private void setState()
-		{
-			if(quote.get() != null)
-			{
-				state.set(StatefulLayout.State.CONTENT);
-			}
-			else
-			{
-				state.set(StatefulLayout.State.EMPTY);
-			}
+			handleError(RestUtility.getFailMessage(throwable));
+			setState(quote);
 		}
 	}
 }

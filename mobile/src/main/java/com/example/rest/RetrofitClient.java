@@ -13,8 +13,10 @@ import okhttp3.CertificatePinner;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.CallAdapter;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
@@ -54,6 +56,7 @@ public final class RetrofitClient
 		builder.baseUrl(StocksConfig.REST_BASE_URL);
 		builder.client(buildClient());
 		builder.addConverterFactory(createConverterFactory());
+		builder.addCallAdapterFactory(createCallAdapterFactory());
 		return builder.build();
 	}
 
@@ -104,5 +107,11 @@ public final class RetrofitClient
 		builder.setDateFormat("EEE MMM d HH:mm:ss 'UTC'zzzzz yyyy");
 		Gson gson = builder.create();
 		return GsonConverterFactory.create(gson);
+	}
+
+
+	private static CallAdapter.Factory createCallAdapterFactory()
+	{
+		return RxJavaCallAdapterFactory.create();
 	}
 }

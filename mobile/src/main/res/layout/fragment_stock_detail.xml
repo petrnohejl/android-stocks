@@ -6,7 +6,7 @@
 
 	<data>
 		<variable name="view" type="com.example.ui.StockDetailView" />
-		<variable name="viewModel" type="com.example.viewmodel.StockDetailViewModel" />
+		<variable name="viewModel" type="com.example.viewmodel.StockDetailRxViewModel" />
 	</data>
 
 	<com.example.view.StatefulLayout

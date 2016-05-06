@@ -3,7 +3,6 @@ package com.example.viewmodel;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 
 import com.example.ui.BaseView;
 import com.example.utility.Logcat;
@@ -66,15 +65,6 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 		if(getView() != null)
 		{
 			getView().showToast(message);
-		}
-	}
-
-
-	public void handleFail(@StringRes int stringRes)
-	{
-		if(getView() != null)
-		{
-			getView().showToast(stringRes);
 		}
 	}
 }

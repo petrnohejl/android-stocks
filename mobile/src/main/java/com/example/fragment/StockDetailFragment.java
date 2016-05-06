@@ -10,19 +10,19 @@ import android.view.ViewGroup;
 import com.example.R;
 import com.example.databinding.FragmentStockDetailBinding;
 import com.example.ui.StockDetailView;
-import com.example.viewmodel.StockDetailViewModel;
+import com.example.viewmodel.StockDetailRxViewModel;
 
 
-public class StockDetailFragment extends BaseFragment<StockDetailView, StockDetailViewModel> implements StockDetailView
+public class StockDetailFragment extends BaseFragment<StockDetailView, StockDetailRxViewModel> implements StockDetailView
 {
 	private FragmentStockDetailBinding mBinding;
 
 
 	@Nullable
 	@Override
-	public Class<StockDetailViewModel> getViewModelClass()
+	public Class<StockDetailRxViewModel> getViewModelClass()
 	{
-		return StockDetailViewModel.class;
+		return StockDetailRxViewModel.class;
 	}
 	
 
