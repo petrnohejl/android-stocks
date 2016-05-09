@@ -24,4 +24,6 @@
 	<string name="dialog_example_title">Example dialog title</string>
 
 	<string name="notification_example_title">Example notification title</string>
+
+	<string name="leak_canary_display_activity_label">Stocks Leaks</string>
 </resources>

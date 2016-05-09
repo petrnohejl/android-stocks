@@ -3,15 +3,27 @@ package com.example;
 import android.app.Application;
 import android.content.Context;
 
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
+
 
 public class StocksApplication extends Application
 {
 	private static StocksApplication sInstance;
 
+	private RefWatcher mRefWatcher;
+
 
 	public static Context getContext()
 	{
 		return sInstance;
+	}
+
+
+	public static RefWatcher getRefWatcher()
+	{
+		StocksApplication application = (StocksApplication) getContext();
+		return application.mRefWatcher;
 	}
 
 
@@ -36,5 +48,8 @@ public class StocksApplication extends Application
 		{
 			e.printStackTrace();
 		}
+
+		// init leak canary
+		mRefWatcher = LeakCanary.install(this);
 	}
 }

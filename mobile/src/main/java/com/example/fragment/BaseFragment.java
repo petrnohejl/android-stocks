@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.StocksApplication;
 import com.example.ui.BaseView;
 import com.example.utility.Logcat;
+import com.squareup.leakcanary.RefWatcher;
 
 import eu.inloop.viewmodel.AbstractViewModel;
 import eu.inloop.viewmodel.base.ViewModelBaseFragment;
@@ -104,6 +106,10 @@ public abstract class BaseFragment<T extends BaseView, R extends AbstractViewMod
 	{
 		Logcat.d("");
 		super.onDestroy();
+
+		// leak canary watcher
+		RefWatcher refWatcher = StocksApplication.getRefWatcher();
+		refWatcher.watch(this);
 	}
 	
 	
