@@ -31,9 +31,9 @@ public class HelloWorldViewModel extends BaseViewModel<StockDetailView> implemen
 
 
 	@Override
-	public void onModelRemoved()
+	public void onDestroy()
 	{
-		super.onModelRemoved();
+		super.onDestroy();
 
 		// cancel async tasks
 		if(mLoadDataTask!=null) mLoadDataTask.cancel(true);

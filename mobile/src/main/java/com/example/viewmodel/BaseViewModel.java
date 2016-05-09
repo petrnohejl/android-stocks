@@ -21,10 +21,10 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 
 
 	@Override
-	public void bindView(@NonNull T view)
+	public void onBindView(@NonNull T view)
 	{
 		Logcat.d("");
-		super.bindView(view);
+		super.onBindView(view);
 	}
 
 
@@ -37,10 +37,10 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 
 
 	@Override
-	public void saveState(@NonNull Bundle bundle)
+	public void onSaveInstanceState(@NonNull Bundle bundle)
 	{
 		Logcat.d("");
-		super.saveState(bundle);
+		super.onSaveInstanceState(bundle);
 	}
 
 
@@ -53,10 +53,10 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 
 
 	@Override
-	public void onModelRemoved()
+	public void onDestroy()
 	{
 		Logcat.d("");
-		super.onModelRemoved();
+		super.onDestroy();
 	}
 
 

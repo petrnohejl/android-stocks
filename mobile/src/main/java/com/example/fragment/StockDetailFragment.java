@@ -47,9 +47,6 @@ public class StockDetailFragment extends BaseFragment<StockDetailView, StockDeta
 	@Override
 	public void onClick(View view)
 	{
-		if(getViewModel() != null)
-		{
-			getViewModel().refreshData();
-		}
+		getViewModel().refreshData();
 	}
 }

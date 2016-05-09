@@ -36,9 +36,9 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 
 
 	@Override
-	public void onModelRemoved()
+	public void onDestroy()
 	{
-		super.onModelRemoved();
+		super.onDestroy();
 
 		// cancel async tasks
 		if(mSubscriberManager != null) mSubscriberManager.unsubscribeAll();

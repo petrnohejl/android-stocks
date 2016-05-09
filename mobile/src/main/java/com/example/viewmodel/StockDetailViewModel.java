@@ -35,9 +35,9 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 
 
 	@Override
-	public void onModelRemoved()
+	public void onDestroy()
 	{
-		super.onModelRemoved();
+		super.onDestroy();
 
 		// cancel async tasks
 		if(mCallManager != null) mCallManager.cancelRunningCalls();
