@@ -27,13 +27,15 @@ public final class RestUtility
 
 	public static boolean isSuccess(Response<?> response)
 	{
-//		return response.isSuccessful();
-		return response.isSuccessful() && ((ErrorEntity) response.body()).getMessage() == null;
+		// TODO
+		return response.isSuccessful();
+//		return response.isSuccessful() && ((ErrorEntity) response.body()).getMessage() == null;
 	}
 
 
 	public static String getErrorMessage(Response<?> response)
 	{
+		// TODO
 //		ErrorEntity error = parseError(response, RetrofitClient.getRetrofit());
 //		return error.getMessage();
 		return ((ErrorEntity) response.body()).getMessage();

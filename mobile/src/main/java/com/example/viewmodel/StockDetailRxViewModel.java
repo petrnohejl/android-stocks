@@ -40,7 +40,7 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	{
 		super.onDestroy();
 
-		// cancel async tasks
+		// unsubscribe
 		if(mSubscriberManager != null) mSubscriberManager.unsubscribeAll();
 	}
 

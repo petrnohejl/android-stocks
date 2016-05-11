@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class LookupEntity extends ErrorEntity
+public class LookupEntity
 {
 	@SerializedName("Symbol")
 	@Expose

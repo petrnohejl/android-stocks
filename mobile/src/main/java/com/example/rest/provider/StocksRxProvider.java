@@ -4,6 +4,8 @@ import com.example.entity.LookupEntity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.RetrofitClient;
 
+import java.util.List;
+
 import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -25,7 +27,7 @@ public class StocksRxProvider
 		Observable<Response<QuoteEntity>> quote(@Path("format") String format, @Query("symbol") String symbol);
 
 		@GET("Lookup/{format}")
-		Observable<Response<LookupEntity[]>> lookup(@Path("format") String format, @Query("input") String input);
+		Observable<Response<List<LookupEntity>>> lookup(@Path("format") String format, @Query("input") String input);
 	}
 
 
