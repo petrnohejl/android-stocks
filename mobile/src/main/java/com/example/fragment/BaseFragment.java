@@ -12,13 +12,13 @@ import android.widget.Toast;
 import com.example.StocksApplication;
 import com.example.ui.BaseView;
 import com.example.utility.Logcat;
+import com.example.viewmodel.BaseViewModel;
 import com.squareup.leakcanary.RefWatcher;
 
-import eu.inloop.viewmodel.AbstractViewModel;
 import eu.inloop.viewmodel.base.ViewModelBaseFragment;
 
 
-public abstract class BaseFragment<T extends BaseView, R extends AbstractViewModel<T>> extends ViewModelBaseFragment<T, R> implements BaseView
+public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T>> extends ViewModelBaseFragment<T, R> implements BaseView
 {
 	@Override
 	public void onAttach(Context context)
