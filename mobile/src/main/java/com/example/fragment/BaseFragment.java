@@ -13,7 +13,6 @@ import com.example.StocksApplication;
 import com.example.ui.BaseView;
 import com.example.utility.Logcat;
 import com.example.viewmodel.BaseViewModel;
-import com.squareup.leakcanary.RefWatcher;
 
 import eu.inloop.viewmodel.base.ViewModelBaseFragment;
 
@@ -108,8 +107,8 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 		super.onDestroy();
 
 		// leak canary watcher
-		RefWatcher refWatcher = StocksApplication.getRefWatcher();
-		refWatcher.watch(this);
+		StocksApplication.getRefWatcher().watch(this);
+		if(getActivity().isFinishing()) StocksApplication.getRefWatcher().watch(getViewModel());
 	}
 	
 	
