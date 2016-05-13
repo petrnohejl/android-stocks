@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+		<variable name="viewModel" type="com.example.viewmodel.StockListViewModel" />
+		<variable name="lookupPosition" type="int" />
+	</data>
+
+	<LinearLayout
+		android:id="@+id/stock_list_item"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minHeight="@dimen/global_spacing_48"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		android:background="@drawable/selector_clickable_item_bg">
+
+		<TextView
+			android:id="@+id/stock_list_item_name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/global_keyline_16"
+			android:layout_marginRight="@dimen/global_keyline_16"
+			android:textAppearance="@style/TextAppearance.Stocks.Body1"
+			android:text="@{viewModel.lookups[lookupPosition].name}" />
+
+	</LinearLayout>
+
+</layout>
