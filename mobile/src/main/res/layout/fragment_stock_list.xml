@@ -5,6 +5,9 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<data>
+		<import type="com.example.utility.BindingUtility.RecyclerLayout" />
+		<import type="com.example.utility.BindingUtility.RecyclerDecoration" />
+		<import type="com.example.utility.BindingUtility.RecyclerAnimator" />
 		<variable name="view" type="com.example.ui.StockListView" />
 		<variable name="viewModel" type="com.example.viewmodel.StockListViewModel" />
 	</data>
@@ -30,7 +33,9 @@
 				android:layout_height="wrap_content"
 				android:scrollbars="vertical"
 				android:background="@color/global_bg_front"
-				app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+				app:recyclerLayout="@{RecyclerLayout.LINEAR_VERTICAL}"
+				app:recyclerDecoration="@{RecyclerDecoration.LINEAR_DIVIDER}"
+				app:recyclerAnimator="@{RecyclerAnimator.DEFAULT}" />
 
 		</FrameLayout>
 	</com.example.view.StatefulLayout>

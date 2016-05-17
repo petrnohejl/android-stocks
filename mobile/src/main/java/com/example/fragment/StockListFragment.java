@@ -50,6 +50,7 @@ public class StockListFragment extends BaseFragment<StockListView, StockListView
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
+		mBinding.executePendingBindings(); // set layout manager in recycler via binding adapter
 		setupAdapter();
 	}
 
