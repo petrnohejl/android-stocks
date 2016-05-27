@@ -10,6 +10,7 @@ import com.example.R;
 import com.example.databinding.FragmentStockListFooterBinding;
 import com.example.databinding.FragmentStockListHeaderBinding;
 import com.example.databinding.FragmentStockListItemBinding;
+import com.example.entity.LookupEntity;
 import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
@@ -64,15 +65,15 @@ public class StockListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 	{
 		if(viewHolder instanceof HeaderViewHolder)
 		{
-			((HeaderViewHolder) viewHolder).bindData(mViewModel, getHeaderPosition(position));
+			((HeaderViewHolder) viewHolder).bindData(mView, mViewModel.headers.get(getHeaderPosition(position)));
 		}
 		else if(viewHolder instanceof LookupViewHolder)
 		{
-			((LookupViewHolder) viewHolder).bindData(mViewModel, getLookupPosition(position));
+			((LookupViewHolder) viewHolder).bindData(mView, mViewModel.lookups.get(getLookupPosition(position)));
 		}
 		else if(viewHolder instanceof FooterViewHolder)
 		{
-			((FooterViewHolder) viewHolder).bindData(mViewModel, getFooterPosition(position));
+			((FooterViewHolder) viewHolder).bindData(mView, mViewModel.footers.get(getFooterPosition(position)));
 		}
 	}
 
@@ -174,10 +175,10 @@ public class StockListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 		}
 
 
-		public void bindData(StockListViewModel viewModel, int headerPosition)
+		public void bindData(StockListView view, String data)
 		{
-			mBinding.setViewModel(viewModel);
-			mBinding.setHeaderPosition(headerPosition);
+			mBinding.setView(view);
+			mBinding.setData(data);
 			mBinding.executePendingBindings();
 		}
 	}
@@ -224,10 +225,10 @@ public class StockListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 		}
 
 
-		public void bindData(StockListViewModel viewModel, int lookupPosition)
+		public void bindData(StockListView view, LookupEntity data)
 		{
-			mBinding.setViewModel(viewModel);
-			mBinding.setLookupPosition(lookupPosition);
+			mBinding.setView(view);
+			mBinding.setData(data);
 			mBinding.executePendingBindings();
 		}
 	}
@@ -245,10 +246,10 @@ public class StockListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 		}
 
 
-		public void bindData(StockListViewModel viewModel, int footerPosition)
+		public void bindData(StockListView view, Object data)
 		{
-			mBinding.setViewModel(viewModel);
-			mBinding.setFooterPosition(footerPosition);
+			mBinding.setView(view);
+			mBinding.setData(data);
 			mBinding.executePendingBindings();
 		}
 	}

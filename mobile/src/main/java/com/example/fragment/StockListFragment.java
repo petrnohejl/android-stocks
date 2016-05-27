@@ -59,6 +59,7 @@ public class StockListFragment extends BaseFragment<StockListView, StockListView
 	public void onItemClick(View view, int position, long id, int viewType)
 	{
 		getViewModel().addItem();
+		mAdapter.notifyDataSetChanged();
 	}
 
 

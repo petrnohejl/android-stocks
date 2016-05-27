@@ -5,11 +5,12 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<data>
-		<variable name="viewModel" type="com.example.viewmodel.StockListViewModel" />
-		<variable name="footerPosition" type="int" />
+		<variable name="view" type="com.example.ui.StockListView" />
+		<variable name="data" type="Object" />
 	</data>
 
 	<LinearLayout
+		android:id="@+id/stock_list_footer"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"
