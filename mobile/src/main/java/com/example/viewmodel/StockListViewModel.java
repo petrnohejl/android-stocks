@@ -81,6 +81,14 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 	}
 
 
+	public void updateItem(LookupEntity lookup)
+	{
+		lookup.setSymbol("YOYO");
+		lookup.setName("Yoyo " + System.currentTimeMillis());
+		lookup.setExchange("NYSE");
+	}
+
+
 	public void removeItem()
 	{
 		lookups.remove(0);

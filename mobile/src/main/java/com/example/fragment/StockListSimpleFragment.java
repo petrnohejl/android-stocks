@@ -8,17 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.R;
-import com.example.adapter.StockListAdapter;
+import com.example.adapter.StockListSimpleAdapter;
 import com.example.databinding.FragmentStockListBinding;
 import com.example.entity.LookupEntity;
 import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 
-public class StockListFragment extends BaseFragment<StockListView, StockListViewModel> implements StockListView
+public class StockListSimpleFragment extends BaseFragment<StockListView, StockListViewModel> implements StockListView
 {
 	private FragmentStockListBinding mBinding;
-	private StockListAdapter mAdapter;
+	private StockListSimpleAdapter mAdapter;
 
 
 	@Nullable
@@ -59,29 +59,27 @@ public class StockListFragment extends BaseFragment<StockListView, StockListView
 	@Override
 	public void onItemClick(View view, int position, long id, int viewType)
 	{
-		getViewModel().addItem();
-		mAdapter.notifyDataSetChanged();
 	}
 
 
 	@Override
 	public void onItemLongClick(View view, int position, long id, int viewType)
 	{
-		int lookupPosition = mAdapter.getLookupPosition(position);
-		getViewModel().updateItem(lookupPosition);
-		mAdapter.notifyItemChanged(position);
 	}
 
 
 	@Override
 	public void onItemClick(LookupEntity lookup)
 	{
+		getViewModel().addItem();
+		mAdapter.notifyDataSetChanged();
 	}
 
 
 	@Override
 	public void onItemLongClick(LookupEntity lookup)
 	{
+		getViewModel().updateItem(lookup);
 	}
 
 
@@ -89,7 +87,7 @@ public class StockListFragment extends BaseFragment<StockListView, StockListView
 	{
 		if(mAdapter == null)
 		{
-			mAdapter = new StockListAdapter(this, getViewModel());
+			mAdapter = new StockListSimpleAdapter(this, getViewModel());
 			mBinding.stockListRecycler.setAdapter(mAdapter);
 		}
 	}

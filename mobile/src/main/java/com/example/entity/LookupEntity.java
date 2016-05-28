@@ -1,17 +1,26 @@
 package com.example.entity;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+import com.example.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class LookupEntity
+public class LookupEntity extends BaseObservable
 {
+	@Bindable
 	@SerializedName("Symbol")
 	@Expose
 	private String symbol;
+
+	@Bindable
 	@SerializedName("Name")
 	@Expose
 	private String name;
+
+	@Bindable
 	@SerializedName("Exchange")
 	@Expose
 	private String exchange;
@@ -31,6 +40,7 @@ public class LookupEntity
 	public void setSymbol(String symbol)
 	{
 		this.symbol = symbol;
+		notifyPropertyChanged(BR.symbol);
 	}
 
 
@@ -43,6 +53,7 @@ public class LookupEntity
 	public void setName(String name)
 	{
 		this.name = name;
+		notifyPropertyChanged(BR.name);
 	}
 
 
@@ -55,5 +66,6 @@ public class LookupEntity
 	public void setExchange(String exchange)
 	{
 		this.exchange = exchange;
+		notifyPropertyChanged(BR.exchange);
 	}
 }
