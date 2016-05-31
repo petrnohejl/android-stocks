@@ -1,47 +1,35 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.adapter.base;
 
+import android.databinding.ObservableArrayList;
 import android.databinding.ViewDataBinding;
 import android.support.annotation.LayoutRes;
 
+import com.example.BR;
+import com.example.ui.BaseView;
 
-/**
- * An Adapter implementation that works with a {@link DataBoundViewHolder}.
- * <p>
- * Although this version enforces a single item type, it can easily be extended to support multiple
- * view types.
- *
- * @param <T> The type of the binding class
- */
+import java.util.List;
+
+
 abstract public class SimpleDataBoundAdapter<T extends ViewDataBinding> extends BaseDataBoundAdapter<T>
 {
-	@LayoutRes
-	private final int mLayoutId;
+	@LayoutRes private int mLayoutId;
+	private BaseView mView;
+	private ObservableArrayList<Object> mItems;
 
 
-	/**
-	 * Creates a SimpleDataBoundAdapter with the given item layout
-	 *
-	 * @param layoutId The layout to be used for items. It must use data binding.
-	 */
-	public SimpleDataBoundAdapter(@LayoutRes int layoutId)
+	public SimpleDataBoundAdapter(@LayoutRes int layoutId, BaseView view, ObservableArrayList<Object> items)
 	{
 		mLayoutId = layoutId;
+		mView = view;
+		mItems = items;
+	}
+
+
+	@Override
+	protected void bindItem(DataBoundViewHolder holder, int position, List payloads)
+	{
+		holder.binding.setVariable(BR.view, mView);
+		holder.binding.setVariable(BR.data, mItems.get(position));
 	}
 
 
@@ -49,5 +37,12 @@ abstract public class SimpleDataBoundAdapter<T extends ViewDataBinding> extends 
 	public int getItemLayoutId(int position)
 	{
 		return mLayoutId;
+	}
+
+
+	@Override
+	public int getItemCount()
+	{
+		return mItems.size();
 	}
 }

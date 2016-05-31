@@ -2,36 +2,23 @@ package com.example.adapter;
 
 import android.databinding.ObservableArrayList;
 
-import com.example.BR;
 import com.example.R;
-import com.example.adapter.base.DataBoundViewHolder;
 import com.example.adapter.base.MultiDataBoundAdapter;
 import com.example.entity.LookupEntity;
 import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
-import java.util.List;
-
 
 public class StockListMultiAdapter extends MultiDataBoundAdapter
 {
-	private StockListView mView;
-
-
 	public StockListMultiAdapter(StockListView view, StockListViewModel viewModel)
 	{
-		super((ObservableArrayList<Object>)(ObservableArrayList<?>) viewModel.headers,
+		super(
+				view,
+				(ObservableArrayList<Object>)(ObservableArrayList<?>) viewModel.headers,
 				(ObservableArrayList<Object>)(ObservableArrayList<?>) viewModel.lookups,
-				(ObservableArrayList<Object>)(ObservableArrayList<?>) viewModel.footers);
-		mView = view;
-	}
-
-
-	@Override
-	protected void bindItem(DataBoundViewHolder holder, int position, List payloads)
-	{
-		super.bindItem(holder, position, payloads);
-		holder.binding.setVariable(BR.view, mView);
+				(ObservableArrayList<Object>)(ObservableArrayList<?>) viewModel.footers
+		);
 	}
 
 
