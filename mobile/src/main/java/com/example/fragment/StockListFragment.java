@@ -80,8 +80,9 @@ public class StockListFragment extends BaseFragment<StockListView, StockListView
 
 
 	@Override
-	public void onItemLongClick(LookupEntity lookup)
+	public boolean onItemLongClick(LookupEntity lookup)
 	{
+		return true;
 	}
 
 

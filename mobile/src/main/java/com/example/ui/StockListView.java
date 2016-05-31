@@ -10,5 +10,5 @@ public interface StockListView extends BaseView
 	void onItemClick(View view, int position, long id, int viewType);
 	void onItemLongClick(View view, int position, long id, int viewType);
 	void onItemClick(LookupEntity lookup);
-	void onItemLongClick(LookupEntity lookup);
+	boolean onItemLongClick(LookupEntity lookup);
 }

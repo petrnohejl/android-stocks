@@ -77,9 +77,10 @@ public class StockListSimpleFragment extends BaseFragment<StockListView, StockLi
 
 
 	@Override
-	public void onItemLongClick(LookupEntity lookup)
+	public boolean onItemLongClick(LookupEntity lookup)
 	{
 		getViewModel().updateItem(lookup);
+		return true;
 	}
 
 

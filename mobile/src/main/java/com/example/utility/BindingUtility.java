@@ -4,6 +4,7 @@ import android.databinding.BindingAdapter;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.widget.LinearDividerItemDecoration;
 
@@ -16,6 +17,20 @@ public final class BindingUtility
 
 
 	private BindingUtility() {}
+
+
+	@BindingAdapter({"onClick"})
+	public static void setOnClick(View view, View.OnClickListener listener)
+	{
+		view.setOnClickListener(listener);
+	}
+
+
+	@BindingAdapter({"onLongClick"})
+	public static void setOnLongClick(View view, View.OnLongClickListener listener)
+	{
+		view.setOnLongClickListener(listener);
+	}
 
 
 	@BindingAdapter({"recyclerLayout"})

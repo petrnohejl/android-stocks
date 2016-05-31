@@ -17,7 +17,8 @@
 		android:gravity="center_vertical"
 		android:orientation="horizontal"
 		android:background="@drawable/selector_clickable_item_bg"
-		android:onClick="@{() -> view.onItemClick(data)}">
+		app:onClick="@{() -> view.onItemClick(data)}"
+		app:onLongClick="@{() -> view.onItemLongClick(data)}">
 
 		<TextView
 			android:id="@+id/stock_list_simple_item_name"
