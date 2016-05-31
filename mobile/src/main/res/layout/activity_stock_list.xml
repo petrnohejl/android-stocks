@@ -9,7 +9,7 @@
 
 	<fragment
 		android:id="@+id/fragment_stock_list"
-		android:name="com.example.fragment.StockListFragment"
+		android:name="com.example.fragment.StockListMultiFragment"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		android:layout_weight="1" />
