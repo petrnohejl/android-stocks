@@ -5,19 +5,15 @@ import android.net.ParseException;
 import com.example.R;
 import com.example.StocksApplication;
 import com.example.entity.ErrorEntity;
+import com.example.rest.RetrofitHttpException;
 import com.google.gson.JsonParseException;
 import com.google.gson.stream.MalformedJsonException;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.annotation.Annotation;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
-import okhttp3.ResponseBody;
-import retrofit2.Converter;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 
 public final class RestUtility
@@ -33,12 +29,12 @@ public final class RestUtility
 	}
 
 
-	public static String getErrorMessage(Response<?> response)
+	public static String getErrorMessage(RetrofitHttpException exception)
 	{
 		// TODO
-//		ErrorEntity error = parseError(response, RetrofitClient.getRetrofit());
+//		ErrorEntity error = exception.error();
 //		return error.getMessage();
-		return ((ErrorEntity) response.body()).getMessage();
+		return ((ErrorEntity) exception.response().body()).getMessage();
 	}
 
 
@@ -64,24 +60,5 @@ public final class RestUtility
 		else
 			resId = R.string.global_network_fail;
 		return StocksApplication.getContext().getString(resId);
-	}
-
-
-	public static ErrorEntity parseError(Response<?> response, Retrofit retrofit)
-	{
-		Converter<ResponseBody, ErrorEntity> converter = retrofit.responseBodyConverter(ErrorEntity.class, new Annotation[0]);
-		ErrorEntity error;
-
-		try
-		{
-			error = converter.convert(response.errorBody());
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-			return new ErrorEntity();
-		}
-
-		return error;
 	}
 }

@@ -1,7 +1,8 @@
 package com.example.utility;
 
+import com.example.rest.RetrofitHttpException;
+
 import retrofit2.Response;
-import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -26,16 +27,16 @@ public final class RxUtility
 		}
 		else
 		{
-			return Observable.error(new HttpException(response));
+			return Observable.error(new RetrofitHttpException(response));
 		}
 	}
 
 
 	public static String getHttpErrorMessage(Throwable throwable)
 	{
-		if(throwable instanceof HttpException)
+		if(throwable instanceof RetrofitHttpException)
 		{
-			return RestUtility.getErrorMessage(((HttpException) throwable).response());
+			return RestUtility.getErrorMessage((RetrofitHttpException) throwable);
 		}
 		else
 		{

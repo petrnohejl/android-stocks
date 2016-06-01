@@ -1,11 +1,11 @@
 package com.example.rest.rx;
 
+import com.example.rest.RetrofitHttpException;
 import com.example.utility.Logcat;
 import com.example.utility.RestUtility;
 import com.fernandocejas.frodo.annotation.RxLogSubscriber;
 
 import retrofit2.Response;
-import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 import rx.functions.Action0;
 import rx.functions.Action1;
@@ -65,9 +65,9 @@ public class RestSubscriber<T extends Response<?>> extends Subscriber<T>
 	public void onError(Throwable throwable)
 	{
 		// log
-		if(throwable instanceof HttpException)
+		if(throwable instanceof RetrofitHttpException)
 		{
-			logError((HttpException) throwable, mSubscriberManager.getCallType(this));
+			logError((RetrofitHttpException) throwable, mSubscriberManager.getCallType(this));
 		}
 		else
 		{
@@ -101,10 +101,10 @@ public class RestSubscriber<T extends Response<?>> extends Subscriber<T>
 	}
 
 
-	private void logError(HttpException exception, String callType)
+	private void logError(RetrofitHttpException exception, String callType)
 	{
 		String status = exception.code() + " " + exception.message();
-		String result = RestUtility.getErrorMessage(exception.response());
+		String result = RestUtility.getErrorMessage(exception);
 		Logcat.d("%s call err with %s: %s", callType, status, result);
 	}
 

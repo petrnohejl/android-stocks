@@ -1,5 +1,6 @@
 package com.example.rest.call;
 
+import com.example.rest.RetrofitHttpException;
 import com.example.utility.Logcat;
 import com.example.utility.RestUtility;
 
@@ -13,7 +14,7 @@ public abstract class BaseCallback<T> implements Callback<T>
 	private CallManager mCallManager;
 
 	public abstract void onSuccess(Call<T> call, Response<T> response);
-	public abstract void onError(Call<T> call, Response<T> response);
+	public abstract void onError(Call<T> call, RetrofitHttpException exception);
 	public abstract void onFail(Call<T> call, Throwable throwable);
 
 
@@ -36,11 +37,14 @@ public abstract class BaseCallback<T> implements Callback<T>
 		}
 		else
 		{
+			// exception
+			RetrofitHttpException exception = new RetrofitHttpException(response);
+
 			// log
-			logError(response, mCallManager.getCallType(this));
+			logError(exception, mCallManager.getCallType(this));
 
 			// callback
-			onError(call, response);
+			onError(call, exception);
 		}
 
 		// finish call
@@ -70,10 +74,10 @@ public abstract class BaseCallback<T> implements Callback<T>
 	}
 
 
-	private void logError(Response<T> response, String callType)
+	private void logError(RetrofitHttpException exception, String callType)
 	{
-		String status = response.code() + " " + response.message();
-		String result = RestUtility.getErrorMessage(response);
+		String status = exception.code() + " " + exception.message();
+		String result = RestUtility.getErrorMessage(exception);
 		Logcat.d("%s call err with %s: %s", callType, status, result);
 	}
 

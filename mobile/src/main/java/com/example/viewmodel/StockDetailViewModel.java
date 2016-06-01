@@ -4,6 +4,7 @@ import android.databinding.ObservableField;
 
 import com.example.StocksApplication;
 import com.example.entity.QuoteEntity;
+import com.example.rest.RetrofitHttpException;
 import com.example.rest.call.BaseCallback;
 import com.example.rest.call.CallManager;
 import com.example.rest.provider.StocksProvider;
@@ -110,9 +111,9 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 
 
 		@Override
-		public void onError(Call<QuoteEntity> call, Response<QuoteEntity> response)
+		public void onError(Call<QuoteEntity> call, RetrofitHttpException exception)
 		{
-			handleError(RestUtility.getErrorMessage(response));
+			handleError(RestUtility.getErrorMessage(exception));
 			setState(quote);
 		}
 
