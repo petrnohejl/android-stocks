@@ -5,6 +5,7 @@ import android.net.ParseException;
 import com.example.R;
 import com.example.StocksApplication;
 import com.example.entity.ErrorEntity;
+import com.example.entity.QuoteEntity;
 import com.example.rest.RetrofitHttpException;
 import com.google.gson.JsonParseException;
 import com.google.gson.stream.MalformedJsonException;
@@ -12,6 +13,7 @@ import com.google.gson.stream.MalformedJsonException;
 import java.io.FileNotFoundException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+import java.util.List;
 
 import retrofit2.Response;
 
@@ -23,18 +25,42 @@ public final class RestUtility
 
 	public static boolean isSuccess(Response<?> response)
 	{
-		// TODO
-		return response.isSuccessful();
-//		return response.isSuccessful() && ((ErrorEntity) response.body()).getMessage() == null;
+//		return response.isSuccessful();
+
+		// TODO: little hack because this REST API does not handle errors properly and always returns 200
+		if(response.body() instanceof List)
+		{
+			return response.isSuccessful();
+		}
+		else if(response.body() instanceof QuoteEntity)
+		{
+			return response.isSuccessful() && ((ErrorEntity) response.body()).getMessage() == null;
+		}
+		else
+		{
+			return response.isSuccessful();
+		}
 	}
 
 
 	public static String getErrorMessage(RetrofitHttpException exception)
 	{
-		// TODO
 //		ErrorEntity error = exception.error();
 //		return error.getMessage();
-		return ((ErrorEntity) exception.response().body()).getMessage();
+
+		// TODO: little hack because this REST API does not handle errors properly and always returns 200
+		if(exception.response().body() instanceof List)
+		{
+			return exception.error().getMessage();
+		}
+		else if(exception.response().body() instanceof QuoteEntity)
+		{
+			return ((ErrorEntity) exception.response().body()).getMessage();
+		}
+		else
+		{
+			return exception.error().getMessage();
+		}
 	}
 
 
