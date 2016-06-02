@@ -1,8 +1,11 @@
 package com.example.viewmodel;
 
 import android.databinding.ObservableField;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 
 import com.example.StocksApplication;
+import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.RetrofitHttpException;
 import com.example.rest.call.BaseCallback;
@@ -22,7 +25,18 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 	public final ObservableField<StatefulLayout.State> state = new ObservableField<>();
 	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
 
+	private String mSymbol;
 	private CallManager mCallManager = new CallManager();
+
+
+	@Override
+	public void onBindView(@NonNull StockDetailView view)
+	{
+		super.onBindView(view);
+
+		// handle intent extras
+		handleExtras(view.getExtras());
+	}
 
 
 	@Override
@@ -47,13 +61,13 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 
 	public void loadData()
 	{
-		sendQuote("INTC");
+		sendQuote(mSymbol);
 	}
 
 
 	public void refreshData()
 	{
-		sendQuote("INTC");
+		sendQuote(mSymbol);
 	}
 
 
@@ -90,6 +104,15 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 		else
 		{
 			state.set(StatefulLayout.State.EMPTY);
+		}
+	}
+
+
+	private void handleExtras(Bundle extras)
+	{
+		if(extras != null)
+		{
+			mSymbol = extras.getString(StockDetailActivity.EXTRA_SYMBOL);
 		}
 	}
 

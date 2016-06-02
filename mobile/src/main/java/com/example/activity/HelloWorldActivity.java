@@ -37,7 +37,7 @@ public class HelloWorldActivity extends BaseActivity
 		bar.setDisplayUseLogoEnabled(false);
 		bar.setDisplayShowTitleEnabled(true);
 		bar.setDisplayShowHomeEnabled(true);
-		bar.setDisplayHomeAsUpEnabled(false);
+		bar.setDisplayHomeAsUpEnabled(true);
 		bar.setHomeButtonEnabled(true);
 	}
 }

@@ -11,9 +11,13 @@ import com.example.R;
 
 public class StockDetailActivity extends BaseActivity
 {
-	public static Intent newIntent(Context context)
+	public static final String EXTRA_SYMBOL = "symbol";
+
+
+	public static Intent newIntent(Context context, String symbol)
 	{
 		Intent intent = new Intent(context, StockDetailActivity.class);
+		intent.putExtra(EXTRA_SYMBOL, symbol);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		return intent;
 	}
@@ -37,7 +41,7 @@ public class StockDetailActivity extends BaseActivity
 		bar.setDisplayUseLogoEnabled(false);
 		bar.setDisplayShowTitleEnabled(true);
 		bar.setDisplayShowHomeEnabled(true);
-		bar.setDisplayHomeAsUpEnabled(false);
+		bar.setDisplayHomeAsUpEnabled(true);
 		bar.setHomeButtonEnabled(true);
 	}
 }

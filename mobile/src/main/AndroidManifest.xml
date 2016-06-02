@@ -33,13 +33,15 @@
 		<activity
 			android:name=".activity.StockDetailActivity"
 			android:label="@string/title_stock_detail"
-			android:launchMode="standard">
+			android:launchMode="standard"
+			android:parentActivityName=".activity.StockListActivity">
 		</activity>
 
 		<activity
 			android:name=".activity.HelloWorldActivity"
 			android:label="@string/title_hello_world"
-			android:launchMode="standard">
+			android:launchMode="standard"
+			android:parentActivityName=".activity.StockListActivity">
 		</activity>
 
 	</application>

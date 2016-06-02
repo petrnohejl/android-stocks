@@ -1,5 +1,6 @@
 package com.example.fragment;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.R;
+import com.example.activity.StockDetailActivity;
 import com.example.adapter.StockListAdapter;
 import com.example.databinding.FragmentStockListBinding;
 import com.example.entity.LookupEntity;
@@ -59,8 +61,10 @@ public class StockListFragment extends BaseFragment<StockListView, StockListView
 	@Override
 	public void onItemClick(View view, int position, long id, int viewType)
 	{
-		getViewModel().addItem();
-		mAdapter.notifyDataSetChanged();
+		int lookupPosition = mAdapter.getLookupPosition(position);
+		startStockDetailActivity(getViewModel().lookups.get(lookupPosition).getSymbol());
+//		getViewModel().addItem();
+//		mAdapter.notifyDataSetChanged();
 	}
 
 
@@ -93,5 +97,12 @@ public class StockListFragment extends BaseFragment<StockListView, StockListView
 			mAdapter = new StockListAdapter(this, getViewModel());
 			mBinding.stockListRecycler.setAdapter(mAdapter);
 		}
+	}
+
+
+	private void startStockDetailActivity(String symbol)
+	{
+		Intent intent = StockDetailActivity.newIntent(getActivity(), symbol);
+		getActivity().startActivity(intent);
 	}
 }

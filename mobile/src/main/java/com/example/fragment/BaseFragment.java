@@ -121,6 +121,13 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 
 
 	@Override
+	public Bundle getExtras()
+	{
+		return getActivity().getIntent().getExtras();
+	}
+
+
+	@Override
 	public void showToast(@StringRes int stringRes)
 	{
 		Toast.makeText(getActivity(), stringRes, Toast.LENGTH_LONG).show();
