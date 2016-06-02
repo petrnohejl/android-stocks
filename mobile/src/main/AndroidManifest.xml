@@ -36,5 +36,11 @@
 			android:launchMode="standard">
 		</activity>
 
+		<activity
+			android:name=".activity.HelloWorldActivity"
+			android:label="@string/title_hello_world"
+			android:launchMode="standard">
+		</activity>
+
 	</application>
 </manifest>

@@ -11,6 +11,7 @@
 	<string name="global_network_parse_fail">Unable to process response from server</string>
 
 	<string name="title_stock_detail">Stock</string>
+	<string name="title_hello_world">Hello World</string>
 
 	<string name="menu_example">Example menu</string>
 

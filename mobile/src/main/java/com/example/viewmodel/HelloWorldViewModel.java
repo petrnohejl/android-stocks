@@ -4,18 +4,18 @@ import android.databinding.ObservableField;
 import android.os.AsyncTask;
 
 import com.example.StocksApplication;
-import com.example.entity.StockEntity;
+import com.example.entity.QuoteEntity;
 import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
-import com.example.ui.StockDetailView;
+import com.example.ui.HelloWorldView;
 import com.example.utility.NetworkUtility;
 import com.example.view.StatefulLayout;
 
 
-public class HelloWorldViewModel extends BaseViewModel<StockDetailView> implements OnLoadDataListener
+public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implements OnLoadDataListener
 {
 	public final ObservableField<StatefulLayout.State> state = new ObservableField<>();
-	public final ObservableField<StockEntity> stock = new ObservableField<>();
+	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
 
 	private LoadDataTask mLoadDataTask;
 
@@ -26,7 +26,7 @@ public class HelloWorldViewModel extends BaseViewModel<StockDetailView> implemen
 		super.onStart();
 
 		// load data
-		if(stock.get()==null) loadData();
+		if(quote.get()==null) loadData();
 	}
 
 
@@ -44,12 +44,12 @@ public class HelloWorldViewModel extends BaseViewModel<StockDetailView> implemen
 	public void onLoadData()
 	{
 		// get data
-		StockEntity s = new StockEntity();
-		s.setName("Test Product");
-		stock.set(s);
+		QuoteEntity q = new QuoteEntity();
+		q.setName("Test Quote");
+		quote.set(q);
 
 		// show content
-		if(stock.get()!=null)
+		if(quote.get()!=null)
 		{
 			state.set(StatefulLayout.State.CONTENT);
 		}
@@ -80,8 +80,8 @@ public class HelloWorldViewModel extends BaseViewModel<StockDetailView> implemen
 
 	public void updateName()
 	{
-		StockEntity s = stock.get();
-		s.setName("Test " + System.currentTimeMillis());
-		stock.notifyChange();
+		QuoteEntity q = quote.get();
+		q.setName("Test " + System.currentTimeMillis());
+		quote.notifyChange();
 	}
 }
