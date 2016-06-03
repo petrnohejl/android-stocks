@@ -71,6 +71,12 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	}
 
 
+	public String getChartUrl()
+	{
+		return String.format("http://finviz.com/chart.ashx?t=%s&ty=c&ta=0&p=m&s=l", mSymbol);
+	}
+
+
 	private void sendQuote(String symbol)
 	{
 		if(NetworkUtility.isOnline(StocksApplication.getContext()))

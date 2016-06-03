@@ -59,6 +59,14 @@
 					android:onClick="@{view.onClick}"
 					tools:text="$30.5" />
 
+				<ImageView
+					android:id="@+id/stock_detail_chart"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:adjustViewBounds="true"
+					android:scaleType="fitCenter"
+					app:imageUrl="@{viewModel.chartUrl}" />
+
 			</LinearLayout>
 		</ScrollView>
 	</com.example.view.StatefulLayout>
