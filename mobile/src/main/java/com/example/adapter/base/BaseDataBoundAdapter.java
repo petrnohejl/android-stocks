@@ -74,6 +74,20 @@ abstract public class BaseDataBoundAdapter<T extends ViewDataBinding> extends Re
 	};
 
 
+	/**
+	 * Override this method to handle binding your items into views
+	 *
+	 * @param holder   The ViewHolder that has the binding instance
+	 * @param position The position of the item in the adapter
+	 * @param payloads The payloads that were passed into the onBind method
+	 */
+	protected abstract void bindItem(DataBoundViewHolder<T> holder, int position, List<Object> payloads);
+
+
+	@LayoutRes
+	abstract public int getItemLayoutId(int position);
+
+
 	@Override
 	@CallSuper
 	public DataBoundViewHolder<T> onCreateViewHolder(ViewGroup parent, int viewType)
@@ -93,29 +107,6 @@ abstract public class BaseDataBoundAdapter<T extends ViewDataBinding> extends Re
 			bindItem(holder, position, payloads);
 		}
 		holder.binding.executePendingBindings();
-	}
-
-
-	/**
-	 * Override this method to handle binding your items into views
-	 *
-	 * @param holder   The ViewHolder that has the binding instance
-	 * @param position The position of the item in the adapter
-	 * @param payloads The payloads that were passed into the onBind method
-	 */
-	protected abstract void bindItem(DataBoundViewHolder<T> holder, int position, List<Object> payloads);
-
-
-	private boolean hasNonDataBindingInvalidate(List<Object> payloads)
-	{
-		for(Object payload : payloads)
-		{
-			if(payload != DB_PAYLOAD)
-			{
-				return true;
-			}
-		}
-		return false;
 	}
 
 
@@ -147,6 +138,15 @@ abstract public class BaseDataBoundAdapter<T extends ViewDataBinding> extends Re
 	}
 
 
-	@LayoutRes
-	abstract public int getItemLayoutId(int position);
+	private boolean hasNonDataBindingInvalidate(List<Object> payloads)
+	{
+		for(Object payload : payloads)
+		{
+			if(payload != DB_PAYLOAD)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

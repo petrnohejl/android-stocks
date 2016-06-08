@@ -25,10 +25,10 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 		Logcat.d("");
 		super.onAttach(context);
 	}
-	
-	
+
+
 	@Override
-	public void onCreate(Bundle savedInstanceState) 
+	public void onCreate(Bundle savedInstanceState)
 	{
 		Logcat.d("");
 		super.onCreate(savedInstanceState);
@@ -50,56 +50,56 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 		Logcat.d("");
 		super.onViewCreated(view, savedInstanceState);
 	}
-	
-	
+
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		Logcat.d("");
 		super.onActivityCreated(savedInstanceState);
 	}
-	
-	
+
+
 	@Override
 	public void onStart()
 	{
 		Logcat.d("");
 		super.onStart();
 	}
-	
-	
+
+
 	@Override
 	public void onResume()
 	{
 		Logcat.d("");
 		super.onResume();
 	}
-	
-	
+
+
 	@Override
 	public void onPause()
 	{
 		Logcat.d("");
 		super.onPause();
 	}
-	
-	
+
+
 	@Override
 	public void onStop()
 	{
 		Logcat.d("");
 		super.onStop();
 	}
-	
-	
+
+
 	@Override
 	public void onDestroyView()
 	{
 		Logcat.d("");
 		super.onDestroyView();
 	}
-	
-	
+
+
 	@Override
 	public void onDestroy()
 	{
@@ -110,8 +110,8 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 		StocksApplication.getRefWatcher().watch(this);
 		if(getActivity().isFinishing()) StocksApplication.getRefWatcher().watch(getViewModel());
 	}
-	
-	
+
+
 	@Override
 	public void onDetach()
 	{

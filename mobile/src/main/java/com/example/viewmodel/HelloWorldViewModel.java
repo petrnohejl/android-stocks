@@ -25,7 +25,7 @@ public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implement
 		super.onStart();
 
 		// load data
-		if(quote.get()==null) loadData();
+		if(quote.get() == null) loadData();
 	}
 
 
@@ -35,7 +35,7 @@ public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implement
 		super.onDestroy();
 
 		// cancel async tasks
-		if(mLoadDataTask!=null) mLoadDataTask.cancel(true);
+		if(mLoadDataTask != null) mLoadDataTask.cancel(true);
 	}
 
 
@@ -48,7 +48,7 @@ public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implement
 		quote.set(q);
 
 		// show content
-		if(quote.get()!=null)
+		if(quote.get() != null)
 		{
 			state.set(StatefulLayout.State.CONTENT);
 		}
@@ -56,6 +56,14 @@ public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implement
 		{
 			state.set(StatefulLayout.State.EMPTY);
 		}
+	}
+
+
+	public void updateName()
+	{
+		QuoteEntity q = quote.get();
+		q.setName("Test " + System.currentTimeMillis());
+		quote.notifyChange();
 	}
 
 
@@ -74,13 +82,5 @@ public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implement
 		{
 			state.set(StatefulLayout.State.OFFLINE);
 		}
-	}
-
-
-	public void updateName()
-	{
-		QuoteEntity q = quote.get();
-		q.setName("Test " + System.currentTimeMillis());
-		quote.notifyChange();
 	}
 }

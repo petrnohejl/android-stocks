@@ -62,7 +62,7 @@ public final class RetrofitHttpException extends Exception
 			Converter<ResponseBody, ErrorEntity> converter = retrofit.responseBodyConverter(ErrorEntity.class, new Annotation[0]);
 			return converter.convert(response.errorBody());
 		}
-		catch(IOException|NullPointerException e)
+		catch(IOException | NullPointerException e)
 		{
 			e.printStackTrace();
 			ErrorEntity error = new ErrorEntity();

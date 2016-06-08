@@ -24,7 +24,7 @@ public class StockDetailFragment extends BaseFragment<StockDetailView, StockDeta
 	{
 		return StockDetailRxViewModel.class;
 	}
-	
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

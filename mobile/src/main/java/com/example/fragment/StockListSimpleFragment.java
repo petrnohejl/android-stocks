@@ -29,7 +29,7 @@ public class StockListSimpleFragment extends BaseFragment<StockListView, StockLi
 	{
 		return StockListViewModel.class;
 	}
-	
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

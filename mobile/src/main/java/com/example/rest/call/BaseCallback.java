@@ -13,15 +13,20 @@ public abstract class BaseCallback<T> implements Callback<T>
 {
 	private CallManager mCallManager;
 
-	public abstract void onSuccess(Call<T> call, Response<T> response);
-	public abstract void onError(Call<T> call, RetrofitHttpException exception);
-	public abstract void onFail(Call<T> call, Throwable throwable);
-
 
 	public BaseCallback(CallManager callManager)
 	{
 		mCallManager = callManager;
 	}
+
+
+	public abstract void onSuccess(Call<T> call, Response<T> response);
+
+
+	public abstract void onError(Call<T> call, RetrofitHttpException exception);
+
+
+	public abstract void onFail(Call<T> call, Throwable throwable);
 
 
 	@Override

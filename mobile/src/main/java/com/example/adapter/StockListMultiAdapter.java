@@ -15,9 +15,9 @@ public class StockListMultiAdapter extends MultiDataBoundAdapter
 	{
 		super(
 				view,
-				(ObservableArrayList<Object>)(ObservableArrayList<?>) viewModel.headers,
-				(ObservableArrayList<Object>)(ObservableArrayList<?>) viewModel.lookups,
-				(ObservableArrayList<Object>)(ObservableArrayList<?>) viewModel.footers
+				(ObservableArrayList<Object>) (ObservableArrayList<?>) viewModel.headers,
+				(ObservableArrayList<Object>) (ObservableArrayList<?>) viewModel.lookups,
+				(ObservableArrayList<Object>) (ObservableArrayList<?>) viewModel.footers
 		);
 	}
 

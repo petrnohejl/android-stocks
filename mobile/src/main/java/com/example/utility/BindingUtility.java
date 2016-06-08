@@ -19,9 +19,22 @@ import com.example.widget.LinearDividerItemDecoration;
 
 public final class BindingUtility
 {
-	public enum RecyclerLayout { LINEAR_VERTICAL }
-	public enum RecyclerDecoration { LINEAR_DIVIDER }
-	public enum RecyclerAnimator { DEFAULT }
+	public enum RecyclerLayout
+	{
+		LINEAR_VERTICAL
+	}
+
+
+	public enum RecyclerDecoration
+	{
+		LINEAR_DIVIDER
+	}
+
+
+	public enum RecyclerAnimator
+	{
+		DEFAULT
+	}
 
 
 	private BindingUtility() {}

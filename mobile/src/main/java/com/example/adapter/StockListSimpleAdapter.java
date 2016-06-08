@@ -16,7 +16,7 @@ public class StockListSimpleAdapter extends SimpleDataBoundAdapter<FragmentStock
 		super(
 				R.layout.fragment_stock_list_item_clickable,
 				view,
-				(ObservableArrayList<Object>)(ObservableArrayList<?>) viewModel.lookups
+				(ObservableArrayList<Object>) (ObservableArrayList<?>) viewModel.lookups
 		);
 	}
 }

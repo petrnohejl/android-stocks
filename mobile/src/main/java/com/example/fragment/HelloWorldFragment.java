@@ -24,7 +24,7 @@ public class HelloWorldFragment extends BaseFragment<HelloWorldView, HelloWorldV
 	{
 		return HelloWorldViewModel.class;
 	}
-	
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
