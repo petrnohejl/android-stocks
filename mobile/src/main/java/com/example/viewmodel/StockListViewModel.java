@@ -140,6 +140,7 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 					headers.add("two");
 					headers.add("three");
 
+					footers.clear();
 					footers.add(new Object());
 				},
 				throwable ->
