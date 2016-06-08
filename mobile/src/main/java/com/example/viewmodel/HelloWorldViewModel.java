@@ -5,14 +5,13 @@ import android.os.AsyncTask;
 
 import com.example.StocksApplication;
 import com.example.entity.QuoteEntity;
-import com.example.listener.OnLoadDataListener;
 import com.example.task.LoadDataTask;
 import com.example.ui.HelloWorldView;
 import com.example.utility.NetworkUtility;
 import com.example.view.StatefulLayout;
 
 
-public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implements OnLoadDataListener
+public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implements LoadDataTask.OnLoadDataListener
 {
 	public final ObservableField<StatefulLayout.State> state = new ObservableField<>();
 	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
