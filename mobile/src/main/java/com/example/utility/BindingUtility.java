@@ -1,7 +1,6 @@
 package com.example.utility;
 
 import android.databinding.BindingAdapter;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,16 +9,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.BitmapTypeRequest;
-import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.DrawableTypeRequest;
-import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
-import com.bumptech.glide.request.target.Target;
 import com.example.R;
-import com.example.graphics.CircularDrawable;
 import com.example.widget.LinearDividerItemDecoration;
 
 
@@ -124,41 +118,14 @@ public final class BindingUtility
 		if(!circular)
 		{
 			DrawableTypeRequest builder = requestManager.load(url);
-			setupGlideRequestBuilder(builder, placeholder, error);
+			GlideUtility.setupRequestBuilder(builder, placeholder, error);
 			builder.into(imageView);
 		}
 		else
 		{
 			BitmapTypeRequest builder = requestManager.load(url).asBitmap();
-			setupGlideRequestBuilder(builder, placeholder, error);
-			builder.into(getGlideCircularTarget(imageView));
+			GlideUtility.setupRequestBuilder(builder, placeholder, error);
+			builder.into(GlideUtility.createCircularTarget(imageView));
 		}
-	}
-
-
-	private static void setupGlideRequestBuilder(GenericRequestBuilder builder, Drawable placeholder, Drawable error)
-	{
-		builder.diskCacheStrategy(DiskCacheStrategy.RESULT);
-
-		if(builder instanceof DrawableRequestBuilder) ((DrawableRequestBuilder) builder).crossFade();
-
-		if(placeholder != null) builder.placeholder(placeholder);
-
-		if(error != null) builder.error(error);
-		else builder.error(R.drawable.placeholder);
-	}
-
-
-	private static Target getGlideCircularTarget(ImageView imageView)
-	{
-		return new BitmapImageViewTarget(imageView)
-		{
-			@Override
-			protected void setResource(Bitmap resource)
-			{
-				CircularDrawable drawable = new CircularDrawable(resource);
-				imageView.setImageDrawable(drawable);
-			}
-		};
 	}
 }
