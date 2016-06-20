@@ -74,7 +74,7 @@ public abstract class BaseCallback<T> implements Callback<T>
 	private void logSuccess(Response<T> response, String callType)
 	{
 		String status = response.code() + " " + response.message();
-		String result = response.body().getClass().getSimpleName();
+		String result = response.body() != null ? response.body().getClass().getSimpleName() : "empty body";
 		Logcat.d("%s call succeed with %s: %s", callType, status, result);
 	}
 
