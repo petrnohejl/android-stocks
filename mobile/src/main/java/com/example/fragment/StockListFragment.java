@@ -1,14 +1,12 @@
 package com.example.fragment;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.R;
 import com.example.activity.StockDetailActivity;
 import com.example.adapter.StockListAdapter;
 import com.example.databinding.FragmentStockListBinding;
@@ -34,7 +32,7 @@ public class StockListFragment extends BaseFragment<StockListView, StockListView
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_stock_list, container, false);
+		mBinding = FragmentStockListBinding.inflate(inflater);
 		mBinding.setView(this);
 		mBinding.setViewModel(getViewModel());
 		return mBinding.getRoot();
