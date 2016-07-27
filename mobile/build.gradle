@@ -19,22 +19,22 @@ apply plugin: 'com.fernandocejas.frodo'
 
 dependencies
 {
-	compile 'com.android.support:support-v4:23.4.0'
-	compile 'com.android.support:appcompat-v7:23.4.0'
-	compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha2'
-	compile 'com.android.support:design:23.4.0'
+	compile 'com.android.support:support-v4:24.1.0'
+	compile 'com.android.support:appcompat-v7:24.1.0'
+	compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha4'
+	compile 'com.android.support:design:24.1.0'
 	compile 'com.github.bumptech.glide:glide:3.7.0'
 	compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
-	compile 'com.google.android.gms:play-services-base:9.0.2'
+	compile 'com.google.android.gms:play-services-base:9.2.1'
 	compile 'com.google.code.gson:gson:2.6.2'
-	compile 'com.squareup.okhttp3:okhttp:3.2.0'
-	compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
-	compile 'com.squareup.retrofit2:retrofit:2.0.2'
-	compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-	compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+	compile 'com.squareup.okhttp3:okhttp:3.4.1'
+	compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+	compile 'com.squareup.retrofit2:retrofit:2.1.0'
+	compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+	compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
 	compile 'eu.inloop:androidviewmodel:1.0.0'
-	compile 'io.reactivex:rxandroid:1.2.0'
-	compile 'io.reactivex:rxjava:1.1.5'
+	compile 'io.reactivex:rxandroid:1.2.1'
+	compile 'io.reactivex:rxjava:1.1.6'
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 	debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
 	releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
@@ -46,14 +46,14 @@ dependencies
 
 android
 {
-	compileSdkVersion 23
-	buildToolsVersion "23.0.3"
+	compileSdkVersion 24
+	buildToolsVersion "24.0.1"
 
 	defaultConfig
 	{
 		applicationId "com.example.stocks"
 		minSdkVersion 16
-		targetSdkVersion 23
+		targetSdkVersion 24
 		versionCode VERSION_MAJOR * 10000000 + VERSION_MINOR * 100000 + VERSION_PATCH * 1000 + VERSION_BUILD
 		versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
 	}
