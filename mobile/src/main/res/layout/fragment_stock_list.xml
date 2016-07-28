@@ -14,7 +14,7 @@
 	</data>
 
 	<com.example.view.StatefulLayout
-		android:id="@+id/stock_list_stateful_layout"
+		android:id="@+id/fragment_stock_list_stateful_layout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:animateLayoutChanges="true"
@@ -29,7 +29,7 @@
 			android:layout_height="match_parent">
 
 			<android.support.v7.widget.RecyclerView
-				android:id="@+id/stock_list_recycler"
+				android:id="@+id/fragment_stock_list_recycler"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:scrollbars="vertical"

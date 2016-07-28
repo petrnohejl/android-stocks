@@ -12,7 +12,7 @@
 	</data>
 
 	<com.example.view.StatefulLayout
-		android:id="@+id/stock_detail_stateful_layout"
+		android:id="@+id/fragment_stock_detail_stateful_layout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:animateLayoutChanges="true"
@@ -35,7 +35,7 @@
 				android:orientation="vertical">
 
 				<TextView
-					android:id="@+id/stock_detail_symbol"
+					android:id="@+id/fragment_stock_detail_symbol"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textAppearance="@style/TextAppearance.Stocks.Body1"
@@ -44,7 +44,7 @@
 					tools:text="INTC" />
 
 				<TextView
-					android:id="@+id/stock_detail_name"
+					android:id="@+id/fragment_stock_detail_name"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textAppearance="@style/TextAppearance.Stocks.Body1"
@@ -53,7 +53,7 @@
 					tools:text="Intel" />
 
 				<TextView
-					android:id="@+id/stock_detail_last_price"
+					android:id="@+id/fragment_stock_detail_last_price"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textAppearance="@style/TextAppearance.Stocks.Body1"
@@ -62,7 +62,7 @@
 					tools:text="$30.5" />
 
 				<ImageView
-					android:id="@+id/stock_detail_chart"
+					android:id="@+id/fragment_stock_detail_chart"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:adjustViewBounds="true"

@@ -90,7 +90,7 @@ public class StockListSimpleFragment extends BaseFragment<StockListView, StockLi
 		if(mAdapter == null)
 		{
 			mAdapter = new StockListSimpleAdapter(this, getViewModel());
-			mBinding.stockListRecycler.setAdapter(mAdapter);
+			mBinding.fragmentStockListRecycler.setAdapter(mAdapter);
 		}
 	}
 

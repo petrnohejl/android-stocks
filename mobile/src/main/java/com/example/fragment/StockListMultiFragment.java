@@ -90,7 +90,7 @@ public class StockListMultiFragment extends BaseFragment<StockListView, StockLis
 		if(mAdapter == null)
 		{
 			mAdapter = new StockListMultiAdapter(this, getViewModel());
-			mBinding.stockListRecycler.setAdapter(mAdapter);
+			mBinding.fragmentStockListRecycler.setAdapter(mAdapter);
 		}
 	}
 

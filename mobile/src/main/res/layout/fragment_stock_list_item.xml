@@ -10,7 +10,7 @@
 	</data>
 
 	<LinearLayout
-		android:id="@+id/stock_list_item"
+		android:id="@+id/fragment_stock_list_item"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:minHeight="@dimen/global_spacing_48"
@@ -19,7 +19,7 @@
 		android:background="@drawable/selector_clickable_item_bg">
 
 		<TextView
-			android:id="@+id/stock_list_item_name"
+			android:id="@+id/fragment_stock_list_item_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginLeft="@dimen/global_keyline_16"
