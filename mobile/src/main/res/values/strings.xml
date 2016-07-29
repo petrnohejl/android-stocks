@@ -13,18 +13,10 @@
 	<string name="title_stock_detail">Stock</string>
 	<string name="title_hello_world">Hello World</string>
 
-	<string name="menu_example">Example menu</string>
-
-	<string name="permission_example">Permission to example is required</string>
+	<string name="menu_activity_stock_list_hello">HelloWorldActivity</string>
 
 	<string name="placeholder_empty">No data</string>
 	<string name="placeholder_offline">No network</string>
-
-	<string name="fragment_example_title">Example fragment title</string>
-
-	<string name="dialog_example_title">Example dialog title</string>
-
-	<string name="notification_example_title">Example notification title</string>
 
 	<string name="leak_canary_display_activity_label">Stocks Leaks</string>
 </resources>
