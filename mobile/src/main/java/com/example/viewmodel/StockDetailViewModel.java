@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.example.StocksApplication;
+import com.example.StocksConfig;
 import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.RetrofitHttpException;
@@ -73,7 +74,7 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 
 	public String getChartUrl()
 	{
-		return String.format("http://finviz.com/chart.ashx?t=%s&ty=c&ta=0&p=m&s=l", mSymbol);
+		return String.format(StocksConfig.CHART_BASE_URL, mSymbol);
 	}
 
 
