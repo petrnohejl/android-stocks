@@ -10,10 +10,12 @@
 	<string name="global_network_timeout">Connection timed out</string>
 	<string name="global_network_parse_fail">Unable to process response from server</string>
 
-	<string name="title_stock_detail">Stock</string>
+	<string name="title_stock_detail">Detail</string>
 	<string name="title_hello_world">Hello World</string>
+	<string name="title_stock_pager">Pager</string>
 
 	<string name="menu_activity_stock_list_hello">HelloWorldActivity</string>
+	<string name="menu_activity_stock_list_pager">StockPagerActivity</string>
 
 	<string name="placeholder_empty">No data</string>
 	<string name="placeholder_offline">No network</string>

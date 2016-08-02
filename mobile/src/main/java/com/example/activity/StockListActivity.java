@@ -51,6 +51,10 @@ public class StockListActivity extends BaseActivity
 				startHelloWorldActivity();
 				return true;
 
+			case R.id.menu_activity_stock_list_pager:
+				startStockPagerActivity();
+				return true;
+
 			default:
 				return super.onOptionsItemSelected(item);
 		}
@@ -74,6 +78,13 @@ public class StockListActivity extends BaseActivity
 	private void startHelloWorldActivity()
 	{
 		Intent intent = HelloWorldActivity.newIntent(this);
+		startActivity(intent);
+	}
+
+
+	private void startStockPagerActivity()
+	{
+		Intent intent = StockPagerActivity.newIntent(this);
 		startActivity(intent);
 	}
 }

@@ -9,4 +9,10 @@
 		android:icon="@null"
 		app:showAsAction="never" />
 
+	<item
+		android:id="@+id/menu_activity_stock_list_pager"
+		android:title="@string/menu_activity_stock_list_pager"
+		android:icon="@null"
+		app:showAsAction="never" />
+
 </menu>

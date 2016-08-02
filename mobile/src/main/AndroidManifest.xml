@@ -42,5 +42,12 @@
 			android:parentActivityName=".activity.StockListActivity">
 		</activity>
 
+		<activity
+			android:name=".activity.StockPagerActivity"
+			android:label="@string/title_stock_pager"
+			android:launchMode="standard"
+			android:parentActivityName=".activity.StockListActivity">
+		</activity>
+
 	</application>
 </manifest>
