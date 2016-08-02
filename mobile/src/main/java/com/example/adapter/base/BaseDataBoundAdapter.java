@@ -81,7 +81,7 @@ abstract public class BaseDataBoundAdapter<T extends ViewDataBinding> extends Re
 	 * @param position The position of the item in the adapter
 	 * @param payloads The payloads that were passed into the onBind method
 	 */
-	protected abstract void bindItem(DataBoundViewHolder<T> holder, int position, List<Object> payloads);
+	abstract protected void bindItem(DataBoundViewHolder<T> holder, int position, List<Object> payloads);
 
 
 	@LayoutRes
