@@ -29,12 +29,12 @@ import android.view.ViewGroup;
  *
  * @param <T> The type of the ViewDataBinding class
  */
-public class DataBoundViewHolder<T extends ViewDataBinding> extends RecyclerView.ViewHolder
+public class BaseDataBoundRecyclerViewHolder<T extends ViewDataBinding> extends RecyclerView.ViewHolder
 {
 	public final T binding;
 
 
-	public DataBoundViewHolder(T binding)
+	public BaseDataBoundRecyclerViewHolder(T binding)
 	{
 		super(binding.getRoot());
 		this.binding = binding;
@@ -51,9 +51,9 @@ public class DataBoundViewHolder<T extends ViewDataBinding> extends RecyclerView
 	 * @param <T>      The type of the Binding class that will be generated for the <code>layoutId</code>.
 	 * @return A new ViewHolder that has a reference to the binding class
 	 */
-	public static <T extends ViewDataBinding> DataBoundViewHolder<T> create(ViewGroup parent, @LayoutRes int layoutId)
+	public static <T extends ViewDataBinding> BaseDataBoundRecyclerViewHolder<T> create(ViewGroup parent, @LayoutRes int layoutId)
 	{
 		T binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), layoutId, parent, false);
-		return new DataBoundViewHolder<>(binding);
+		return new BaseDataBoundRecyclerViewHolder<>(binding);
 	}
 }

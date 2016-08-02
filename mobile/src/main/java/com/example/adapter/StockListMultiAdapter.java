@@ -3,13 +3,13 @@ package com.example.adapter;
 import android.databinding.ObservableArrayList;
 
 import com.example.R;
-import com.example.adapter.base.MultiDataBoundAdapter;
+import com.example.adapter.base.MultiDataBoundRecyclerAdapter;
 import com.example.entity.LookupEntity;
 import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 
-public class StockListMultiAdapter extends MultiDataBoundAdapter
+public class StockListMultiAdapter extends MultiDataBoundRecyclerAdapter
 {
 	public StockListMultiAdapter(StockListView view, StockListViewModel viewModel)
 	{

@@ -10,14 +10,14 @@ import com.example.ui.BaseView;
 import java.util.List;
 
 
-abstract public class SimpleDataBoundAdapter<T extends ViewDataBinding> extends BaseDataBoundAdapter<T>
+abstract public class SimpleDataBoundRecyclerAdapter<T extends ViewDataBinding> extends BaseDataBoundRecyclerAdapter<T>
 {
 	@LayoutRes private int mLayoutId;
 	private BaseView mView;
 	private ObservableArrayList<Object> mItems;
 
 
-	public SimpleDataBoundAdapter(@LayoutRes int layoutId, BaseView view, ObservableArrayList<Object> items)
+	public SimpleDataBoundRecyclerAdapter(@LayoutRes int layoutId, BaseView view, ObservableArrayList<Object> items)
 	{
 		mLayoutId = layoutId;
 		mView = view;
@@ -26,7 +26,7 @@ abstract public class SimpleDataBoundAdapter<T extends ViewDataBinding> extends 
 
 
 	@Override
-	protected void bindItem(DataBoundViewHolder holder, int position, List payloads)
+	protected void bindItem(BaseDataBoundRecyclerViewHolder holder, int position, List payloads)
 	{
 		holder.binding.setVariable(BR.view, mView);
 		holder.binding.setVariable(BR.data, mItems.get(position));

@@ -8,7 +8,7 @@ import com.example.ui.BaseView;
 import java.util.List;
 
 
-abstract public class MultiDataBoundAdapter extends BaseDataBoundAdapter
+abstract public class MultiDataBoundRecyclerAdapter extends BaseDataBoundRecyclerAdapter
 {
 	private BaseView mView;
 	private ObservableArrayList<Object> mItems1;
@@ -16,19 +16,19 @@ abstract public class MultiDataBoundAdapter extends BaseDataBoundAdapter
 	private ObservableArrayList<Object> mItems3;
 
 
-	public MultiDataBoundAdapter(BaseView view, ObservableArrayList<Object> items1)
+	public MultiDataBoundRecyclerAdapter(BaseView view, ObservableArrayList<Object> items1)
 	{
 		this(view, items1, null, null);
 	}
 
 
-	public MultiDataBoundAdapter(BaseView view, ObservableArrayList<Object> items1, ObservableArrayList<Object> items2)
+	public MultiDataBoundRecyclerAdapter(BaseView view, ObservableArrayList<Object> items1, ObservableArrayList<Object> items2)
 	{
 		this(view, items1, items2, null);
 	}
 
 
-	public MultiDataBoundAdapter(BaseView view, ObservableArrayList<Object> items1, ObservableArrayList<Object> items2, ObservableArrayList<Object> items3)
+	public MultiDataBoundRecyclerAdapter(BaseView view, ObservableArrayList<Object> items1, ObservableArrayList<Object> items2, ObservableArrayList<Object> items3)
 	{
 		mView = view;
 		mItems1 = items1;
@@ -38,7 +38,7 @@ abstract public class MultiDataBoundAdapter extends BaseDataBoundAdapter
 
 
 	@Override
-	protected void bindItem(DataBoundViewHolder holder, int position, List payloads)
+	protected void bindItem(BaseDataBoundRecyclerViewHolder holder, int position, List payloads)
 	{
 		holder.binding.setVariable(BR.view, mView);
 		holder.binding.setVariable(BR.data, getItem(position));

@@ -15,7 +15,7 @@ import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 
-public class StockListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+public class StockListCustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
 	private static final int VIEW_TYPE_HEADER = 0;
 	private static final int VIEW_TYPE_ITEM = 1;
@@ -25,7 +25,7 @@ public class StockListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 	private StockListViewModel mViewModel;
 
 
-	public StockListAdapter(StockListView view, StockListViewModel viewModel)
+	public StockListCustomAdapter(StockListView view, StockListViewModel viewModel)
 	{
 		mView = view;
 		mViewModel = viewModel;

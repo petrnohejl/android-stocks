@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.adapter.StockPagerSimpleAdapter;
+import com.example.adapter.StockPagerAdapter;
 import com.example.databinding.FragmentStockPagerBinding;
 import com.example.entity.LookupEntity;
 import com.example.ui.StockListView;
@@ -16,7 +16,7 @@ import com.example.viewmodel.StockListViewModel;
 public class StockPagerFragment extends BaseFragment<StockListView, StockListViewModel> implements StockListView
 {
 	private FragmentStockPagerBinding mBinding;
-	private StockPagerSimpleAdapter mAdapter;
+	private StockPagerAdapter mAdapter;
 
 
 	@Nullable
@@ -82,7 +82,7 @@ public class StockPagerFragment extends BaseFragment<StockListView, StockListVie
 	{
 		if(mAdapter == null)
 		{
-			mAdapter = new StockPagerSimpleAdapter(this, getViewModel());
+			mAdapter = new StockPagerAdapter(this, getViewModel());
 			mBinding.fragmentStockPagerPager.setAdapter(mAdapter);
 		}
 	}

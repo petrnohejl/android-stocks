@@ -29,7 +29,7 @@ import java.util.List;
 
 /**
  * A reference implementation for an adapter that wants to use data binding "the right way". It
- * works with {@link DataBoundViewHolder}.
+ * works with {@link BaseDataBoundRecyclerViewHolder}.
  * <p>
  * It listens for layout invalidations and notifies RecyclerView about them before views refresh
  * themselves. It also avoids invalidating the full item when data in the bound item dispatches
@@ -42,7 +42,7 @@ import java.util.List;
  * @param <T> The type of the ViewDataBinding class. Can be ommitted in multiple-binding-type use
  *            case.
  */
-abstract public class BaseDataBoundAdapter<T extends ViewDataBinding> extends RecyclerView.Adapter<DataBoundViewHolder<T>>
+abstract public class BaseDataBoundRecyclerAdapter<T extends ViewDataBinding> extends RecyclerView.Adapter<BaseDataBoundRecyclerViewHolder<T>>
 {
 	private static final Object DB_PAYLOAD = new Object();
 	@Nullable
@@ -81,7 +81,7 @@ abstract public class BaseDataBoundAdapter<T extends ViewDataBinding> extends Re
 	 * @param position The position of the item in the adapter
 	 * @param payloads The payloads that were passed into the onBind method
 	 */
-	abstract protected void bindItem(DataBoundViewHolder<T> holder, int position, List<Object> payloads);
+	abstract protected void bindItem(BaseDataBoundRecyclerViewHolder<T> holder, int position, List<Object> payloads);
 
 
 	@LayoutRes
@@ -90,16 +90,16 @@ abstract public class BaseDataBoundAdapter<T extends ViewDataBinding> extends Re
 
 	@Override
 	@CallSuper
-	public DataBoundViewHolder<T> onCreateViewHolder(ViewGroup parent, int viewType)
+	public BaseDataBoundRecyclerViewHolder<T> onCreateViewHolder(ViewGroup parent, int viewType)
 	{
-		DataBoundViewHolder<T> vh = DataBoundViewHolder.create(parent, viewType);
+		BaseDataBoundRecyclerViewHolder<T> vh = BaseDataBoundRecyclerViewHolder.create(parent, viewType);
 		vh.binding.addOnRebindCallback(mOnRebindCallback);
 		return vh;
 	}
 
 
 	@Override
-	public final void onBindViewHolder(DataBoundViewHolder<T> holder, int position, List<Object> payloads)
+	public final void onBindViewHolder(BaseDataBoundRecyclerViewHolder<T> holder, int position, List<Object> payloads)
 	{
 		// when a VH is rebound to the same item, we don't have to call the setters
 		if(payloads.isEmpty() || hasNonDataBindingInvalidate(payloads))
@@ -111,7 +111,7 @@ abstract public class BaseDataBoundAdapter<T extends ViewDataBinding> extends Re
 
 
 	@Override
-	public final void onBindViewHolder(DataBoundViewHolder<T> holder, int position)
+	public final void onBindViewHolder(BaseDataBoundRecyclerViewHolder<T> holder, int position)
 	{
 		throw new IllegalArgumentException("just overridden to make final.");
 	}

@@ -9,9 +9,9 @@ import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 
-public class StockPagerSimpleAdapter extends SimpleDataBoundPagerAdapter<FragmentStockPagerBinding>
+public class StockPagerAdapter extends SimpleDataBoundPagerAdapter<FragmentStockPagerBinding>
 {
-	public StockPagerSimpleAdapter(StockListView view, StockListViewModel viewModel)
+	public StockPagerAdapter(StockListView view, StockListViewModel viewModel)
 	{
 		super(
 				R.layout.fragment_stock_pager_item,

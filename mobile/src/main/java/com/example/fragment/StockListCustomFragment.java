@@ -8,17 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.activity.StockDetailActivity;
-import com.example.adapter.StockListAdapter;
+import com.example.adapter.StockListCustomAdapter;
 import com.example.databinding.FragmentStockListBinding;
 import com.example.entity.LookupEntity;
 import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 
-public class StockListFragment extends BaseFragment<StockListView, StockListViewModel> implements StockListView
+public class StockListCustomFragment extends BaseFragment<StockListView, StockListViewModel> implements StockListView
 {
 	private FragmentStockListBinding mBinding;
-	private StockListAdapter mAdapter;
+	private StockListCustomAdapter mAdapter;
 
 
 	@Nullable
@@ -92,7 +92,7 @@ public class StockListFragment extends BaseFragment<StockListView, StockListView
 	{
 		if(mAdapter == null)
 		{
-			mAdapter = new StockListAdapter(this, getViewModel());
+			mAdapter = new StockListCustomAdapter(this, getViewModel());
 			mBinding.fragmentStockListRecycler.setAdapter(mAdapter);
 		}
 	}
