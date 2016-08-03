@@ -5,9 +5,9 @@
 
 	<data>
 		<variable
-			name="view" type="com.example.ui.StockListView" />
+			name="view" type="com.example.ui.StockPagerView" />
 		<variable
-			name="viewModel" type="com.example.viewmodel.StockListViewModel" />
+			name="viewModel" type="com.example.viewmodel.StockPagerViewModel" />
 	</data>
 
 	<com.example.view.StatefulLayout

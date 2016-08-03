@@ -5,13 +5,13 @@ import android.databinding.ObservableArrayList;
 import com.example.R;
 import com.example.adapter.base.SimpleDataBoundPagerAdapter;
 import com.example.databinding.FragmentStockPagerBinding;
-import com.example.ui.StockListView;
-import com.example.viewmodel.StockListViewModel;
+import com.example.ui.StockPagerView;
+import com.example.viewmodel.StockPagerViewModel;
 
 
 public class StockPagerAdapter extends SimpleDataBoundPagerAdapter<FragmentStockPagerBinding>
 {
-	public StockPagerAdapter(StockListView view, StockListViewModel viewModel)
+	public StockPagerAdapter(StockPagerView view, StockPagerViewModel viewModel)
 	{
 		super(
 				R.layout.fragment_stock_pager_item,

@@ -6,9 +6,9 @@
 	<data>
 		<import type="com.example.StocksConfig" />
 		<variable
-			name="view" type="com.example.ui.StockListView" />
+			name="view" type="com.example.ui.StockPagerView" />
 		<variable
-			name="data" type="com.example.entity.LookupEntity" />
+			name="data" type="com.example.viewmodel.StockPagerItemViewModel" />
 	</data>
 
 	<ImageView
@@ -17,6 +17,6 @@
 		android:layout_height="match_parent"
 		android:adjustViewBounds="true"
 		android:scaleType="fitCenter"
-		app:imageUrl='@{String.format(StocksConfig.CHART_BASE_URL, data.symbol)}' />
+		app:imageUrl="@{data.chartUrl}" />
 
 </layout>

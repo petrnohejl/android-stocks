@@ -8,12 +8,11 @@ import android.view.ViewGroup;
 
 import com.example.adapter.StockPagerAdapter;
 import com.example.databinding.FragmentStockPagerBinding;
-import com.example.entity.LookupEntity;
-import com.example.ui.StockListView;
-import com.example.viewmodel.StockListViewModel;
+import com.example.ui.StockPagerView;
+import com.example.viewmodel.StockPagerViewModel;
 
 
-public class StockPagerFragment extends BaseFragment<StockListView, StockListViewModel> implements StockListView
+public class StockPagerFragment extends BaseFragment<StockPagerView, StockPagerViewModel> implements StockPagerView
 {
 	private FragmentStockPagerBinding mBinding;
 	private StockPagerAdapter mAdapter;
@@ -21,9 +20,9 @@ public class StockPagerFragment extends BaseFragment<StockListView, StockListVie
 
 	@Nullable
 	@Override
-	public Class<StockListViewModel> getViewModelClass()
+	public Class<StockPagerViewModel> getViewModelClass()
 	{
-		return StockListViewModel.class;
+		return StockPagerViewModel.class;
 	}
 
 
@@ -50,31 +49,6 @@ public class StockPagerFragment extends BaseFragment<StockListView, StockListVie
 	{
 		super.onActivityCreated(savedInstanceState);
 		setupAdapter();
-	}
-
-
-	@Override
-	public void onItemClick(View view, int position, long id, int viewType)
-	{
-	}
-
-
-	@Override
-	public void onItemLongClick(View view, int position, long id, int viewType)
-	{
-	}
-
-
-	@Override
-	public void onItemClick(LookupEntity lookup)
-	{
-	}
-
-
-	@Override
-	public boolean onItemLongClick(LookupEntity lookup)
-	{
-		return true;
 	}
 
 
