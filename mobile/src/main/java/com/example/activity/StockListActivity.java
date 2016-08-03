@@ -3,6 +3,7 @@ package com.example.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.R;
+import com.example.dialog.AboutDialogFragment;
 
 
 public class StockListActivity extends BaseActivity
@@ -55,6 +57,10 @@ public class StockListActivity extends BaseActivity
 				startStockPagerActivity();
 				return true;
 
+			case R.id.menu_activity_stock_list_about:
+				showAboutDialogFragment();
+				return true;
+
 			default:
 				return super.onOptionsItemSelected(item);
 		}
@@ -86,5 +92,12 @@ public class StockListActivity extends BaseActivity
 	{
 		Intent intent = StockPagerActivity.newIntent(this);
 		startActivity(intent);
+	}
+
+
+	private void showAboutDialogFragment()
+	{
+		DialogFragment fragment = AboutDialogFragment.newInstance();
+		fragment.show(getSupportFragmentManager(), AboutDialogFragment.class.getName());
 	}
 }

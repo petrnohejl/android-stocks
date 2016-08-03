@@ -15,4 +15,10 @@
 		android:icon="@null"
 		app:showAsAction="never" />
 
+	<item
+		android:id="@+id/menu_activity_stock_list_about"
+		android:title="@string/menu_activity_stock_list_about"
+		android:icon="@null"
+		app:showAsAction="never" />
+
 </menu>
