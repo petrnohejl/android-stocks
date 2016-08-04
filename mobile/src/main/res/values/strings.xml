@@ -21,6 +21,12 @@
 	<string name="placeholder_empty">No data</string>
 	<string name="placeholder_offline">No network</string>
 
+	<string name="fragment_stock_detail_symbol">Symbol: %s</string>
+	<string name="fragment_stock_detail_name">Name: %s</string>
+	<string name="fragment_stock_detail_price">Price: $%.2f</string>
+	<string name="fragment_stock_detail_change">Change: %.2f%%</string>
+	<string name="fragment_stock_detail_capitalization">Capitalization: $%d</string>
+
 	<string name="dialog_about_title">About</string>
 
 	<string name="leak_canary_display_activity_label">Stocks Leaks</string>
