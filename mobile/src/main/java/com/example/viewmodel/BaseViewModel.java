@@ -9,12 +9,16 @@ import android.support.annotation.Nullable;
 import com.example.ui.BaseView;
 import com.example.utility.Logcat;
 
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 import eu.inloop.viewmodel.AbstractViewModel;
 
 
 public abstract class BaseViewModel<T extends BaseView> extends AbstractViewModel<T> implements Observable
 {
-	private transient PropertyChangeRegistry mCallbacks;
+	private transient PropertyChangeRegistry mObservableCallbacks;
+	private Queue<Runnable> mRunnableQueue;
 
 
 	@Override
@@ -30,6 +34,7 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	{
 		Logcat.d("");
 		super.onBindView(view);
+		processPendingRunnables();
 	}
 
 
@@ -68,38 +73,38 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	@Override
 	public synchronized void addOnPropertyChangedCallback(OnPropertyChangedCallback callback)
 	{
-		if(mCallbacks == null)
+		if(mObservableCallbacks == null)
 		{
-			mCallbacks = new PropertyChangeRegistry();
+			mObservableCallbacks = new PropertyChangeRegistry();
 		}
-		mCallbacks.add(callback);
+		mObservableCallbacks.add(callback);
 	}
 
 
 	@Override
 	public synchronized void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback)
 	{
-		if(mCallbacks != null)
+		if(mObservableCallbacks != null)
 		{
-			mCallbacks.remove(callback);
+			mObservableCallbacks.remove(callback);
 		}
 	}
 
 
 	public synchronized void notifyChange()
 	{
-		if(mCallbacks != null)
+		if(mObservableCallbacks != null)
 		{
-			mCallbacks.notifyCallbacks(this, 0, null);
+			mObservableCallbacks.notifyCallbacks(this, 0, null);
 		}
 	}
 
 
 	public void notifyPropertyChanged(int fieldId)
 	{
-		if(mCallbacks != null)
+		if(mObservableCallbacks != null)
 		{
-			mCallbacks.notifyCallbacks(this, fieldId, null);
+			mObservableCallbacks.notifyCallbacks(this, fieldId, null);
 		}
 	}
 
@@ -109,6 +114,39 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 		if(getView() != null)
 		{
 			getView().showToast(message);
+		}
+	}
+
+
+	public void runCallback(Runnable runnable)
+	{
+		if(getView() != null)
+		{
+			runnable.run();
+		}
+		else
+		{
+			addPendingRunnable(runnable);
+		}
+	}
+
+
+	private synchronized void addPendingRunnable(Runnable runnable)
+	{
+		if(mRunnableQueue == null)
+		{
+			mRunnableQueue = new ConcurrentLinkedQueue<>();
+		}
+		mRunnableQueue.add(runnable);
+	}
+
+
+	private void processPendingRunnables()
+	{
+		while(mRunnableQueue != null && !mRunnableQueue.isEmpty())
+		{
+			Runnable runnable = mRunnableQueue.remove();
+			runnable.run();
 		}
 	}
 }
