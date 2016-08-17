@@ -24,7 +24,7 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	@Override
 	public void onCreate(@Nullable Bundle arguments, @Nullable Bundle savedInstanceState)
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onCreate(arguments, savedInstanceState);
 	}
 
@@ -32,7 +32,7 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	@Override
 	public void onBindView(@NonNull T view)
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onBindView(view);
 		processPendingRunnables();
 	}
@@ -41,7 +41,7 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	@Override
 	public void onStart()
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onStart();
 	}
 
@@ -49,7 +49,7 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	@Override
 	public void onSaveInstanceState(@NonNull Bundle bundle)
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onSaveInstanceState(bundle);
 	}
 
@@ -57,7 +57,7 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	@Override
 	public void onStop()
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onStop();
 	}
 
@@ -65,7 +65,7 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	@Override
 	public void onDestroy()
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onDestroy();
 	}
 

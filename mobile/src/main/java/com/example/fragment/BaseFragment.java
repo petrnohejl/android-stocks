@@ -22,7 +22,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onAttach(Context context)
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onAttach(context);
 	}
 
@@ -30,7 +30,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 	}
@@ -39,7 +39,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		Logcat.d("");
+		Logcat.v("");
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 
@@ -47,7 +47,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState)
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onViewCreated(view, savedInstanceState);
 	}
 
@@ -55,7 +55,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onActivityCreated(savedInstanceState);
 	}
 
@@ -63,7 +63,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onStart()
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onStart();
 	}
 
@@ -71,7 +71,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onResume()
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onResume();
 	}
 
@@ -79,7 +79,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onPause()
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onPause();
 	}
 
@@ -87,7 +87,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onStop()
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onStop();
 	}
 
@@ -95,7 +95,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onDestroyView()
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onDestroyView();
 	}
 
@@ -103,7 +103,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onDestroy()
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onDestroy();
 
 		// leak canary watcher
@@ -115,7 +115,7 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	@Override
 	public void onDetach()
 	{
-		Logcat.d("");
+		Logcat.v("");
 		super.onDetach();
 	}
 
