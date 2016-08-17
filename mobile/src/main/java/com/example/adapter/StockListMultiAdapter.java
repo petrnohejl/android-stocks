@@ -1,7 +1,5 @@
 package com.example.adapter;
 
-import android.databinding.ObservableArrayList;
-
 import com.example.R;
 import com.example.adapter.base.MultiDataBoundRecyclerAdapter;
 import com.example.entity.LookupEntity;
@@ -15,9 +13,9 @@ public class StockListMultiAdapter extends MultiDataBoundRecyclerAdapter
 	{
 		super(
 				view,
-				(ObservableArrayList<Object>) (ObservableArrayList<?>) viewModel.headers,
-				(ObservableArrayList<Object>) (ObservableArrayList<?>) viewModel.lookups,
-				(ObservableArrayList<Object>) (ObservableArrayList<?>) viewModel.footers
+				viewModel.headers,
+				viewModel.lookups,
+				viewModel.footers
 		);
 	}
 

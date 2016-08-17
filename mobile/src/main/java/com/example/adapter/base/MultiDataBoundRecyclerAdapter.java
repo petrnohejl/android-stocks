@@ -11,24 +11,24 @@ import java.util.List;
 abstract public class MultiDataBoundRecyclerAdapter extends BaseDataBoundRecyclerAdapter
 {
 	private BaseView mView;
-	private ObservableArrayList<Object> mItems1;
-	private ObservableArrayList<Object> mItems2;
-	private ObservableArrayList<Object> mItems3;
+	private ObservableArrayList<?> mItems1;
+	private ObservableArrayList<?> mItems2;
+	private ObservableArrayList<?> mItems3;
 
 
-	public MultiDataBoundRecyclerAdapter(BaseView view, ObservableArrayList<Object> items1)
+	public MultiDataBoundRecyclerAdapter(BaseView view, ObservableArrayList<?> items1)
 	{
 		this(view, items1, null, null);
 	}
 
 
-	public MultiDataBoundRecyclerAdapter(BaseView view, ObservableArrayList<Object> items1, ObservableArrayList<Object> items2)
+	public MultiDataBoundRecyclerAdapter(BaseView view, ObservableArrayList<?> items1, ObservableArrayList<?> items2)
 	{
 		this(view, items1, items2, null);
 	}
 
 
-	public MultiDataBoundRecyclerAdapter(BaseView view, ObservableArrayList<Object> items1, ObservableArrayList<Object> items2, ObservableArrayList<Object> items3)
+	public MultiDataBoundRecyclerAdapter(BaseView view, ObservableArrayList<?> items1, ObservableArrayList<?> items2, ObservableArrayList<?> items3)
 	{
 		mView = view;
 		mItems1 = items1;

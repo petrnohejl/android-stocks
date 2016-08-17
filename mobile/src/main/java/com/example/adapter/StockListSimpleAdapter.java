@@ -1,7 +1,5 @@
 package com.example.adapter;
 
-import android.databinding.ObservableArrayList;
-
 import com.example.R;
 import com.example.adapter.base.SimpleDataBoundRecyclerAdapter;
 import com.example.databinding.FragmentStockListItemClickableBinding;
@@ -16,7 +14,7 @@ public class StockListSimpleAdapter extends SimpleDataBoundRecyclerAdapter<Fragm
 		super(
 				R.layout.fragment_stock_list_item_clickable,
 				view,
-				(ObservableArrayList<Object>) (ObservableArrayList<?>) viewModel.lookups
+				viewModel.lookups
 		);
 	}
 }

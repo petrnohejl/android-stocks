@@ -15,11 +15,11 @@ abstract public class SimpleDataBoundPagerAdapter<T extends ViewDataBinding> ext
 {
 	@LayoutRes private int mLayoutId;
 	private BaseView mView;
-	private ObservableArrayList<Object> mItems;
+	private ObservableArrayList<?> mItems;
 	private OnListChangedCallback<T> mOnListChangedCallback;
 
 
-	public SimpleDataBoundPagerAdapter(@LayoutRes int layoutId, BaseView view, ObservableArrayList<Object> items)
+	public SimpleDataBoundPagerAdapter(@LayoutRes int layoutId, BaseView view, ObservableArrayList<?> items)
 	{
 		mLayoutId = layoutId;
 		mView = view;
@@ -52,7 +52,7 @@ abstract public class SimpleDataBoundPagerAdapter<T extends ViewDataBinding> ext
 	}
 
 
-	private static class OnListChangedCallback<T extends ViewDataBinding> extends ObservableList.OnListChangedCallback<ObservableList<Object>>
+	private static class OnListChangedCallback<T extends ViewDataBinding> extends ObservableList.OnListChangedCallback<ObservableList<?>>
 	{
 		private final WeakReference<SimpleDataBoundPagerAdapter<T>> mAdapter;
 
@@ -64,35 +64,35 @@ abstract public class SimpleDataBoundPagerAdapter<T extends ViewDataBinding> ext
 
 
 		@Override
-		public void onChanged(ObservableList<Object> sender)
+		public void onChanged(ObservableList<?> sender)
 		{
 			onUpdate();
 		}
 
 
 		@Override
-		public void onItemRangeChanged(ObservableList<Object> sender, int positionStart, int itemCount)
+		public void onItemRangeChanged(ObservableList<?> sender, int positionStart, int itemCount)
 		{
 			onUpdate();
 		}
 
 
 		@Override
-		public void onItemRangeInserted(ObservableList<Object> sender, int positionStart, int itemCount)
+		public void onItemRangeInserted(ObservableList<?> sender, int positionStart, int itemCount)
 		{
 			onUpdate();
 		}
 
 
 		@Override
-		public void onItemRangeMoved(ObservableList<Object> sender, int fromPosition, int toPosition, int itemCount)
+		public void onItemRangeMoved(ObservableList<?> sender, int fromPosition, int toPosition, int itemCount)
 		{
 			onUpdate();
 		}
 
 
 		@Override
-		public void onItemRangeRemoved(ObservableList<Object> sender, int positionStart, int itemCount)
+		public void onItemRangeRemoved(ObservableList<?> sender, int positionStart, int itemCount)
 		{
 			onUpdate();
 		}

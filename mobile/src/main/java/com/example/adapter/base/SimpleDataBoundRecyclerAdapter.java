@@ -14,10 +14,10 @@ abstract public class SimpleDataBoundRecyclerAdapter<T extends ViewDataBinding> 
 {
 	@LayoutRes private int mLayoutId;
 	private BaseView mView;
-	private ObservableArrayList<Object> mItems;
+	private ObservableArrayList<?> mItems;
 
 
-	public SimpleDataBoundRecyclerAdapter(@LayoutRes int layoutId, BaseView view, ObservableArrayList<Object> items)
+	public SimpleDataBoundRecyclerAdapter(@LayoutRes int layoutId, BaseView view, ObservableArrayList<?> items)
 	{
 		mLayoutId = layoutId;
 		mView = view;
