@@ -10,12 +10,17 @@ import rx.schedulers.Schedulers;
 
 public final class RxUtility
 {
+	private static final Observable.Transformer<?, ?> sSchedulersTransformer =
+			observable -> observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+
+
 	private RxUtility() {}
 
 
+	@SuppressWarnings("unchecked")
 	public static <T> Observable.Transformer<T, T> applySchedulers()
 	{
-		return observable -> observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+		return (Observable.Transformer<T, T>) sSchedulersTransformer;
 	}
 
 
