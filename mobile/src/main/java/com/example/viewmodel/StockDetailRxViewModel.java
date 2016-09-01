@@ -4,7 +4,6 @@ import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.example.StocksApplication;
 import com.example.StocksConfig;
 import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
@@ -12,7 +11,7 @@ import com.example.rest.provider.StocksRxProvider;
 import com.example.rest.rx.RestSubscriber;
 import com.example.rest.rx.SubscriberManager;
 import com.example.ui.StockDetailView;
-import com.example.utility.NetworkUtility;
+import com.example.utility.NetworkManager;
 import com.example.utility.RxUtility;
 import com.example.view.StatefulLayout;
 import com.fernandocejas.frodo.annotation.RxLogObservable;
@@ -80,7 +79,7 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 
 	private void sendQuote(String symbol)
 	{
-		if(NetworkUtility.isOnline(StocksApplication.getContext()))
+		if(NetworkManager.getInstance().connected.get())
 		{
 			if(!mSubscriberManager.isRegistered(StocksRxProvider.QUOTE_CALL_TYPE))
 			{

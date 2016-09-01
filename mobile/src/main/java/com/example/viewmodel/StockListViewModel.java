@@ -3,13 +3,12 @@ package com.example.viewmodel;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
 
-import com.example.StocksApplication;
 import com.example.entity.LookupEntity;
 import com.example.rest.provider.StocksRxProvider;
 import com.example.rest.rx.RestSubscriber;
 import com.example.rest.rx.SubscriberManager;
 import com.example.ui.StockListView;
-import com.example.utility.NetworkUtility;
+import com.example.utility.NetworkManager;
 import com.example.utility.RxUtility;
 import com.example.view.StatefulLayout;
 import com.fernandocejas.frodo.annotation.RxLogObservable;
@@ -97,7 +96,7 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 
 	private void sendLookup(String input)
 	{
-		if(NetworkUtility.isOnline(StocksApplication.getContext()))
+		if(NetworkManager.getInstance().connected.get())
 		{
 			if(!mSubscriberManager.isRegistered(StocksRxProvider.LOOKUP_CALL_TYPE))
 			{
