@@ -23,7 +23,7 @@
 			android:layout_height="wrap_content"
 			android:textAppearance="@style/TextAppearance.Stocks.Body1"
 			android:text="@{@string/fragment_stock_detail_symbol(viewModel.quote.symbol)}"
-			android:onClick="@{view.onClick}"
+			android:onClick="@{view::onClick}"
 			tools:text="INTC" />
 
 		<TextView
@@ -32,7 +32,7 @@
 			android:layout_height="wrap_content"
 			android:textAppearance="@style/TextAppearance.Stocks.Body1"
 			android:text="@{@string/fragment_stock_detail_name(viewModel.quote.name)}"
-			android:onClick="@{view.onClick}"
+			android:onClick="@{view::onClick}"
 			tools:text="Intel" />
 
 		<TextView
@@ -41,7 +41,7 @@
 			android:layout_height="wrap_content"
 			android:textAppearance="@style/TextAppearance.Stocks.Body1"
 			android:text="@{@string/fragment_stock_detail_price(viewModel.quote.lastPrice)}"
-			android:onClick="@{view.onClick}"
+			android:onClick="@{view::onClick}"
 			tools:text="$30.5" />
 
 		<TextView
@@ -50,7 +50,7 @@
 			android:layout_height="wrap_content"
 			android:textAppearance="@style/TextAppearance.Stocks.Body1"
 			android:text="@{@string/fragment_stock_detail_change(viewModel.quote.changePercent)}"
-			android:onClick="@{view.onClick}"
+			android:onClick="@{view::onClick}"
 			tools:text="0.5%" />
 
 		<TextView
@@ -59,7 +59,7 @@
 			android:layout_height="wrap_content"
 			android:textAppearance="@style/TextAppearance.Stocks.Body1"
 			android:text="@{@string/fragment_stock_detail_capitalization(viewModel.quote.marketCap)}"
-			android:onClick="@{view.onClick}"
+			android:onClick="@{view::onClick}"
 			tools:text="$2000000" />
 
 		<ImageView
