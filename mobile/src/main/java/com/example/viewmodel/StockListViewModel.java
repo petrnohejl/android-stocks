@@ -5,13 +5,11 @@ import android.databinding.ObservableField;
 
 import com.example.entity.LookupEntity;
 import com.example.rest.provider.StocksRxProvider;
-import com.example.rest.rx.RestSubscriber;
-import com.example.rest.rx.SubscriberManager;
 import com.example.ui.StockListView;
 import com.example.utility.NetworkManager;
 import com.example.utility.RxUtility;
+import com.example.utility.SubscriberManager;
 import com.example.view.StatefulLayout;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import java.util.List;
 
@@ -26,8 +24,6 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 	public final ObservableArrayList<LookupEntity> lookups = new ObservableArrayList<>();
 	public final ObservableArrayList<Object> footers = new ObservableArrayList<>();
 
-	private SubscriberManager mSubscriberManager = new SubscriberManager();
-
 
 	@Override
 	public void onStart()
@@ -36,16 +32,6 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 
 		// load data
 		if(lookups.isEmpty()) loadData();
-	}
-
-
-	@Override
-	public void onDestroy()
-	{
-		super.onDestroy();
-
-		// unsubscribe
-		if(mSubscriberManager != null) mSubscriberManager.unsubscribeAll();
 	}
 
 
@@ -96,61 +82,36 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 
 	private void sendLookup(String input)
 	{
-		if(NetworkManager.getInstance().connected.get())
+		NetworkManager.executeWithOfflineStateHandle(state, () ->
 		{
-			if(!mSubscriberManager.isRegistered(StocksRxProvider.LOOKUP_CALL_TYPE))
+			if(!SubscriberManager.isCallRegistered(this.getClass(), StocksRxProvider.LOOKUP_CALL_TYPE))
 			{
-				// show progress
 				state.set(StatefulLayout.State.PROGRESS);
 
 				// subscribe
-				Observable<Response<List<LookupEntity>>> observable = createLookupObservable(input);
-				observable.subscribe(createLookupSubscriber());
+				Observable<Response<List<LookupEntity>>> restCall = StocksRxProvider.getService().lookup("json", input);
+				SubscriberManager.createSubscribedObservable(restCall, StocksRxProvider.QUOTE_CALL_TYPE, this.getClass())
+						.subscribe(response ->
+								{
+									lookups.clear();
+									lookups.addAll(response.body());
+
+									headers.clear();
+									headers.add("one");
+									headers.add("two");
+									headers.add("three");
+
+									footers.clear();
+									footers.add(new Object());
+								},
+								throwable ->
+								{
+									handleError(RxUtility.getHttpErrorMessage(throwable));
+									setState(lookups);
+								},
+								() -> setState(lookups));
 			}
-		}
-		else
-		{
-			// show offline
-			state.set(StatefulLayout.State.OFFLINE);
-		}
-	}
-
-
-	@RxLogObservable
-	private Observable<Response<List<LookupEntity>>> createLookupObservable(String input)
-	{
-		return StocksRxProvider.getService()
-				.lookup("json", input)
-				.flatMap(RxUtility::catchHttpError)
-				.compose(RxUtility.applySchedulers());
-	}
-
-
-	private RestSubscriber<Response<List<LookupEntity>>> createLookupSubscriber()
-	{
-		return new RestSubscriber<>(mSubscriberManager, StocksRxProvider.LOOKUP_CALL_TYPE,
-				response ->
-				{
-					lookups.clear();
-					lookups.addAll(response.body());
-
-					headers.clear();
-					headers.add("one");
-					headers.add("two");
-					headers.add("three");
-
-					footers.clear();
-					footers.add(new Object());
-				},
-				throwable ->
-				{
-					handleError(RxUtility.getHttpErrorMessage(throwable));
-					setState(lookups);
-				},
-				() ->
-				{
-					setState(lookups);
-				});
+		});
 	}
 
 

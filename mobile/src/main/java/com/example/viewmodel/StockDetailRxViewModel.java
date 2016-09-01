@@ -8,13 +8,11 @@ import com.example.StocksConfig;
 import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.provider.StocksRxProvider;
-import com.example.rest.rx.RestSubscriber;
-import com.example.rest.rx.SubscriberManager;
 import com.example.ui.StockDetailView;
 import com.example.utility.NetworkManager;
 import com.example.utility.RxUtility;
+import com.example.utility.SubscriberManager;
 import com.example.view.StatefulLayout;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import retrofit2.Response;
 import rx.Observable;
@@ -26,7 +24,6 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
 
 	private String mSymbol;
-	private SubscriberManager mSubscriberManager = new SubscriberManager();
 
 
 	@Override
@@ -49,25 +46,15 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	}
 
 
-	@Override
-	public void onDestroy()
-	{
-		super.onDestroy();
-
-		// unsubscribe
-		if(mSubscriberManager != null) mSubscriberManager.unsubscribeAll();
-	}
-
-
 	public void loadData()
 	{
-		sendQuote(mSymbol);
+		sendQuoteNew(mSymbol);
 	}
 
 
 	public void refreshData()
 	{
-		sendQuote(mSymbol);
+		sendQuoteNew(mSymbol);
 	}
 
 
@@ -77,54 +64,25 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	}
 
 
-	private void sendQuote(String symbol)
+	private void sendQuoteNew(String symbol)
 	{
-		if(NetworkManager.getInstance().connected.get())
+		NetworkManager.executeWithOfflineStateHandle(state, () ->
 		{
-			if(!mSubscriberManager.isRegistered(StocksRxProvider.QUOTE_CALL_TYPE))
+			if(!SubscriberManager.isCallRegistered(this.getClass(), StocksRxProvider.QUOTE_CALL_TYPE))
 			{
-				// show progress
 				state.set(StatefulLayout.State.PROGRESS);
 
-				// subscribe
-				Observable<Response<QuoteEntity>> observable = createQuoteObservable(symbol);
-				observable.subscribe(createQuoteSubscriber());
+				Observable<Response<QuoteEntity>> restCall = StocksRxProvider.getService().quote("json", symbol);
+				SubscriberManager.createSubscribedObservable(restCall, StocksRxProvider.QUOTE_CALL_TYPE, this.getClass())
+						.subscribe(quoteEntityResponse -> quote.set(quoteEntityResponse.body()),
+								throwable ->
+								{
+									handleError(RxUtility.getHttpErrorMessage(throwable));
+									setState(quote);
+								},
+								() -> setState(quote));
 			}
-		}
-		else
-		{
-			// show offline
-			state.set(StatefulLayout.State.OFFLINE);
-		}
-	}
-
-
-	@RxLogObservable
-	private Observable<Response<QuoteEntity>> createQuoteObservable(String symbol)
-	{
-		return StocksRxProvider.getService()
-				.quote("json", symbol)
-				.flatMap(RxUtility::catchHttpError)
-				.compose(RxUtility.applySchedulers());
-	}
-
-
-	private RestSubscriber<Response<QuoteEntity>> createQuoteSubscriber()
-	{
-		return new RestSubscriber<>(mSubscriberManager, StocksRxProvider.QUOTE_CALL_TYPE,
-				response ->
-				{
-					quote.set(response.body());
-				},
-				throwable ->
-				{
-					handleError(RxUtility.getHttpErrorMessage(throwable));
-					setState(quote);
-				},
-				() ->
-				{
-					setState(quote);
-				});
+		});
 	}
 
 

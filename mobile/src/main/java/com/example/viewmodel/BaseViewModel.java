@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 
 import com.example.ui.BaseView;
 import com.example.utility.Logcat;
+import com.example.utility.SubscriberManager;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -66,6 +67,9 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	public void onDestroy()
 	{
 		Logcat.v("");
+
+		SubscriberManager.unSubscribe(this.getClass());
+
 		super.onDestroy();
 	}
 
