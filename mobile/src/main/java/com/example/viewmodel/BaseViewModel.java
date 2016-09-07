@@ -18,7 +18,13 @@ import eu.inloop.viewmodel.AbstractViewModel;
 public abstract class BaseViewModel<T extends BaseView> extends AbstractViewModel<T> implements Observable
 {
 	private transient PropertyChangeRegistry mObservableCallbacks;
-	private Queue<Runnable> mRunnableQueue;
+	private Queue<ViewCallback<T>> mViewCallbackQueue;
+
+
+	public interface ViewCallback<T>
+	{
+		void run(@NonNull T view);
+	}
 
 
 	@Override
@@ -34,7 +40,7 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	{
 		Logcat.v("");
 		super.onBindView(view);
-		processPendingRunnables();
+		processPendingViewCallbacks(view);
 	}
 
 
@@ -118,35 +124,35 @@ public abstract class BaseViewModel<T extends BaseView> extends AbstractViewMode
 	}
 
 
-	public void runCallback(Runnable runnable)
+	public void runViewCallback(ViewCallback<T> viewCallback)
 	{
 		if(getView() != null)
 		{
-			runnable.run();
+			viewCallback.run(getView());
 		}
 		else
 		{
-			addPendingRunnable(runnable);
+			addPendingViewCallback(viewCallback);
 		}
 	}
 
 
-	private synchronized void addPendingRunnable(Runnable runnable)
+	private synchronized void addPendingViewCallback(ViewCallback<T> viewCallback)
 	{
-		if(mRunnableQueue == null)
+		if(mViewCallbackQueue == null)
 		{
-			mRunnableQueue = new ConcurrentLinkedQueue<>();
+			mViewCallbackQueue = new ConcurrentLinkedQueue<>();
 		}
-		mRunnableQueue.add(runnable);
+		mViewCallbackQueue.add(viewCallback);
 	}
 
 
-	private void processPendingRunnables()
+	private void processPendingViewCallbacks(@NonNull T view)
 	{
-		while(mRunnableQueue != null && !mRunnableQueue.isEmpty())
+		while(mViewCallbackQueue != null && !mViewCallbackQueue.isEmpty())
 		{
-			Runnable runnable = mRunnableQueue.remove();
-			runnable.run();
+			ViewCallback<T> viewCallback = mViewCallbackQueue.remove();
+			viewCallback.run(view);
 		}
 	}
 }
