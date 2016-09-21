@@ -4,7 +4,6 @@ import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.example.StocksApplication;
 import com.example.StocksConfig;
 import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
@@ -13,7 +12,7 @@ import com.example.rest.call.BaseCallback;
 import com.example.rest.call.CallManager;
 import com.example.rest.provider.StocksProvider;
 import com.example.ui.StockDetailView;
-import com.example.utility.NetworkUtility;
+import com.example.utility.NetworkManager;
 import com.example.utility.RestUtility;
 import com.example.view.StatefulLayout;
 
@@ -80,7 +79,7 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 
 	private void sendQuote(String symbol)
 	{
-		if(NetworkUtility.isOnline(StocksApplication.getContext()))
+		if(NetworkManager.getInstance().connected.get())
 		{
 			String callType = StocksProvider.QUOTE_CALL_TYPE;
 			if(!mCallManager.hasRunningCall(callType))
