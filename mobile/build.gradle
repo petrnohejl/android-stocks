@@ -34,7 +34,7 @@ dependencies
 	compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
 	compile 'eu.inloop:androidviewmodel:1.0.0'
 	compile 'io.reactivex:rxandroid:1.2.1'
-	compile 'io.reactivex:rxjava:1.1.6'
+	compile 'io.reactivex:rxjava:1.1.9'
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 	debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
 	releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
