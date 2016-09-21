@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import retrofit2.Response;
+import rx.AsyncEmitter;
 import rx.Observable;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
@@ -69,40 +70,66 @@ public class SubscriberManager
 	@RxLogObservable
 	public static <T extends Response<?>> Observable<T> createSubscribedObservable(Observable<T> restObservable, final String callType, Class c)
 	{
-		return Observable.create(subscriber -> {
+		return Observable.create(outerSubscriber -> {
+			Subscription subscription = restObservable
+					.flatMap(RxUtility::catchHttpError)
+					.compose(RxUtility.applySchedulers())
+					.doOnSubscribe(() -> registerCall(c, callType))
+					.doOnNext(t -> {
+						if(outerSubscriber.isUnsubscribed())
+							return;
+
+						logSuccess(t, callType);
+						outerSubscriber.onNext(t);
+					})
+					.doOnError(throwable -> {
+						if(!outerSubscriber.isUnsubscribed())
+							return;
+
+						if(throwable instanceof RetrofitHttpException)
+							logError((RetrofitHttpException) throwable, callType);
+						else
+							logFail(throwable, callType);
+
+
+						outerSubscriber.onError(throwable);
+						unregisterCall(c, callType);
+					})
+					.doOnCompleted(outerSubscriber::onCompleted)
+					.doAfterTerminate(() -> unregisterCall(c, callType))
+					.subscribe(outerSubscriber);
+			subscribe(c, subscription);
+			subscribe(c, outerSubscriber);
+		});
+	}
+
+
+	@RxLogObservable
+	public static <T extends Response<?>> Observable<T> createHotSubscribedObservable(Observable<T> restObservable, final String callType, Class c)
+	{
+		return Observable.fromAsync(outerSubscriber -> {
 			Subscription subscription = restObservable
 					.flatMap(RxUtility::catchHttpError)
 					.compose(RxUtility.applySchedulers())
 					.doOnSubscribe(() -> registerCall(c, callType))
 					.doOnNext(t -> {
 						logSuccess(t, callType);
-						if(!subscriber.isUnsubscribed())
-							subscriber.onNext(t);
+						outerSubscriber.onNext(t);
 					})
 					.doOnError(throwable -> {
-						// log
 						if(throwable instanceof RetrofitHttpException)
-						{
 							logError((RetrofitHttpException) throwable, callType);
-						}
 						else
-						{
 							logFail(throwable, callType);
-						}
 
-						if(!subscriber.isUnsubscribed())
-							subscriber.onError(throwable);
+						outerSubscriber.onError(throwable);
 						unregisterCall(c, callType);
 					})
-					.doOnCompleted(() -> {
-						if(!subscriber.isUnsubscribed())
-							subscriber.onCompleted();
-						unregisterCall(c, callType);
-					})
-					.subscribe(subscriber);
+					.doOnCompleted(() -> unregisterCall(c, callType))
+					.subscribe(outerSubscriber);
+			outerSubscriber.setCancellation(() -> unregisterCall(c, callType));
 			subscribe(c, subscription);
-			subscribe(c, subscriber);
-		});
+		}, AsyncEmitter.BackpressureMode.BUFFER);
 	}
 
 
