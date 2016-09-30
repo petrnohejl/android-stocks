@@ -40,60 +40,6 @@ public class RestRxManager extends RxManager
 	}
 
 
-//	@RxLogObservable
-//	public <T extends Response<?>> Observable<T> createRestObservable(Observable<T> restObservable, String callType)
-//	{
-//		return Observable.fromEmitter(outerEmitter ->
-//		{
-//			Subscription innerSubscription = restObservable
-//					.flatMap(RxUtility::catchHttpError)
-//					.doOnSubscribe(() -> addRunningCall(callType))
-//					.doOnNext(response -> logSuccess(response, callType))
-//					.doOnError(throwable ->
-//					{
-//						if(throwable instanceof RetrofitHttpException)
-//						{
-//							logError((RetrofitHttpException) throwable, callType);
-//						}
-//						else
-//						{
-//							logFail(throwable, callType);
-//						}
-//					})
-//					.doAfterTerminate(() -> removeRunningCall(callType))
-//					.subscribe(new LoggedSubscriber<T>()
-//					{
-//						@Override
-//						public void onNext(T t)
-//						{
-//							outerEmitter.onNext(t);
-//						}
-//
-//
-//						@Override
-//						public void onError(Throwable e)
-//						{
-//							outerEmitter.onError(e);
-//						}
-//
-//
-//						@Override
-//						public void onCompleted()
-//						{
-//							outerEmitter.onCompleted();
-//						}
-//					});
-//			outerEmitter.setCancellation(innerSubscription::unsubscribe);
-//		}, AsyncEmitter.BackpressureMode.NONE);
-//	}
-//
-//
-//	public <T extends Response<?>> Observable<T> createRestObservableWithSchedulers(Observable<T> restObservable, String callType)
-//	{
-//		return createRestObservable(restObservable, callType).compose(RxUtility.applySchedulers());
-//	}
-
-
 	private void logSuccess(Response<?> response, String callType)
 	{
 		String status = response.code() + " " + response.message();

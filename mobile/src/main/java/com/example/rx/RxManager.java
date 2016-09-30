@@ -74,48 +74,6 @@ public class RxManager
 	}
 
 
-//	@RxLogObservable
-//	public <T> Observable<T> createObservable(Observable<T> outerObservable, String callType, AsyncEmitter.BackpressureMode backpressureMode)
-//	{
-//		return Observable.fromEmitter(outerEmitter ->
-//		{
-//			Subscription innerSubscription = outerObservable
-//					.doOnSubscribe(() -> addRunningCall(callType))
-//					.doAfterTerminate(() -> removeRunningCall(callType))
-//					.subscribe(new LoggedSubscriber<T>()
-//					{
-//						@Override
-//						public void onNext(T t)
-//						{
-//							outerEmitter.onNext(t);
-//						}
-//
-//
-//						@Override
-//						public void onError(Throwable e)
-//						{
-//							outerEmitter.onError(e);
-//						}
-//
-//
-//						@Override
-//						public void onCompleted()
-//						{
-//							outerEmitter.onCompleted();
-//						}
-//					});
-//			outerEmitter.setCancellation(innerSubscription::unsubscribe);
-//		}, backpressureMode);
-//	}
-//
-//
-//	@RxLogObservable
-//	public <T> Observable<T> createObservable(Observable<T> outerObservable, String callType)
-//	{
-//		return createObservable(outerObservable, callType, AsyncEmitter.BackpressureMode.NONE);
-//	}
-
-
 	private synchronized void addRunningCall(String callType)
 	{
 		short count = 0;
