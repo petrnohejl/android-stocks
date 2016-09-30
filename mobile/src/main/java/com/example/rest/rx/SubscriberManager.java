@@ -8,6 +8,7 @@ import java.util.Map;
 import rx.Subscriber;
 
 
+@Deprecated
 public class SubscriberManager
 {
 	private Map<Subscriber, String> mSubscribers = new HashMap<>();

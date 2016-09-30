@@ -6,18 +6,19 @@ import android.databinding.ObservableField;
 import com.example.StocksApplication;
 import com.example.entity.LookupEntity;
 import com.example.rest.provider.StocksRxProvider;
-import com.example.rest.rx.RestSubscriber;
-import com.example.rest.rx.SubscriberManager;
+import com.example.rest.rx.RestRxManager;
+import com.example.rx.LoggedSubscriber;
 import com.example.ui.StockPagerView;
 import com.example.utility.NetworkUtility;
 import com.example.utility.RxUtility;
 import com.example.view.StatefulLayout;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import java.util.List;
 
 import retrofit2.Response;
 import rx.Observable;
+import rx.Subscriber;
+import rx.Subscription;
 
 
 public class StockPagerViewModel extends BaseViewModel<StockPagerView>
@@ -25,7 +26,7 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 	public final ObservableField<StatefulLayout.State> state = new ObservableField<>();
 	public final ObservableArrayList<StockPagerItemViewModel> lookups = new ObservableArrayList<>();
 
-	private SubscriberManager mSubscriberManager = new SubscriberManager();
+	private RestRxManager mRestRxManager = new RestRxManager();
 
 
 	@Override
@@ -44,7 +45,7 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 		super.onDestroy();
 
 		// unsubscribe
-		if(mSubscriberManager != null) mSubscriberManager.unsubscribeAll();
+		mRestRxManager.unsubscribeAll();
 	}
 
 
@@ -58,14 +59,16 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 	{
 		if(NetworkUtility.isOnline(StocksApplication.getContext()))
 		{
-			if(!mSubscriberManager.isRegistered(StocksRxProvider.LOOKUP_CALL_TYPE))
+			if(!mRestRxManager.isRunning(StocksRxProvider.LOOKUP_CALL_TYPE))
 			{
 				// show progress
 				state.set(StatefulLayout.State.PROGRESS);
 
 				// subscribe
-				Observable<Response<List<LookupEntity>>> observable = createLookupObservable(input);
-				observable.subscribe(createLookupSubscriber());
+				Observable<Response<List<LookupEntity>>> rawObservable = StocksRxProvider.getService().lookup("json", input);
+				Observable<Response<List<LookupEntity>>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxProvider.LOOKUP_CALL_TYPE);
+				Subscription subscription = observable.subscribe(createLookupSubscriber());
+				mRestRxManager.registerSubscription(subscription);
 			}
 		}
 		else
@@ -76,19 +79,9 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 	}
 
 
-	@RxLogObservable
-	private Observable<Response<List<LookupEntity>>> createLookupObservable(String input)
+	private Subscriber<Response<List<LookupEntity>>> createLookupSubscriber()
 	{
-		return StocksRxProvider.getService()
-				.lookup("json", input)
-				.flatMap(RxUtility::catchHttpError)
-				.compose(RxUtility.applySchedulers());
-	}
-
-
-	private RestSubscriber<Response<List<LookupEntity>>> createLookupSubscriber()
-	{
-		return new RestSubscriber<>(mSubscriberManager, StocksRxProvider.LOOKUP_CALL_TYPE,
+		return LoggedSubscriber.create(
 				response ->
 				{
 					lookups.clear();
@@ -105,7 +98,8 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 				() ->
 				{
 					setState(lookups);
-				});
+				}
+		);
 	}
 
 

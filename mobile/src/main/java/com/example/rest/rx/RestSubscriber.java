@@ -11,6 +11,7 @@ import rx.functions.Action0;
 import rx.functions.Action1;
 
 
+@Deprecated
 @RxLogSubscriber
 public class RestSubscriber<T extends Response<?>> extends Subscriber<T>
 {
