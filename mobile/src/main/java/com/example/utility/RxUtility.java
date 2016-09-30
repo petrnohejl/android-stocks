@@ -45,6 +45,7 @@ public final class RxUtility
 		}
 		else
 		{
+			Logcat.printStackTrace(throwable);
 			return RestUtility.getFailMessage(throwable);
 		}
 	}
