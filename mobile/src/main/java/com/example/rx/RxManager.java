@@ -67,7 +67,6 @@ public class RxManager
 	}
 
 
-	@RxLogObservable
 	public <T> Observable<T> setupObservableWithSchedulers(Observable<T> observable, String callType)
 	{
 		return setupObservable(observable, callType).compose(RxUtility.applySchedulers());

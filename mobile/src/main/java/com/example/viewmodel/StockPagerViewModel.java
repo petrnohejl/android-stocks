@@ -81,7 +81,7 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 
 	private Subscriber<Response<List<LookupEntity>>> createLookupSubscriber()
 	{
-		return LoggedSubscriber.create(
+		return LoggedSubscriber.newInstance(
 				response ->
 				{
 					lookups.clear();

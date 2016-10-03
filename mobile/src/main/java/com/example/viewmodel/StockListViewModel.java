@@ -122,7 +122,7 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 
 	private Subscriber<Response<List<LookupEntity>>> createLookupSubscriber()
 	{
-		return LoggedSubscriber.create(
+		return LoggedSubscriber.newInstance(
 				response ->
 				{
 					lookups.clear();

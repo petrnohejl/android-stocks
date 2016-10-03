@@ -10,52 +10,65 @@ import rx.functions.Action1;
 
 
 @RxLogSubscriber
-public abstract class LoggedSubscriber<T> extends Subscriber<T>
+public class LoggedSubscriber<T> extends Subscriber<T>
 {
-	public static <T> LoggedSubscriber<T> create()
+	@Nullable private Action1<T> mOnNextAction;
+	@Nullable private Action1<Throwable> mOnErrorAction;
+	@Nullable private Action0 mOnCompletedAction;
+
+
+	private LoggedSubscriber(@Nullable Action1<T> onNextAction, @Nullable Action1<Throwable> onErrorAction, @Nullable Action0 onCompletedAction)
 	{
-		return create(null, null, null);
+		mOnNextAction = onNextAction;
+		mOnErrorAction = onErrorAction;
+		mOnCompletedAction = onCompletedAction;
 	}
 
 
-	public static <T> LoggedSubscriber<T> create(Action1<T> onNextAction)
+	public static <T> LoggedSubscriber<T> newInstance()
 	{
-		return create(onNextAction, null, null);
+		return newInstance(null, null, null);
 	}
 
 
-	public static <T> LoggedSubscriber<T> create(Action1<T> onNextAction, Action1<Throwable> onErrorAction)
+	public static <T> LoggedSubscriber<T> newInstance(Action1<T> onNextAction)
 	{
-		return create(onNextAction, onErrorAction, null);
+		return newInstance(onNextAction, null, null);
 	}
 
 
-	public static <T> LoggedSubscriber<T> create(@Nullable Action1<T> onNextAction, @Nullable Action1<Throwable> onErrorAction, @Nullable Action0 onCompletedAction)
+	public static <T> LoggedSubscriber<T> newInstance(Action1<T> onNextAction, Action1<Throwable> onErrorAction)
 	{
-		return new LoggedSubscriber<T>()
-		{
-			@Override
-			public void onNext(T t)
-			{
-				if(onNextAction == null) return;
-				onNextAction.call(t);
-			}
+		return newInstance(onNextAction, onErrorAction, null);
+	}
 
 
-			@Override
-			public void onError(Throwable e)
-			{
-				if(onErrorAction == null) return;
-				onErrorAction.call(e);
-			}
+	public static <T> LoggedSubscriber<T> newInstance(@Nullable Action1<T> onNextAction, @Nullable Action1<Throwable> onErrorAction, @Nullable Action0 onCompletedAction)
+	{
+		return new LoggedSubscriber<T>(onNextAction, onErrorAction, onCompletedAction);
+	}
 
 
-			@Override
-			public void onCompleted()
-			{
-				if(onCompletedAction == null) return;
-				onCompletedAction.call();
-			}
-		};
+	@Override
+	public void onNext(T t)
+	{
+		if(mOnNextAction == null) return;
+		mOnNextAction.call(t);
+	}
+
+
+	@Override
+	public void onError(Throwable e)
+	{
+		if(mOnErrorAction == null) return;
+		mOnErrorAction.call(e);
+	}
+
+
+	@Override
+	public void onCompleted()
+	{
+		if(mOnCompletedAction == null) return;
+		mOnCompletedAction.call();
 	}
 }

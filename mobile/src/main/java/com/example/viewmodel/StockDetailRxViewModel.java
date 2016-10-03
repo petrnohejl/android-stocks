@@ -105,7 +105,7 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 
 	private Subscriber<Response<QuoteEntity>> createQuoteSubscriber()
 	{
-		return LoggedSubscriber.create(
+		return LoggedSubscriber.newInstance(
 				response ->
 				{
 					quote.set(response.body());

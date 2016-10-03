@@ -5,7 +5,6 @@ import com.example.rx.RxManager;
 import com.example.utility.Logcat;
 import com.example.utility.RestUtility;
 import com.example.utility.RxUtility;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import retrofit2.Response;
 import rx.Observable;
@@ -13,7 +12,6 @@ import rx.Observable;
 
 public class RestRxManager extends RxManager
 {
-	@RxLogObservable
 	public <T extends Response<?>> Observable<T> setupRestObservable(Observable<T> restObservable, String callType)
 	{
 		return setupObservable(restObservable, callType)
@@ -33,7 +31,6 @@ public class RestRxManager extends RxManager
 	}
 
 
-	@RxLogObservable
 	public <T extends Response<?>> Observable<T> setupRestObservableWithSchedulers(Observable<T> restObservable, String callType)
 	{
 		return setupRestObservable(restObservable, callType).compose(RxUtility.applySchedulers());
