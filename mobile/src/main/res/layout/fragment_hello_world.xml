@@ -40,7 +40,7 @@
 					android:layout_height="wrap_content"
 					android:textAppearance="@style/TextAppearance.Stocks.Body1"
 					android:text="@{viewModel.quote.name}"
-					android:onClick="@{view.onClick}"
+					android:onClick="@{view::onClick}"
 					app:layout_constraintBottom_toBottomOf="@+id/fragment_hello_world_constraint_layout"
 					app:layout_constraintLeft_toLeftOf="@+id/fragment_hello_world_constraint_layout"
 					app:layout_constraintRight_toRightOf="@+id/fragment_hello_world_constraint_layout"
