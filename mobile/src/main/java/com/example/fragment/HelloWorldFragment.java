@@ -43,7 +43,7 @@ public class HelloWorldFragment extends BaseFragment<HelloWorldView, HelloWorldV
 
 
 	@Override
-	public void onClick(View view)
+	public void onClick()
 	{
 		getViewModel().updateName();
 	}
