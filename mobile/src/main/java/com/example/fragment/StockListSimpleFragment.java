@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.activity.StockDetailActivity;
 import com.example.adapter.StockListSimpleAdapter;
@@ -15,9 +14,8 @@ import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 
-public class StockListSimpleFragment extends BaseFragment<StockListView, StockListViewModel> implements StockListView
+public class StockListSimpleFragment extends BaseBindingFragment<StockListView, StockListViewModel, FragmentStockListBinding> implements StockListView
 {
-	private FragmentStockListBinding mBinding;
 	private StockListSimpleAdapter mAdapter;
 
 
@@ -30,12 +28,9 @@ public class StockListSimpleFragment extends BaseFragment<StockListView, StockLi
 
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	public FragmentStockListBinding inflateBindingLayout(LayoutInflater inflater)
 	{
-		mBinding = FragmentStockListBinding.inflate(inflater);
-		mBinding.setView(this);
-		mBinding.setViewModel(getViewModel());
-		return mBinding.getRoot();
+		return FragmentStockListBinding.inflate(inflater);
 	}
 
 
@@ -51,7 +46,7 @@ public class StockListSimpleFragment extends BaseFragment<StockListView, StockLi
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		mBinding.executePendingBindings(); // set layout manager in recycler via binding adapter
+		getBinding().executePendingBindings(); // set layout manager in recycler via binding adapter
 		setupAdapter();
 	}
 
@@ -90,7 +85,7 @@ public class StockListSimpleFragment extends BaseFragment<StockListView, StockLi
 		if(mAdapter == null)
 		{
 			mAdapter = new StockListSimpleAdapter(this, getViewModel());
-			mBinding.fragmentStockListRecycler.setAdapter(mAdapter);
+			getBinding().fragmentStockListRecycler.setAdapter(mAdapter);
 		}
 	}
 

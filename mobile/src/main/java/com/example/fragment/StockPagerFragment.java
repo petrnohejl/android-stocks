@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.adapter.StockPagerAdapter;
 import com.example.databinding.FragmentStockPagerBinding;
@@ -12,9 +11,8 @@ import com.example.ui.StockPagerView;
 import com.example.viewmodel.StockPagerViewModel;
 
 
-public class StockPagerFragment extends BaseFragment<StockPagerView, StockPagerViewModel> implements StockPagerView
+public class StockPagerFragment extends BaseBindingFragment<StockPagerView, StockPagerViewModel, FragmentStockPagerBinding> implements StockPagerView
 {
-	private FragmentStockPagerBinding mBinding;
 	private StockPagerAdapter mAdapter;
 
 
@@ -27,12 +25,9 @@ public class StockPagerFragment extends BaseFragment<StockPagerView, StockPagerV
 
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	public FragmentStockPagerBinding inflateBindingLayout(LayoutInflater inflater)
 	{
-		mBinding = FragmentStockPagerBinding.inflate(inflater);
-		mBinding.setView(this);
-		mBinding.setViewModel(getViewModel());
-		return mBinding.getRoot();
+		return FragmentStockPagerBinding.inflate(inflater);
 	}
 
 
@@ -57,7 +52,7 @@ public class StockPagerFragment extends BaseFragment<StockPagerView, StockPagerV
 		if(mAdapter == null)
 		{
 			mAdapter = new StockPagerAdapter(this, getViewModel());
-			mBinding.fragmentStockPagerPager.setAdapter(mAdapter);
+			getBinding().fragmentStockPagerPager.setAdapter(mAdapter);
 		}
 	}
 }

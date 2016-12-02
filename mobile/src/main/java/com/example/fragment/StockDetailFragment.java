@@ -4,18 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.databinding.FragmentStockDetailBinding;
 import com.example.ui.StockDetailView;
 import com.example.viewmodel.StockDetailRxViewModel;
 
 
-public class StockDetailFragment extends BaseFragment<StockDetailView, StockDetailRxViewModel> implements StockDetailView
+public class StockDetailFragment extends BaseBindingFragment<StockDetailView, StockDetailRxViewModel, FragmentStockDetailBinding> implements StockDetailView
 {
-	private FragmentStockDetailBinding mBinding;
-
-
 	@Nullable
 	@Override
 	public Class<StockDetailRxViewModel> getViewModelClass()
@@ -25,12 +21,9 @@ public class StockDetailFragment extends BaseFragment<StockDetailView, StockDeta
 
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	public FragmentStockDetailBinding inflateBindingLayout(LayoutInflater inflater)
 	{
-		mBinding = FragmentStockDetailBinding.inflate(inflater);
-		mBinding.setView(this);
-		mBinding.setViewModel(getViewModel());
-		return mBinding.getRoot();
+		return FragmentStockDetailBinding.inflate(inflater);
 	}
 
 

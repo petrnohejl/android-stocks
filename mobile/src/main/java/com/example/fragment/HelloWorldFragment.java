@@ -4,18 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.databinding.FragmentHelloWorldBinding;
 import com.example.ui.HelloWorldView;
 import com.example.viewmodel.HelloWorldViewModel;
 
 
-public class HelloWorldFragment extends BaseFragment<HelloWorldView, HelloWorldViewModel> implements HelloWorldView
+public class HelloWorldFragment extends BaseBindingFragment<HelloWorldView, HelloWorldViewModel, FragmentHelloWorldBinding> implements HelloWorldView
 {
-	private FragmentHelloWorldBinding mBinding;
-
-
 	@Nullable
 	@Override
 	public Class<HelloWorldViewModel> getViewModelClass()
@@ -25,12 +21,9 @@ public class HelloWorldFragment extends BaseFragment<HelloWorldView, HelloWorldV
 
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	public FragmentHelloWorldBinding inflateBindingLayout(LayoutInflater inflater)
 	{
-		mBinding = FragmentHelloWorldBinding.inflate(inflater);
-		mBinding.setView(this);
-		mBinding.setViewModel(getViewModel());
-		return mBinding.getRoot();
+		return FragmentHelloWorldBinding.inflate(inflater);
 	}
 
 
