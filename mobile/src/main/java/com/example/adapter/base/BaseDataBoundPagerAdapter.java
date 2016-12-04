@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-abstract public class BaseDataBoundPagerAdapter<T extends ViewDataBinding> extends PagerAdapter
+public abstract class BaseDataBoundPagerAdapter<T extends ViewDataBinding> extends PagerAdapter
 {
-	abstract protected void bindItem(T binding, int position);
+	protected abstract void bindItem(T binding, int position);
 
 
 	@LayoutRes
-	abstract public int getItemLayoutId(int position);
+	public abstract int getItemLayoutId(int position);
 
 
 	@Override

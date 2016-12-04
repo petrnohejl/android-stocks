@@ -11,7 +11,7 @@ import com.example.ui.BaseView;
 import java.lang.ref.WeakReference;
 
 
-abstract public class SimpleDataBoundPagerAdapter<T extends ViewDataBinding> extends BaseDataBoundPagerAdapter<T>
+public abstract class SimpleDataBoundPagerAdapter<T extends ViewDataBinding> extends BaseDataBoundPagerAdapter<T>
 {
 	@LayoutRes private int mLayoutId;
 	private BaseView mView;

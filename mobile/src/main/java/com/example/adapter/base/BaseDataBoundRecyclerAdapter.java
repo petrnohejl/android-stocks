@@ -42,7 +42,7 @@ import java.util.List;
  * @param <T> The type of the ViewDataBinding class. Can be ommitted in multiple-binding-type use
  *            case.
  */
-abstract public class BaseDataBoundRecyclerAdapter<T extends ViewDataBinding> extends RecyclerView.Adapter<BaseDataBoundRecyclerViewHolder<T>>
+public abstract class BaseDataBoundRecyclerAdapter<T extends ViewDataBinding> extends RecyclerView.Adapter<BaseDataBoundRecyclerViewHolder<T>>
 {
 	private static final Object DB_PAYLOAD = new Object();
 	@Nullable
@@ -81,11 +81,11 @@ abstract public class BaseDataBoundRecyclerAdapter<T extends ViewDataBinding> ex
 	 * @param position The position of the item in the adapter
 	 * @param payloads The payloads that were passed into the onBind method
 	 */
-	abstract protected void bindItem(BaseDataBoundRecyclerViewHolder<T> holder, int position, List<Object> payloads);
+	protected abstract void bindItem(BaseDataBoundRecyclerViewHolder<T> holder, int position, List<Object> payloads);
 
 
 	@LayoutRes
-	abstract public int getItemLayoutId(int position);
+	public abstract int getItemLayoutId(int position);
 
 
 	@Override

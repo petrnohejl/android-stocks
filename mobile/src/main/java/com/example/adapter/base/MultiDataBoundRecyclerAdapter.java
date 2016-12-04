@@ -8,7 +8,7 @@ import com.example.ui.BaseView;
 import java.util.List;
 
 
-abstract public class MultiDataBoundRecyclerAdapter extends BaseDataBoundRecyclerAdapter
+public abstract class MultiDataBoundRecyclerAdapter extends BaseDataBoundRecyclerAdapter
 {
 	private BaseView mView;
 	private ObservableArrayList<?>[] mItems;

@@ -10,7 +10,7 @@ import com.example.ui.BaseView;
 import java.util.List;
 
 
-abstract public class SimpleDataBoundRecyclerAdapter<T extends ViewDataBinding> extends BaseDataBoundRecyclerAdapter<T>
+public abstract class SimpleDataBoundRecyclerAdapter<T extends ViewDataBinding> extends BaseDataBoundRecyclerAdapter<T>
 {
 	@LayoutRes private int mLayoutId;
 	private BaseView mView;
