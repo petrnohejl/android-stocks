@@ -53,13 +53,13 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 
 	public void loadData()
 	{
-		sendLookup("oil");
+		sendLookup("bank");
 	}
 
 
 	public void refreshData()
 	{
-		sendLookup("oil");
+		sendLookup("bank");
 	}
 
 
