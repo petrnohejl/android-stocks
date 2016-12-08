@@ -51,7 +51,7 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 
 	public void loadData()
 	{
-		sendLookup("oil");
+		sendLookup("bank");
 	}
 
 
