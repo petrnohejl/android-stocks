@@ -6,8 +6,8 @@ import com.example.utility.Logcat;
 import com.example.utility.RestUtility;
 import com.example.utility.RxUtility;
 
+import io.reactivex.Observable;
 import retrofit2.Response;
-import rx.Observable;
 
 
 public class RestRxManager extends RxManager

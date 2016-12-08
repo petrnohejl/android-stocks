@@ -2,37 +2,36 @@ package com.example.rx;
 
 import com.example.utility.Logcat;
 import com.example.utility.RxUtility;
-import com.fernandocejas.frodo.annotation.RxLogObservable;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import rx.Observable;
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.Observable;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 
 public class RxManager
 {
-	private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+	private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 	private Map<String, Short> mRunningCalls = new HashMap<>();
 
 
-	public void registerSubscription(Subscription subscription)
+	public void registerDisposable(Disposable disposable)
 	{
-		mCompositeSubscription.add(subscription);
+		mCompositeDisposable.add(disposable);
 	}
 
 
-	public void unregisterSubscription(Subscription subscription)
+	public void unregisterDisposable(Disposable disposable)
 	{
-		mCompositeSubscription.remove(subscription);
+		mCompositeDisposable.remove(disposable);
 	}
 
 
-	public void unsubscribeAll()
+	public void disposeAll()
 	{
-		mCompositeSubscription.clear();
+		mCompositeDisposable.clear();
 		mRunningCalls.clear();
 	}
 
@@ -58,12 +57,12 @@ public class RxManager
 	}
 
 
-	@RxLogObservable
+	// @RxLogObservable // TODO: Frodo 2
 	public <T> Observable<T> setupObservable(Observable<T> observable, String callType)
 	{
 		return observable
-				.doOnSubscribe(() -> addRunningCall(callType))
-				.doOnUnsubscribe(() -> removeRunningCall(callType));
+				.doOnSubscribe(disposable -> addRunningCall(callType))
+				.doOnDispose(() -> removeRunningCall(callType));
 	}
 
 

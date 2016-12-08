@@ -6,6 +6,7 @@ import com.example.rest.http.HeaderRequestInterceptor;
 import com.example.utility.Logcat;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +17,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
@@ -112,6 +112,6 @@ public final class RetrofitClient
 
 	private static CallAdapter.Factory createCallAdapterFactory()
 	{
-		return RxJavaCallAdapterFactory.create();
+		return RxJava2CallAdapterFactory.create();
 	}
 }

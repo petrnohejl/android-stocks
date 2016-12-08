@@ -7,7 +7,7 @@ import com.example.StocksApplication;
 import com.example.entity.LookupEntity;
 import com.example.rest.provider.StocksRxProvider;
 import com.example.rest.rx.RestRxManager;
-import com.example.rx.LoggedSubscriber;
+import com.example.rx.LoggedObserver;
 import com.example.ui.StockListView;
 import com.example.utility.NetworkUtility;
 import com.example.utility.RxUtility;
@@ -15,10 +15,10 @@ import com.example.view.StatefulLayout;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
 import retrofit2.Response;
-import rx.Observable;
-import rx.Subscriber;
-import rx.Subscription;
 
 
 public class StockListViewModel extends BaseViewModel<StockListView>
@@ -47,7 +47,7 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 		super.onDestroy();
 
 		// unsubscribe
-		mRestRxManager.unsubscribeAll();
+		mRestRxManager.disposeAll();
 	}
 
 
@@ -108,8 +108,8 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 				// subscribe
 				Observable<Response<List<LookupEntity>>> rawObservable = StocksRxProvider.getService().lookup("json", input);
 				Observable<Response<List<LookupEntity>>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxProvider.LOOKUP_CALL_TYPE);
-				Subscription subscription = observable.subscribe(createLookupSubscriber());
-				mRestRxManager.registerSubscription(subscription);
+				Disposable disposable = observable.subscribeWith(createLookupObserver());
+				mRestRxManager.registerDisposable(disposable);
 			}
 		}
 		else
@@ -120,9 +120,9 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 	}
 
 
-	private Subscriber<Response<List<LookupEntity>>> createLookupSubscriber()
+	private DisposableObserver<Response<List<LookupEntity>>> createLookupObserver()
 	{
-		return LoggedSubscriber.newInstance(
+		return LoggedObserver.newInstance(
 				response ->
 				{
 					lookups.clear();

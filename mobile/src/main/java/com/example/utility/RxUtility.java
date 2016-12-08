@@ -2,15 +2,16 @@ package com.example.utility;
 
 import com.example.rest.RetrofitHttpException;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 
 public final class RxUtility
 {
-	private static final Observable.Transformer<?, ?> sSchedulersTransformer =
+	private static final ObservableTransformer<?, ?> sSchedulersTransformer =
 			observable -> observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
 
 
@@ -18,9 +19,9 @@ public final class RxUtility
 
 
 	@SuppressWarnings("unchecked")
-	public static <T> Observable.Transformer<T, T> applySchedulers()
+	public static <T> ObservableTransformer<T, T> applySchedulers()
 	{
-		return (Observable.Transformer<T, T>) sSchedulersTransformer;
+		return (ObservableTransformer<T, T>) sSchedulersTransformer;
 	}
 
 

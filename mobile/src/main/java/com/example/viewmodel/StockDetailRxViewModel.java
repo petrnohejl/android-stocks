@@ -10,16 +10,16 @@ import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.provider.StocksRxProvider;
 import com.example.rest.rx.RestRxManager;
-import com.example.rx.LoggedSubscriber;
+import com.example.rx.LoggedObserver;
 import com.example.ui.StockDetailView;
 import com.example.utility.NetworkUtility;
 import com.example.utility.RxUtility;
 import com.example.view.StatefulLayout;
 
+import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
 import retrofit2.Response;
-import rx.Observable;
-import rx.Subscriber;
-import rx.Subscription;
 
 
 public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
@@ -57,7 +57,7 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 		super.onDestroy();
 
 		// unsubscribe
-		mRestRxManager.unsubscribeAll();
+		mRestRxManager.disposeAll();
 	}
 
 
@@ -91,8 +91,8 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 				// subscribe
 				Observable<Response<QuoteEntity>> rawObservable = StocksRxProvider.getService().quote("json", symbol);
 				Observable<Response<QuoteEntity>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxProvider.QUOTE_CALL_TYPE);
-				Subscription subscription = observable.subscribe(createQuoteSubscriber());
-				mRestRxManager.registerSubscription(subscription);
+				Disposable disposable = observable.subscribeWith(createQuoteObserver());
+				mRestRxManager.registerDisposable(disposable);
 			}
 		}
 		else
@@ -103,9 +103,9 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	}
 
 
-	private Subscriber<Response<QuoteEntity>> createQuoteSubscriber()
+	private DisposableObserver<Response<QuoteEntity>> createQuoteObserver()
 	{
-		return LoggedSubscriber.newInstance(
+		return LoggedObserver.newInstance(
 				response ->
 				{
 					quote.set(response.body());
