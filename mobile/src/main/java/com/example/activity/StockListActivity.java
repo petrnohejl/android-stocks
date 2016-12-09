@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,7 +27,7 @@ public class StockListActivity extends BaseActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stock_list);
-		setupActionBar();
+		setupActionBar(INDICATOR_TYPE_NONE);
 	}
 
 
@@ -64,20 +62,6 @@ public class StockListActivity extends BaseActivity
 			default:
 				return super.onOptionsItemSelected(item);
 		}
-	}
-
-
-	private void setupActionBar()
-	{
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-		setSupportActionBar(toolbar);
-
-		ActionBar bar = getSupportActionBar();
-		bar.setDisplayUseLogoEnabled(false);
-		bar.setDisplayShowTitleEnabled(true);
-		bar.setDisplayShowHomeEnabled(true);
-		bar.setDisplayHomeAsUpEnabled(false);
-		bar.setHomeButtonEnabled(true);
 	}
 
 

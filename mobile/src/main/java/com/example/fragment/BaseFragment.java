@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.StocksApplication;
+import com.example.activity.BaseActivity;
 import com.example.ui.BaseView;
 import com.example.utility.Logcat;
 import com.example.viewmodel.BaseViewModel;
@@ -158,5 +159,11 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 		{
 			Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
 		}
+	}
+
+
+	public BaseActivity getBaseActivity()
+	{
+		return (BaseActivity) getActivity();
 	}
 }
