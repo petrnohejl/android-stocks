@@ -10,10 +10,10 @@ import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.provider.StocksRxProvider;
 import com.example.rest.rx.RestRxManager;
-import com.example.rx.LoggedObserver;
 import com.example.ui.StockDetailView;
 import com.example.utility.RxUtility;
 
+import org.alfonz.rx.LoggedObserver;
 import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
 

@@ -1,10 +1,11 @@
 package com.example.rest.rx;
 
 import com.example.rest.RetrofitHttpException;
-import com.example.rx.RxManager;
 import com.example.utility.RestUtility;
 import com.example.utility.RxUtility;
 
+import org.alfonz.rx.RxManager;
+import org.alfonz.rx.SchedulersUtility;
 import org.alfonz.utility.Logcat;
 
 import io.reactivex.Observable;
@@ -34,7 +35,7 @@ public class RestRxManager extends RxManager
 
 	public <T extends Response<?>> Observable<T> setupRestObservableWithSchedulers(Observable<T> restObservable, String callType)
 	{
-		return setupRestObservable(restObservable, callType).compose(RxUtility.applySchedulers());
+		return setupRestObservable(restObservable, callType).compose(SchedulersUtility.applySchedulers());
 	}
 
 

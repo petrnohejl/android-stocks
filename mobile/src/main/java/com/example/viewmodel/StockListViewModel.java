@@ -7,10 +7,10 @@ import com.example.StocksApplication;
 import com.example.entity.LookupEntity;
 import com.example.rest.provider.StocksRxProvider;
 import com.example.rest.rx.RestRxManager;
-import com.example.rx.LoggedObserver;
 import com.example.ui.StockListView;
 import com.example.utility.RxUtility;
 
+import org.alfonz.rx.LoggedObserver;
 import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
 
