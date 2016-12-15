@@ -2,6 +2,8 @@ package com.example.utility;
 
 import com.example.rest.RetrofitHttpException;
 
+import org.alfonz.utility.Logcat;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

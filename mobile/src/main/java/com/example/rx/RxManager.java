@@ -1,7 +1,8 @@
 package com.example.rx;
 
-import com.example.utility.Logcat;
 import com.example.utility.RxUtility;
+
+import org.alfonz.utility.Logcat;
 
 import java.util.HashMap;
 import java.util.Map;

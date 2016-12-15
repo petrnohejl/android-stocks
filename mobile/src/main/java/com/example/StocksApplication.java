@@ -6,6 +6,8 @@ import android.content.Context;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
+import org.alfonz.utility.Logcat;
+
 
 public class StocksApplication extends Application
 {
@@ -48,6 +50,9 @@ public class StocksApplication extends Application
 		{
 			e.printStackTrace();
 		}
+
+		// init logcat
+		Logcat.init(new Logcat.Config.Builder().setEnabled(StocksConfig.LOGS).setTag("STOCKS").build());
 
 		// init leak canary
 		mRefWatcher = LeakCanary.install(this);

@@ -9,9 +9,10 @@ import com.example.rest.provider.StocksRxProvider;
 import com.example.rest.rx.RestRxManager;
 import com.example.rx.LoggedObserver;
 import com.example.ui.StockListView;
-import com.example.utility.NetworkUtility;
 import com.example.utility.RxUtility;
 import com.example.view.StatefulLayout;
+
+import org.alfonz.utility.NetworkUtility;
 
 import java.util.List;
 

@@ -7,7 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.example.ui.BaseView;
-import com.example.utility.Logcat;
+
+import org.alfonz.utility.Logcat;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;

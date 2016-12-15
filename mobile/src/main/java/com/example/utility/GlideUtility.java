@@ -14,6 +14,8 @@ import com.example.R;
 import com.example.StocksConfig;
 import com.example.graphics.CircularDrawable;
 
+import org.alfonz.utility.Logcat;
+
 
 public final class GlideUtility
 {

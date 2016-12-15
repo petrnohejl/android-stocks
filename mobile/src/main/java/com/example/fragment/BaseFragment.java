@@ -12,8 +12,9 @@ import android.widget.Toast;
 import com.example.StocksApplication;
 import com.example.activity.BaseActivity;
 import com.example.ui.BaseView;
-import com.example.utility.Logcat;
 import com.example.viewmodel.BaseViewModel;
+
+import org.alfonz.utility.Logcat;
 
 import eu.inloop.viewmodel.base.ViewModelBaseFragment;
 

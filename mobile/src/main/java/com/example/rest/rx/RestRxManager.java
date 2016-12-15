@@ -2,9 +2,10 @@ package com.example.rest.rx;
 
 import com.example.rest.RetrofitHttpException;
 import com.example.rx.RxManager;
-import com.example.utility.Logcat;
 import com.example.utility.RestUtility;
 import com.example.utility.RxUtility;
+
+import org.alfonz.utility.Logcat;
 
 import io.reactivex.Observable;
 import retrofit2.Response;

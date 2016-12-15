@@ -1,8 +1,9 @@
 package com.example.rest.call;
 
 import com.example.rest.RetrofitHttpException;
-import com.example.utility.Logcat;
 import com.example.utility.RestUtility;
+
+import org.alfonz.utility.Logcat;
 
 import retrofit2.Call;
 import retrofit2.Callback;

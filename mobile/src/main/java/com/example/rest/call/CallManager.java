@@ -1,6 +1,6 @@
 package com.example.rest.call;
 
-import com.example.utility.Logcat;
+import org.alfonz.utility.Logcat;
 
 import java.util.HashMap;
 import java.util.Map;

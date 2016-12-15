@@ -13,9 +13,10 @@ import com.example.rest.call.BaseCallback;
 import com.example.rest.call.CallManager;
 import com.example.rest.provider.StocksProvider;
 import com.example.ui.StockDetailView;
-import com.example.utility.NetworkUtility;
 import com.example.utility.RestUtility;
 import com.example.view.StatefulLayout;
+
+import org.alfonz.utility.NetworkUtility;
 
 import retrofit2.Call;
 import retrofit2.Response;

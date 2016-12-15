@@ -3,10 +3,11 @@ package com.example.rest;
 import com.example.StocksConfig;
 import com.example.rest.http.GzipRequestInterceptor;
 import com.example.rest.http.HeaderRequestInterceptor;
-import com.example.utility.Logcat;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
+import org.alfonz.utility.Logcat;
 
 import java.util.concurrent.TimeUnit;
 
