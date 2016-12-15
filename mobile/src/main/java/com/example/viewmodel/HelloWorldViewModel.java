@@ -7,8 +7,8 @@ import com.example.StocksApplication;
 import com.example.entity.QuoteEntity;
 import com.example.task.LoadDataTask;
 import com.example.ui.HelloWorldView;
-import com.example.view.StatefulLayout;
 
+import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
 
 

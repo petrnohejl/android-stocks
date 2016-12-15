@@ -11,7 +11,7 @@
 			name="viewModel" type="com.example.viewmodel.HelloWorldViewModel" />
 	</data>
 
-	<com.example.view.StatefulLayout
+	<org.alfonz.ui.view.StatefulLayout
 		android:id="@+id/fragment_hello_world_stateful_layout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
@@ -53,6 +53,6 @@
 
 			</android.support.constraint.ConstraintLayout>
 		</ScrollView>
-	</com.example.view.StatefulLayout>
+	</org.alfonz.ui.view.StatefulLayout>
 
 </layout>

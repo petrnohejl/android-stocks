@@ -13,8 +13,8 @@ import com.example.rest.rx.RestRxManager;
 import com.example.rx.LoggedObserver;
 import com.example.ui.StockDetailView;
 import com.example.utility.RxUtility;
-import com.example.view.StatefulLayout;
 
+import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
 
 import io.reactivex.Observable;
