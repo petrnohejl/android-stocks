@@ -1,10 +1,11 @@
 package com.example.adapter;
 
 import com.example.R;
-import com.example.adapter.base.MultiDataBoundRecyclerAdapter;
 import com.example.entity.LookupEntity;
 import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
+
+import org.alfonz.adapter.MultiDataBoundRecyclerAdapter;
 
 
 public class StockListMultiAdapter extends MultiDataBoundRecyclerAdapter
