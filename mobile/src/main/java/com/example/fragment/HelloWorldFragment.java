@@ -10,7 +10,7 @@ import com.example.ui.HelloWorldView;
 import com.example.viewmodel.HelloWorldViewModel;
 
 
-public class HelloWorldFragment extends BaseBindingFragment<HelloWorldView, HelloWorldViewModel, FragmentHelloWorldBinding> implements HelloWorldView
+public class HelloWorldFragment extends BaseFragment<HelloWorldView, HelloWorldViewModel, FragmentHelloWorldBinding> implements HelloWorldView
 {
 	@Nullable
 	@Override

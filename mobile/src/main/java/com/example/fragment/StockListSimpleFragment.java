@@ -14,7 +14,7 @@ import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 
-public class StockListSimpleFragment extends BaseBindingFragment<StockListView, StockListViewModel, FragmentStockListBinding> implements StockListView
+public class StockListSimpleFragment extends BaseFragment<StockListView, StockListViewModel, FragmentStockListBinding> implements StockListView
 {
 	private StockListSimpleAdapter mAdapter;
 

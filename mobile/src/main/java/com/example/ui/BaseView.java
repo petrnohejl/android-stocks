@@ -1,14 +1,12 @@
 package com.example.ui;
 
-import android.os.Bundle;
 import android.support.annotation.StringRes;
 
-import eu.inloop.viewmodel.IView;
+import org.alfonz.mvvm.AlfonzView;
 
 
-public interface BaseView extends IView
+public interface BaseView extends AlfonzView
 {
-	Bundle getExtras();
 	void showToast(@StringRes int stringRes);
 	void showToast(String message);
 	void showSnackbar(@StringRes int stringRes);

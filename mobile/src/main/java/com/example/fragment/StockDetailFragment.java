@@ -10,7 +10,7 @@ import com.example.ui.StockDetailView;
 import com.example.viewmodel.StockDetailRxViewModel;
 
 
-public class StockDetailFragment extends BaseBindingFragment<StockDetailView, StockDetailRxViewModel, FragmentStockDetailBinding> implements StockDetailView
+public class StockDetailFragment extends BaseFragment<StockDetailView, StockDetailRxViewModel, FragmentStockDetailBinding> implements StockDetailView
 {
 	@Nullable
 	@Override

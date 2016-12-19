@@ -1,6 +1,7 @@
 package com.example.fragment;
 
 import android.content.Context;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
@@ -10,16 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.StocksApplication;
-import com.example.activity.BaseActivity;
 import com.example.ui.BaseView;
 import com.example.viewmodel.BaseViewModel;
 
+import org.alfonz.mvvm.AlfonzBindingFragment;
 import org.alfonz.utility.Logcat;
 
-import eu.inloop.viewmodel.base.ViewModelBaseFragment;
 
-
-public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T>> extends ViewModelBaseFragment<T, R> implements BaseView
+public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T>, B extends ViewDataBinding> extends AlfonzBindingFragment<T, R, B> implements BaseView
 {
 	@Override
 	public void onAttach(Context context)
@@ -123,13 +122,6 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 
 
 	@Override
-	public Bundle getExtras()
-	{
-		return getActivity().getIntent().getExtras();
-	}
-
-
-	@Override
 	public void showToast(@StringRes int stringRes)
 	{
 		Toast.makeText(getActivity(), stringRes, Toast.LENGTH_LONG).show();
@@ -160,11 +152,5 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 		{
 			Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
 		}
-	}
-
-
-	public BaseActivity getBaseActivity()
-	{
-		return (BaseActivity) getActivity();
 	}
 }

@@ -11,7 +11,7 @@ import com.example.ui.StockPagerView;
 import com.example.viewmodel.StockPagerViewModel;
 
 
-public class StockPagerFragment extends BaseBindingFragment<StockPagerView, StockPagerViewModel, FragmentStockPagerBinding> implements StockPagerView
+public class StockPagerFragment extends BaseFragment<StockPagerView, StockPagerViewModel, FragmentStockPagerBinding> implements StockPagerView
 {
 	private StockPagerAdapter mAdapter;
 

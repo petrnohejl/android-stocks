@@ -14,7 +14,7 @@ import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 
-public class StockListMultiFragment extends BaseBindingFragment<StockListView, StockListViewModel, FragmentStockListBinding> implements StockListView
+public class StockListMultiFragment extends BaseFragment<StockListView, StockListViewModel, FragmentStockListBinding> implements StockListView
 {
 	private StockListMultiAdapter mAdapter;
 
