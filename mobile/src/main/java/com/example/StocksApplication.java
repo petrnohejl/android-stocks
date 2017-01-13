@@ -52,7 +52,7 @@ public class StocksApplication extends Application
 		}
 
 		// init logcat
-		Logcat.init(new Logcat.Config.Builder().setEnabled(StocksConfig.LOGS).setTag("STOCKS").build());
+		Logcat.init(StocksConfig.LOGS, "STOCKS");
 
 		// init leak canary
 		mRefWatcher = LeakCanary.install(this);
