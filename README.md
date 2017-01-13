@@ -1,11 +1,11 @@
 Stocks
 ======
 
-Experimental Android app with MVVM architecture. Purpose of this project is to explore different architectural
-approaches and also "new age" technologies like Android Data Binding, RxJava, Lambdas, Retrofit, Dagger etc.
+Experimental Android app with MVVM architecture. Purpose of this project is to explore different architectural approaches and also "new age" technologies like Android Data Binding, RxJava, Lambdas, Retrofit, Dagger etc.
 
 Main goals of this project
 --------------------------
+
 * Create a good architecture with separate UI and business logic
 * Write well readable, maintainable and testable code
 * Follow OOP principles, SOLID principles, DRY
@@ -27,8 +27,16 @@ This project uses
 * Glide
 * LeakCanary
 
+This app also uses [Alfonz](https://github.com/petrnohejl/Alfonz) - multi purpose library which I have developed to make a development process easier and avoid boilerplate code.
+
+MVVM architecture
+-----------------
+
+Project is based on MVVM architecture and uses [AndroidViewModel](https://github.com/inloop/AndroidViewModel) library. I had a talk about my MVVM approach at STRV Android Meetup. You can check a [video record](https://www.youtube.com/watch?v=vnBmdKkMLZw) or [slides](https://speakerdeck.com/petrnohejl/mvvm-architecture-on-android) for more info.
+
 TODO
 ----
+
 * 2 way binding
 * Dagger
 * Tests
