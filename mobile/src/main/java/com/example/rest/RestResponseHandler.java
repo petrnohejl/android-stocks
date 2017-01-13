@@ -1,4 +1,4 @@
-package com.example.utility;
+package com.example.rest;
 
 import android.net.ParseException;
 
@@ -6,9 +6,11 @@ import com.example.R;
 import com.example.StocksApplication;
 import com.example.entity.ErrorEntity;
 import com.example.entity.QuoteEntity;
-import com.example.rest.RetrofitHttpException;
 import com.google.gson.JsonParseException;
 import com.google.gson.stream.MalformedJsonException;
+
+import org.alfonz.rest.HttpException;
+import org.alfonz.rest.ResponseHandler;
 
 import java.io.FileNotFoundException;
 import java.net.SocketTimeoutException;
@@ -18,12 +20,10 @@ import java.util.List;
 import retrofit2.Response;
 
 
-public final class RestUtility
+public class RestResponseHandler implements ResponseHandler
 {
-	private RestUtility() {}
-
-
-	public static boolean isSuccess(Response<?> response)
+	@Override
+	public boolean isSuccess(Response<?> response)
 	{
 //		return response.isSuccessful();
 
@@ -43,7 +43,8 @@ public final class RestUtility
 	}
 
 
-	public static String getErrorMessage(RetrofitHttpException exception)
+	@Override
+	public String getErrorMessage(HttpException exception)
 	{
 //		ErrorEntity error = exception.error();
 //		return error.getMessage();
@@ -51,7 +52,7 @@ public final class RestUtility
 		// TODO: little hack because this REST API does not handle errors properly and always returns 200
 		if(exception.response().body() instanceof List)
 		{
-			return exception.error().getMessage();
+			return ((ErrorEntity) exception.error()).getMessage();
 		}
 		else if(exception.response().body() instanceof QuoteEntity)
 		{
@@ -59,14 +60,16 @@ public final class RestUtility
 		}
 		else
 		{
-			return exception.error().getMessage();
+			return ((ErrorEntity) exception.error()).getMessage();
 		}
 	}
 
 
-	public static String getFailMessage(Throwable throwable)
+	@Override
+	public String getFailMessage(Throwable throwable)
 	{
 		int resId;
+
 		if(throwable instanceof UnknownHostException)
 			resId = R.string.global_network_unknown_host;
 		else if(throwable instanceof FileNotFoundException)
@@ -85,6 +88,14 @@ public final class RestUtility
 			resId = R.string.global_network_parse_fail;
 		else
 			resId = R.string.global_network_fail;
+		
 		return StocksApplication.getContext().getString(resId);
+	}
+
+
+	@Override
+	public HttpException createHttpException(Response<?> response)
+	{
+		return new RestHttpException(response);
 	}
 }

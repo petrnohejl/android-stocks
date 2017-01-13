@@ -8,11 +8,12 @@ import com.example.StocksApplication;
 import com.example.StocksConfig;
 import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
+import com.example.rest.RestHttpLogger;
+import com.example.rest.RestResponseHandler;
 import com.example.rest.provider.StocksRxProvider;
-import com.example.rest.rx.RestRxManager;
 import com.example.ui.StockDetailView;
-import com.example.utility.RxUtility;
 
+import org.alfonz.rest.rx.RestRxManager;
 import org.alfonz.rx.LoggedObserver;
 import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
@@ -29,7 +30,7 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
 
 	private String mSymbol;
-	private RestRxManager mRestRxManager = new RestRxManager();
+	private RestRxManager mRestRxManager = new RestRxManager(new RestResponseHandler(), new RestHttpLogger());
 
 
 	@Override
@@ -113,7 +114,7 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 				},
 				throwable ->
 				{
-					handleError(RxUtility.getHttpErrorMessage(throwable));
+					handleError(mRestRxManager.getHttpErrorMessage(throwable));
 					setState(quote);
 				},
 				() ->

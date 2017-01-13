@@ -5,11 +5,12 @@ import android.databinding.ObservableField;
 
 import com.example.StocksApplication;
 import com.example.entity.LookupEntity;
+import com.example.rest.RestHttpLogger;
+import com.example.rest.RestResponseHandler;
 import com.example.rest.provider.StocksRxProvider;
-import com.example.rest.rx.RestRxManager;
 import com.example.ui.StockListView;
-import com.example.utility.RxUtility;
 
+import org.alfonz.rest.rx.RestRxManager;
 import org.alfonz.rx.LoggedObserver;
 import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
@@ -29,7 +30,7 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 	public final ObservableArrayList<LookupEntity> lookups = new ObservableArrayList<>();
 	public final ObservableArrayList<Object> footers = new ObservableArrayList<>();
 
-	private RestRxManager mRestRxManager = new RestRxManager();
+	private RestRxManager mRestRxManager = new RestRxManager(new RestResponseHandler(), new RestHttpLogger());
 
 
 	@Override
@@ -139,7 +140,7 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 				},
 				throwable ->
 				{
-					handleError(RxUtility.getHttpErrorMessage(throwable));
+					handleError(mRestRxManager.getHttpErrorMessage(throwable));
 					setState(lookups);
 				},
 				() ->

@@ -8,13 +8,14 @@ import com.example.StocksApplication;
 import com.example.StocksConfig;
 import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
-import com.example.rest.RetrofitHttpException;
-import com.example.rest.call.BaseCallback;
-import com.example.rest.call.CallManager;
+import com.example.rest.RestHttpLogger;
+import com.example.rest.RestResponseHandler;
 import com.example.rest.provider.StocksProvider;
 import com.example.ui.StockDetailView;
-import com.example.utility.RestUtility;
 
+import org.alfonz.rest.HttpException;
+import org.alfonz.rest.call.CallManager;
+import org.alfonz.rest.call.Callback;
 import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
 
@@ -28,7 +29,7 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
 
 	private String mSymbol;
-	private CallManager mCallManager = new CallManager();
+	private CallManager mCallManager = new CallManager(new RestResponseHandler(), new RestHttpLogger());
 
 
 	@Override
@@ -125,7 +126,7 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 	}
 
 
-	private class QuoteCallback extends BaseCallback<QuoteEntity>
+	private class QuoteCallback extends Callback<QuoteEntity>
 	{
 		public QuoteCallback(CallManager callManager)
 		{
@@ -142,9 +143,9 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 
 
 		@Override
-		public void onError(Call<QuoteEntity> call, RetrofitHttpException exception)
+		public void onError(Call<QuoteEntity> call, HttpException exception)
 		{
-			handleError(RestUtility.getErrorMessage(exception));
+			handleError(mCallManager.getHttpErrorMessage(exception));
 			setState(quote);
 		}
 
@@ -152,7 +153,7 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 		@Override
 		public void onFail(Call<QuoteEntity> call, Throwable throwable)
 		{
-			handleError(RestUtility.getFailMessage(throwable));
+			handleError(mCallManager.getHttpErrorMessage(throwable));
 			setState(quote);
 		}
 	}
