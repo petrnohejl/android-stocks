@@ -15,8 +15,8 @@ import com.example.ui.StockDetailView;
 
 import org.alfonz.rest.rx.RestRxManager;
 import org.alfonz.rx.LoggedObserver;
-import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
+import org.alfonz.view.StatefulLayout;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;

@@ -16,8 +16,8 @@ import com.example.ui.StockDetailView;
 import org.alfonz.rest.HttpException;
 import org.alfonz.rest.call.CallManager;
 import org.alfonz.rest.call.Callback;
-import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
+import org.alfonz.view.StatefulLayout;
 
 import retrofit2.Call;
 import retrofit2.Response;

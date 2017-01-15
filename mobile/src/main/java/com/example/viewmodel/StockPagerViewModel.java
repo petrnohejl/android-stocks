@@ -12,8 +12,8 @@ import com.example.ui.StockPagerView;
 
 import org.alfonz.rest.rx.RestRxManager;
 import org.alfonz.rx.LoggedObserver;
-import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
+import org.alfonz.view.StatefulLayout;
 
 import java.util.List;
 

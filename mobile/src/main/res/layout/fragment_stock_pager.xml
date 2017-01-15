@@ -10,7 +10,7 @@
 			name="viewModel" type="com.example.viewmodel.StockPagerViewModel" />
 	</data>
 
-	<org.alfonz.ui.view.StatefulLayout
+	<org.alfonz.view.StatefulLayout
 		android:id="@+id/fragment_stock_pager_stateful_layout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
@@ -31,6 +31,6 @@
 				android:layout_height="match_parent" />
 
 		</FrameLayout>
-	</org.alfonz.ui.view.StatefulLayout>
+	</org.alfonz.view.StatefulLayout>
 
 </layout>

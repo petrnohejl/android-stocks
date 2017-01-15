@@ -8,8 +8,8 @@ import com.example.entity.QuoteEntity;
 import com.example.task.LoadDataTask;
 import com.example.ui.HelloWorldView;
 
-import org.alfonz.ui.view.StatefulLayout;
 import org.alfonz.utility.NetworkUtility;
+import org.alfonz.view.StatefulLayout;
 
 
 public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implements LoadDataTask.OnLoadDataListener
