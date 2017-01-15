@@ -12,8 +12,8 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.bumptech.glide.request.target.Target;
 import com.example.R;
 import com.example.StocksConfig;
-import com.example.graphics.CircularDrawable;
 
+import org.alfonz.graphics.drawable.CircularDrawable;
 import org.alfonz.utility.Logcat;
 
 
