@@ -4,7 +4,6 @@ import com.example.StocksConfig;
 import com.example.rest.http.HeaderRequestInterceptor;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import org.alfonz.rest.http.GzipRequestInterceptor;
 import org.alfonz.utility.Logcat;
@@ -18,6 +17,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.CallAdapter;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
