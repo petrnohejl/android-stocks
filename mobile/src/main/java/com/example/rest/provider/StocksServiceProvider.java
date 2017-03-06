@@ -10,7 +10,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
-public class StocksProvider
+public class StocksServiceProvider
 {
 	public static final String QUOTE_CALL_TYPE = "quote";
 	public static final String LOOKUP_CALL_TYPE = "lookup";
@@ -28,14 +28,14 @@ public class StocksProvider
 	}
 
 
-	private StocksProvider() {}
+	private StocksServiceProvider() {}
 
 
 	public static StocksService getService()
 	{
 		if(sService == null)
 		{
-			synchronized(StocksProvider.class)
+			synchronized(StocksServiceProvider.class)
 			{
 				if(sService == null)
 				{

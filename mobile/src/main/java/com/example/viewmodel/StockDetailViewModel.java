@@ -10,7 +10,7 @@ import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
-import com.example.rest.provider.StocksProvider;
+import com.example.rest.provider.StocksServiceProvider;
 import com.example.ui.StockDetailView;
 
 import org.alfonz.rest.HttpException;
@@ -84,14 +84,14 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 	{
 		if(NetworkUtility.isOnline(StocksApplication.getContext()))
 		{
-			String callType = StocksProvider.QUOTE_CALL_TYPE;
+			String callType = StocksServiceProvider.QUOTE_CALL_TYPE;
 			if(!mCallManager.hasRunningCall(callType))
 			{
 				// show progress
 				state.set(StatefulLayout.State.PROGRESS);
 
 				// enqueue call
-				Call<QuoteEntity> call = StocksProvider.getService().quote("json", symbol);
+				Call<QuoteEntity> call = StocksServiceProvider.getService().quote("json", symbol);
 				QuoteCallback callback = new QuoteCallback(mCallManager);
 				mCallManager.enqueueCall(call, callback, callType);
 			}

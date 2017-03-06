@@ -10,7 +10,7 @@ import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
-import com.example.rest.provider.StocksRxProvider;
+import com.example.rest.provider.StocksRxServiceProvider;
 import com.example.ui.StockDetailView;
 
 import org.alfonz.rest.rx.RestRxManager;
@@ -85,14 +85,14 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	{
 		if(NetworkUtility.isOnline(StocksApplication.getContext()))
 		{
-			if(!mRestRxManager.isRunning(StocksRxProvider.QUOTE_CALL_TYPE))
+			if(!mRestRxManager.isRunning(StocksRxServiceProvider.QUOTE_CALL_TYPE))
 			{
 				// show progress
 				state.set(StatefulLayout.State.PROGRESS);
 
 				// subscribe
-				Observable<Response<QuoteEntity>> rawObservable = StocksRxProvider.getService().quote("json", symbol);
-				Observable<Response<QuoteEntity>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxProvider.QUOTE_CALL_TYPE);
+				Observable<Response<QuoteEntity>> rawObservable = StocksRxServiceProvider.getService().quote("json", symbol);
+				Observable<Response<QuoteEntity>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxServiceProvider.QUOTE_CALL_TYPE);
 				Disposable disposable = observable.subscribeWith(createQuoteObserver());
 				mRestRxManager.registerDisposable(disposable);
 			}

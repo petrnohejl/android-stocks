@@ -7,7 +7,7 @@ import com.example.StocksApplication;
 import com.example.entity.LookupEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
-import com.example.rest.provider.StocksRxProvider;
+import com.example.rest.provider.StocksRxServiceProvider;
 import com.example.ui.StockPagerView;
 
 import org.alfonz.rest.rx.RestRxManager;
@@ -61,14 +61,14 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 	{
 		if(NetworkUtility.isOnline(StocksApplication.getContext()))
 		{
-			if(!mRestRxManager.isRunning(StocksRxProvider.LOOKUP_CALL_TYPE))
+			if(!mRestRxManager.isRunning(StocksRxServiceProvider.LOOKUP_CALL_TYPE))
 			{
 				// show progress
 				state.set(StatefulLayout.State.PROGRESS);
 
 				// subscribe
-				Observable<Response<List<LookupEntity>>> rawObservable = StocksRxProvider.getService().lookup("json", input);
-				Observable<Response<List<LookupEntity>>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxProvider.LOOKUP_CALL_TYPE);
+				Observable<Response<List<LookupEntity>>> rawObservable = StocksRxServiceProvider.getService().lookup("json", input);
+				Observable<Response<List<LookupEntity>>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxServiceProvider.LOOKUP_CALL_TYPE);
 				Disposable disposable = observable.subscribeWith(createLookupObserver());
 				mRestRxManager.registerDisposable(disposable);
 			}
