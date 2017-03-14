@@ -4,7 +4,6 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<data>
-		<import type="com.example.StocksConfig" />
 		<variable
 			name="view" type="com.example.ui.StockPagerView" />
 		<variable
