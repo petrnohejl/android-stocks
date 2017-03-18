@@ -172,7 +172,9 @@ task askForPasswords <<
 tasks.whenTaskAdded
 {
 	theTask ->
-		if(theTask.name.equals("packageRelease"))
+		// the name is "packageRelease" with no flavor
+		// in case of flavors, the names could vary, e.g. "packageDemoRelease", ...
+		if(theTask.name.startsWith("package") && theTask.name.endsWith("Release"))
 		{
 			theTask.dependsOn "askForPasswords"
 		}
