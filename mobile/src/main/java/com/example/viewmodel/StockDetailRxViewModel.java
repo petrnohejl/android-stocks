@@ -14,12 +14,11 @@ import com.example.rest.provider.StocksRxServiceProvider;
 import com.example.ui.StockDetailView;
 
 import org.alfonz.rest.rx.RestRxManager;
-import org.alfonz.rx.LoggedObserver;
+import org.alfonz.rx.AlfonzDisposableObserver;
 import org.alfonz.utility.NetworkUtility;
 import org.alfonz.view.StatefulLayout;
 
 import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 import retrofit2.Response;
 
@@ -93,8 +92,7 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 				// subscribe
 				Observable<Response<QuoteEntity>> rawObservable = StocksRxServiceProvider.getService().quote("json", symbol);
 				Observable<Response<QuoteEntity>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxServiceProvider.QUOTE_CALL_TYPE);
-				Disposable disposable = observable.subscribeWith(createQuoteObserver());
-				mRestRxManager.registerDisposable(disposable);
+				observable.subscribeWith(createQuoteObserver());
 			}
 		}
 		else
@@ -107,7 +105,7 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 
 	private DisposableObserver<Response<QuoteEntity>> createQuoteObserver()
 	{
-		return LoggedObserver.newInstance(
+		return AlfonzDisposableObserver.newInstance(
 				response ->
 				{
 					quote.set(response.body());

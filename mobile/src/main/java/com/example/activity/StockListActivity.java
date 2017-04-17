@@ -27,7 +27,7 @@ public class StockListActivity extends BaseActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stock_list);
-		setupActionBar(INDICATOR_TYPE_NONE);
+		setupActionBar(INDICATOR_NONE);
 	}
 
 

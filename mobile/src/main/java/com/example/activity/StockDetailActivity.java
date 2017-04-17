@@ -26,6 +26,6 @@ public class StockDetailActivity extends BaseActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stock_detail);
-		setupActionBar(INDICATOR_TYPE_BACK);
+		setupActionBar(INDICATOR_BACK);
 	}
 }

@@ -11,14 +11,13 @@ import com.example.rest.provider.StocksRxServiceProvider;
 import com.example.ui.StockListView;
 
 import org.alfonz.rest.rx.RestRxManager;
-import org.alfonz.rx.LoggedObserver;
+import org.alfonz.rx.AlfonzDisposableObserver;
 import org.alfonz.utility.NetworkUtility;
 import org.alfonz.view.StatefulLayout;
 
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 import retrofit2.Response;
 
@@ -110,8 +109,7 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 				// subscribe
 				Observable<Response<List<LookupEntity>>> rawObservable = StocksRxServiceProvider.getService().lookup("json", input);
 				Observable<Response<List<LookupEntity>>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxServiceProvider.LOOKUP_CALL_TYPE);
-				Disposable disposable = observable.subscribeWith(createLookupObserver());
-				mRestRxManager.registerDisposable(disposable);
+				observable.subscribeWith(createLookupObserver());
 			}
 		}
 		else
@@ -124,7 +122,7 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 
 	private DisposableObserver<Response<List<LookupEntity>>> createLookupObserver()
 	{
-		return LoggedObserver.newInstance(
+		return AlfonzDisposableObserver.newInstance(
 				response ->
 				{
 					lookups.clear();
