@@ -3,7 +3,6 @@ package com.example.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.View;
 
 import com.example.adapter.StockPagerAdapter;
 import com.example.databinding.FragmentStockPagerBinding;
@@ -28,14 +27,6 @@ public class StockPagerFragment extends BaseFragment<StockPagerView, StockPagerV
 	public FragmentStockPagerBinding inflateBindingLayout(LayoutInflater inflater)
 	{
 		return FragmentStockPagerBinding.inflate(inflater);
-	}
-
-
-	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState)
-	{
-		super.onViewCreated(view, savedInstanceState);
-		setModelView(this);
 	}
 
 

@@ -35,14 +35,6 @@ public class StockListSimpleFragment extends BaseFragment<StockListView, StockLi
 
 
 	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState)
-	{
-		super.onViewCreated(view, savedInstanceState);
-		setModelView(this);
-	}
-
-
-	@Override
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
