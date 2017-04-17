@@ -4,9 +4,9 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<data>
-		<import type="com.example.utility.BindingUtility.RecyclerLayout" />
-		<import type="com.example.utility.BindingUtility.RecyclerDecoration" />
-		<import type="com.example.utility.BindingUtility.RecyclerAnimator" />
+		<import type="org.alfonz.adapter.utility.BindingUtility.RecyclerLayout" />
+		<import type="org.alfonz.adapter.utility.BindingUtility.RecyclerDecoration" />
+		<import type="org.alfonz.adapter.utility.BindingUtility.RecyclerAnimator" />
 		<variable
 			name="view" type="com.example.ui.StockListView" />
 		<variable
