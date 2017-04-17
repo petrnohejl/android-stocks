@@ -13,12 +13,12 @@ import com.example.rest.provider.StocksRxServiceProvider;
 import com.example.ui.StockDetailView;
 
 import org.alfonz.rest.rx.RestRxManager;
-import org.alfonz.rx.AlfonzDisposableObserver;
+import org.alfonz.rx.AlfonzDisposableSingleObserver;
 import org.alfonz.utility.NetworkUtility;
 import org.alfonz.view.StatefulLayout;
 
-import io.reactivex.Observable;
-import io.reactivex.observers.DisposableObserver;
+import io.reactivex.Single;
+import io.reactivex.observers.DisposableSingleObserver;
 import retrofit2.Response;
 
 
@@ -89,9 +89,9 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 				state.set(StatefulLayout.State.PROGRESS);
 
 				// subscribe
-				Observable<Response<QuoteEntity>> rawObservable = StocksRxServiceProvider.getService().quote("json", symbol);
-				Observable<Response<QuoteEntity>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxServiceProvider.QUOTE_CALL_TYPE);
-				observable.subscribeWith(createQuoteObserver());
+				Single<Response<QuoteEntity>> rawSingle = StocksRxServiceProvider.getService().quote("json", symbol);
+				Single<Response<QuoteEntity>> single = mRestRxManager.setupRestSingleWithSchedulers(rawSingle, StocksRxServiceProvider.QUOTE_CALL_TYPE);
+				single.subscribeWith(createQuoteObserver());
 			}
 		}
 		else
@@ -102,20 +102,17 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	}
 
 
-	private DisposableObserver<Response<QuoteEntity>> createQuoteObserver()
+	private DisposableSingleObserver<Response<QuoteEntity>> createQuoteObserver()
 	{
-		return AlfonzDisposableObserver.newInstance(
+		return AlfonzDisposableSingleObserver.newInstance(
 				response ->
 				{
 					quote.set(response.body());
+					setState(quote);
 				},
 				throwable ->
 				{
 					handleError(mRestRxManager.getHttpErrorMessage(throwable));
-					setState(quote);
-				},
-				() ->
-				{
 					setState(quote);
 				}
 		);

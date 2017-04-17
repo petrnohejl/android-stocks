@@ -6,7 +6,7 @@ import com.example.rest.RetrofitClient;
 
 import java.util.List;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
 import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -24,10 +24,10 @@ public class StocksRxServiceProvider
 	public interface StocksService
 	{
 		@GET("Quote/{format}")
-		Observable<Response<QuoteEntity>> quote(@Path("format") String format, @Query("symbol") String symbol);
+		Single<Response<QuoteEntity>> quote(@Path("format") String format, @Query("symbol") String symbol);
 
 		@GET("Lookup/{format}")
-		Observable<Response<List<LookupEntity>>> lookup(@Path("format") String format, @Query("input") String input);
+		Single<Response<List<LookupEntity>>> lookup(@Path("format") String format, @Query("input") String input);
 	}
 
 

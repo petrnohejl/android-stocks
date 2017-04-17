@@ -10,14 +10,14 @@ import com.example.rest.provider.StocksRxServiceProvider;
 import com.example.ui.StockPagerView;
 
 import org.alfonz.rest.rx.RestRxManager;
-import org.alfonz.rx.AlfonzDisposableObserver;
+import org.alfonz.rx.AlfonzDisposableSingleObserver;
 import org.alfonz.utility.NetworkUtility;
 import org.alfonz.view.StatefulLayout;
 
 import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.observers.DisposableObserver;
+import io.reactivex.Single;
+import io.reactivex.observers.DisposableSingleObserver;
 import retrofit2.Response;
 
 
@@ -65,9 +65,9 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 				state.set(StatefulLayout.State.PROGRESS);
 
 				// subscribe
-				Observable<Response<List<LookupEntity>>> rawObservable = StocksRxServiceProvider.getService().lookup("json", input);
-				Observable<Response<List<LookupEntity>>> observable = mRestRxManager.setupRestObservableWithSchedulers(rawObservable, StocksRxServiceProvider.LOOKUP_CALL_TYPE);
-				observable.subscribeWith(createLookupObserver());
+				Single<Response<List<LookupEntity>>> rawSingle = StocksRxServiceProvider.getService().lookup("json", input);
+				Single<Response<List<LookupEntity>>> single = mRestRxManager.setupRestSingleWithSchedulers(rawSingle, StocksRxServiceProvider.LOOKUP_CALL_TYPE);
+				single.subscribeWith(createLookupObserver());
 			}
 		}
 		else
@@ -78,9 +78,9 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 	}
 
 
-	private DisposableObserver<Response<List<LookupEntity>>> createLookupObserver()
+	private DisposableSingleObserver<Response<List<LookupEntity>>> createLookupObserver()
 	{
-		return AlfonzDisposableObserver.newInstance(
+		return AlfonzDisposableSingleObserver.newInstance(
 				response ->
 				{
 					lookups.clear();
@@ -88,14 +88,11 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 					{
 						lookups.add(new StockPagerItemViewModel(e));
 					}
+					setState(lookups);
 				},
 				throwable ->
 				{
 					handleError(mRestRxManager.getHttpErrorMessage(throwable));
-					setState(lookups);
-				},
-				() ->
-				{
 					setState(lookups);
 				}
 		);
