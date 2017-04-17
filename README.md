@@ -11,9 +11,15 @@ Main goals of this project
 * Follow OOP principles, SOLID principles, DRY
 * Avoid God classes (no way to have a class with 500+ lines)
 
+MVVM architecture
+-----------------
+
+This project is based on MVVM architecture and uses [Alfonz](https://github.com/petrnohejl/Alfonz) library. [Alfonz MVVM module](https://github.com/petrnohejl/Alfonz/tree/master/alfonz-mvvm) is basically a wrapper for [AndroidViewModel](https://github.com/inloop/AndroidViewModel) library. It provides some additional features and convenient methods. If you are interested in MVVM architecture, you can check my talk about MVVM which I presented at STRV Android Meetup. See the [video record](https://www.youtube.com/watch?v=vnBmdKkMLZw) or [slides](https://speakerdeck.com/petrnohejl/mvvm-architecture-on-android) for more info. Alfonz MVVM module uses the same approach which I describe in the presentation.
+
 This project uses
 -----------------
 
+* [Alfonz](https://github.com/petrnohejl/Alfonz)
 * MVVM architecture
 * Data binding
 * Binding adapters
@@ -27,13 +33,6 @@ This project uses
 * Glide
 * LeakCanary
 
-This app also uses [Alfonz](https://github.com/petrnohejl/Alfonz) - multi purpose library which I have developed to make a development process easier and avoid boilerplate code.
-
-MVVM architecture
------------------
-
-Project is based on MVVM architecture and uses [AndroidViewModel](https://github.com/inloop/AndroidViewModel) library. I had a talk about my MVVM approach at STRV Android Meetup. You can check a [video record](https://www.youtube.com/watch?v=vnBmdKkMLZw) or [slides](https://speakerdeck.com/petrnohejl/mvvm-architecture-on-android) for more info.
-
 TODO
 ----
 
@@ -45,6 +44,8 @@ TODO
 
 REST API
 --------
+
+Documentation:
 
 * [http://dev.markitondemand.com/MODApis/](http://dev.markitondemand.com/MODApis/)
 
