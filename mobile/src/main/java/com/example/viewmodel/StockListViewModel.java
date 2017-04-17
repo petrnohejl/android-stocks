@@ -100,14 +100,15 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 	{
 		if(NetworkUtility.isOnline(getApplicationContext()))
 		{
-			if(!mRestRxManager.isRunning(StocksRxServiceProvider.LOOKUP_CALL_TYPE))
+			String callType = StocksRxServiceProvider.LOOKUP_CALL_TYPE;
+			if(!mRestRxManager.isRunning(callType))
 			{
 				// show progress
 				state.set(StatefulLayout.State.PROGRESS);
 
 				// subscribe
 				Single<Response<List<LookupEntity>>> rawSingle = StocksRxServiceProvider.getService().lookup("json", input);
-				Single<Response<List<LookupEntity>>> single = mRestRxManager.setupRestSingleWithSchedulers(rawSingle, StocksRxServiceProvider.LOOKUP_CALL_TYPE);
+				Single<Response<List<LookupEntity>>> single = mRestRxManager.setupRestSingleWithSchedulers(rawSingle, callType);
 				single.subscribeWith(createLookupObserver());
 			}
 		}

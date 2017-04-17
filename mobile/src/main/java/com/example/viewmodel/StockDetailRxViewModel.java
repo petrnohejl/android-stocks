@@ -83,14 +83,15 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	{
 		if(NetworkUtility.isOnline(getApplicationContext()))
 		{
-			if(!mRestRxManager.isRunning(StocksRxServiceProvider.QUOTE_CALL_TYPE))
+			String callType = StocksRxServiceProvider.QUOTE_CALL_TYPE;
+			if(!mRestRxManager.isRunning(callType))
 			{
 				// show progress
 				state.set(StatefulLayout.State.PROGRESS);
 
 				// subscribe
 				Single<Response<QuoteEntity>> rawSingle = StocksRxServiceProvider.getService().quote("json", symbol);
-				Single<Response<QuoteEntity>> single = mRestRxManager.setupRestSingleWithSchedulers(rawSingle, StocksRxServiceProvider.QUOTE_CALL_TYPE);
+				Single<Response<QuoteEntity>> single = mRestRxManager.setupRestSingleWithSchedulers(rawSingle, callType);
 				single.subscribeWith(createQuoteObserver());
 			}
 		}
