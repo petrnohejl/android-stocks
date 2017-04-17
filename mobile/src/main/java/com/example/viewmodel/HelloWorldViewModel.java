@@ -3,7 +3,6 @@ package com.example.viewmodel;
 import android.databinding.ObservableField;
 import android.os.AsyncTask;
 
-import com.example.StocksApplication;
 import com.example.entity.QuoteEntity;
 import com.example.task.LoadDataTask;
 import com.example.ui.HelloWorldView;
@@ -70,7 +69,7 @@ public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implement
 
 	private void loadData()
 	{
-		if(NetworkUtility.isOnline(StocksApplication.getContext()))
+		if(NetworkUtility.isOnline(getApplicationContext()))
 		{
 			// show progress
 			state.set(StatefulLayout.State.PROGRESS);

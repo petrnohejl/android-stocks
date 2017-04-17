@@ -3,7 +3,6 @@ package com.example.viewmodel;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
 
-import com.example.StocksApplication;
 import com.example.entity.LookupEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
@@ -58,7 +57,7 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 
 	private void sendLookup(String input)
 	{
-		if(NetworkUtility.isOnline(StocksApplication.getContext()))
+		if(NetworkUtility.isOnline(getApplicationContext()))
 		{
 			if(!mRestRxManager.isRunning(StocksRxServiceProvider.LOOKUP_CALL_TYPE))
 			{

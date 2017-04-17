@@ -1,9 +1,11 @@
 package com.example.viewmodel;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.example.StocksApplication;
 import com.example.ui.BaseView;
 
 import org.alfonz.mvvm.AlfonzViewModel;
@@ -66,5 +68,11 @@ public abstract class BaseViewModel<T extends BaseView> extends AlfonzViewModel<
 		{
 			getView().showToast(message);
 		}
+	}
+
+
+	public Context getApplicationContext()
+	{
+		return StocksApplication.getContext();
 	}
 }
