@@ -13,7 +13,7 @@ import org.alfonz.view.StatefulLayout;
 
 public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implements LoadDataTask.OnLoadDataListener
 {
-	public final ObservableField<StatefulLayout.State> state = new ObservableField<>();
+	public final ObservableField<Integer> state = new ObservableField<>();
 	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
 
 	private LoadDataTask mLoadDataTask;
@@ -50,11 +50,11 @@ public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implement
 		// show content
 		if(quote.get() != null)
 		{
-			state.set(StatefulLayout.State.CONTENT);
+			state.set(StatefulLayout.CONTENT);
 		}
 		else
 		{
-			state.set(StatefulLayout.State.EMPTY);
+			state.set(StatefulLayout.EMPTY);
 		}
 	}
 
@@ -72,7 +72,7 @@ public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implement
 		if(NetworkUtility.isOnline(getApplicationContext()))
 		{
 			// show progress
-			state.set(StatefulLayout.State.PROGRESS);
+			state.set(StatefulLayout.PROGRESS);
 
 			// run async task
 			mLoadDataTask = new LoadDataTask(this);
@@ -80,7 +80,7 @@ public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implement
 		}
 		else
 		{
-			state.set(StatefulLayout.State.OFFLINE);
+			state.set(StatefulLayout.OFFLINE);
 		}
 	}
 }

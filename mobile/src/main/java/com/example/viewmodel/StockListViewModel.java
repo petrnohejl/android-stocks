@@ -23,7 +23,7 @@ import retrofit2.Response;
 
 public class StockListViewModel extends BaseViewModel<StockListView>
 {
-	public final ObservableField<StatefulLayout.State> state = new ObservableField<>();
+	public final ObservableField<Integer> state = new ObservableField<>();
 	public final ObservableArrayList<String> headers = new ObservableArrayList<>();
 	public final ObservableArrayList<LookupEntity> lookups = new ObservableArrayList<>();
 	public final ObservableArrayList<Object> footers = new ObservableArrayList<>();
@@ -104,7 +104,7 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 			if(!mRestRxManager.isRunning(callType))
 			{
 				// show progress
-				state.set(StatefulLayout.State.PROGRESS);
+				state.set(StatefulLayout.PROGRESS);
 
 				// subscribe
 				Single<Response<List<LookupEntity>>> rawSingle = StocksRxServiceProvider.getService().lookup("json", input);
@@ -115,7 +115,7 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 		else
 		{
 			// show offline
-			state.set(StatefulLayout.State.OFFLINE);
+			state.set(StatefulLayout.OFFLINE);
 		}
 	}
 
@@ -151,11 +151,11 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 	{
 		if(!data.isEmpty())
 		{
-			state.set(StatefulLayout.State.CONTENT);
+			state.set(StatefulLayout.CONTENT);
 		}
 		else
 		{
-			state.set(StatefulLayout.State.EMPTY);
+			state.set(StatefulLayout.EMPTY);
 		}
 	}
 }

@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 {
-	public final ObservableField<StatefulLayout.State> state = new ObservableField<>();
+	public final ObservableField<Integer> state = new ObservableField<>();
 	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
 
 	private String mSymbol;
@@ -87,7 +87,7 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 			if(!mRestRxManager.isRunning(callType))
 			{
 				// show progress
-				state.set(StatefulLayout.State.PROGRESS);
+				state.set(StatefulLayout.PROGRESS);
 
 				// subscribe
 				Single<Response<QuoteEntity>> rawSingle = StocksRxServiceProvider.getService().quote("json", symbol);
@@ -98,7 +98,7 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 		else
 		{
 			// show offline
-			state.set(StatefulLayout.State.OFFLINE);
+			state.set(StatefulLayout.OFFLINE);
 		}
 	}
 
@@ -124,11 +124,11 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	{
 		if(data.get() != null)
 		{
-			state.set(StatefulLayout.State.CONTENT);
+			state.set(StatefulLayout.CONTENT);
 		}
 		else
 		{
-			state.set(StatefulLayout.State.EMPTY);
+			state.set(StatefulLayout.EMPTY);
 		}
 	}
 

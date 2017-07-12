@@ -23,7 +23,7 @@ import retrofit2.Response;
 
 public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 {
-	public final ObservableField<StatefulLayout.State> state = new ObservableField<>();
+	public final ObservableField<Integer> state = new ObservableField<>();
 	public final ObservableArrayList<StockPagerItemViewModel> lookups = new ObservableArrayList<>();
 
 	private RestRxManager mRestRxManager = new RestRxManager(new RestResponseHandler(), new RestHttpLogger());
@@ -63,7 +63,7 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 			if(!mRestRxManager.isRunning(callType))
 			{
 				// show progress
-				state.set(StatefulLayout.State.PROGRESS);
+				state.set(StatefulLayout.PROGRESS);
 
 				// subscribe
 				Single<Response<List<LookupEntity>>> rawSingle = StocksRxServiceProvider.getService().lookup("json", input);
@@ -74,7 +74,7 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 		else
 		{
 			// show offline
-			state.set(StatefulLayout.State.OFFLINE);
+			state.set(StatefulLayout.OFFLINE);
 		}
 	}
 
@@ -104,11 +104,11 @@ public class StockPagerViewModel extends BaseViewModel<StockPagerView>
 	{
 		if(!data.isEmpty())
 		{
-			state.set(StatefulLayout.State.CONTENT);
+			state.set(StatefulLayout.CONTENT);
 		}
 		else
 		{
-			state.set(StatefulLayout.State.EMPTY);
+			state.set(StatefulLayout.EMPTY);
 		}
 	}
 }
