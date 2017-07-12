@@ -40,10 +40,13 @@ public class StocksApplication extends Application
 	{
 		super.onCreate();
 
-		// init logcat
-		Logcat.init(StocksConfig.LOGS, "STOCKS");
+		// this process is dedicated to leak canary for heap analysis
+		if(LeakCanary.isInAnalyzerProcess(this)) return;
 
 		// init leak canary
 		mRefWatcher = LeakCanary.install(this);
+
+		// init logcat
+		Logcat.init(StocksConfig.LOGS, "STOCKS");
 	}
 }
