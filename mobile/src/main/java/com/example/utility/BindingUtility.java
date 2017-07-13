@@ -31,7 +31,7 @@ public final class BindingUtility
 
 
 	@BindingAdapter(value = {"imageUrl", "imageCircular", "imagePlaceholder", "imageError"}, requireAll = false)
-	public static void loadImage(ImageView imageView, String url, boolean circular, Drawable placeholder, Drawable error)
+	public static void setImageUrl(ImageView imageView, String url, boolean circular, Drawable placeholder, Drawable error)
 	{
 		RequestManager requestManager = Glide.with(imageView.getContext());
 		if(!circular)

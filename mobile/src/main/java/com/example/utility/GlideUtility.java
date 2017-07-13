@@ -27,18 +27,33 @@ public final class GlideUtility
 	{
 		builder.diskCacheStrategy(DiskCacheStrategy.RESULT);
 
-		if(builder instanceof DrawableRequestBuilder) ((DrawableRequestBuilder) builder).crossFade();
+		if(builder instanceof DrawableRequestBuilder)
+		{
+			((DrawableRequestBuilder) builder).crossFade();
+		}
 
-		if(StocksConfig.LOGS) builder.listener(createLogRequestListener());
+		if(StocksConfig.LOGS)
+		{
+			builder.listener(createLogRequestListener());
+		}
 
-		if(placeholder != null) builder.placeholder(placeholder);
+		if(placeholder != null)
+		{
+			builder.placeholder(placeholder);
+		}
 
-		if(error != null) builder.error(error);
-		else builder.error(R.drawable.placeholder);
+		if(error != null)
+		{
+			builder.error(error);
+		}
+		else
+		{
+			builder.error(R.drawable.placeholder);
+		}
 	}
 
 
-	public static Target createCircularTarget(ImageView imageView)
+	public static Target createCircularTarget(final ImageView imageView)
 	{
 		return new BitmapImageViewTarget(imageView)
 		{
@@ -57,10 +72,10 @@ public final class GlideUtility
 		return new RequestListener<String, GlideDrawable>()
 		{
 			@Override
-			public boolean onException(Exception e, String model, Target target, boolean isFirstResource)
+			public boolean onException(Exception exception, String model, Target target, boolean isFirstResource)
 			{
-				Logcat.d("%s / %s / isFirstResource=%s", e, model, isFirstResource);
-				e.printStackTrace();
+				Logcat.d("%s / %s / isFirstResource=%s", exception, model, isFirstResource);
+				exception.printStackTrace();
 				return false;
 			}
 
