@@ -75,7 +75,7 @@ public final class GlideUtility
 			public boolean onException(Exception exception, String model, Target target, boolean isFirstResource)
 			{
 				Logcat.d("%s / %s / isFirstResource=%s", exception, model, isFirstResource);
-				exception.printStackTrace();
+				if(exception != null) exception.printStackTrace();
 				return false;
 			}
 

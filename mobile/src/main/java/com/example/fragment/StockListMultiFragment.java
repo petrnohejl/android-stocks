@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.example.activity.StockDetailActivity;
 import com.example.adapter.StockListMultiAdapter;
+import com.example.architecture.StockDetailArchActivity;
 import com.example.databinding.FragmentStockListBinding;
 import com.example.entity.LookupEntity;
 import com.example.ui.StockListView;
@@ -84,7 +84,8 @@ public class StockListMultiFragment extends BaseFragment<StockListView, StockLis
 
 	private void startStockDetailActivity(String symbol)
 	{
-		Intent intent = StockDetailActivity.newIntent(getActivity(), symbol);
+//		Intent intent = StockDetailActivity.newIntent(getActivity(), symbol);
+		Intent intent = StockDetailArchActivity.newIntent(getActivity(), symbol);
 		getActivity().startActivity(intent);
 	}
 }

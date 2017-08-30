@@ -47,5 +47,12 @@
 			android:parentActivityName=".activity.StockListActivity">
 		</activity>
 
+		<activity
+			android:name=".architecture.StockDetailArchActivity"
+			android:label="@string/title_stock_detail"
+			android:launchMode="standard"
+			android:parentActivityName=".activity.StockListActivity">
+		</activity>
+
 	</application>
 </manifest>
