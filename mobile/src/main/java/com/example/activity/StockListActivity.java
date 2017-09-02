@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import com.example.R;
 import com.example.dialog.AboutDialogFragment;
 
+import org.alfonz.mvvm.widget.ToolbarIndicator;
+
 
 public class StockListActivity extends BaseActivity
 {
@@ -27,7 +29,7 @@ public class StockListActivity extends BaseActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stock_list);
-		setupActionBar(INDICATOR_NONE);
+		setupActionBar(ToolbarIndicator.NONE);
 	}
 
 

@@ -1,14 +1,13 @@
 package com.example.adapter;
 
 import com.example.R;
-import com.example.databinding.FragmentStockListItemClickableBinding;
 import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 import org.alfonz.adapter.SimpleDataBoundRecyclerAdapter;
 
 
-public class StockListSimpleAdapter extends SimpleDataBoundRecyclerAdapter<FragmentStockListItemClickableBinding>
+public class StockListSimpleAdapter extends SimpleDataBoundRecyclerAdapter
 {
 	public StockListSimpleAdapter(StockListView view, StockListViewModel viewModel)
 	{

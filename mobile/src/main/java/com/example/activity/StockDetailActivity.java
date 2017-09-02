@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import com.example.R;
 
+import org.alfonz.mvvm.widget.ToolbarIndicator;
+
 
 public class StockDetailActivity extends BaseActivity
 {
@@ -26,6 +28,6 @@ public class StockDetailActivity extends BaseActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_stock_detail);
-		setupActionBar(INDICATOR_BACK);
+		setupActionBar(ToolbarIndicator.BACK);
 	}
 }

@@ -1,6 +1,7 @@
 package com.example.rest;
 
 import android.net.ParseException;
+import android.support.annotation.NonNull;
 
 import com.example.R;
 import com.example.StocksApplication;
@@ -23,7 +24,7 @@ import retrofit2.Response;
 public class RestResponseHandler implements ResponseHandler
 {
 	@Override
-	public boolean isSuccess(Response<?> response)
+	public boolean isSuccess(@NonNull Response<?> response)
 	{
 //		return response.isSuccessful();
 
@@ -44,7 +45,7 @@ public class RestResponseHandler implements ResponseHandler
 
 
 	@Override
-	public String getErrorMessage(HttpException exception)
+	public String getErrorMessage(@NonNull HttpException exception)
 	{
 //		ErrorEntity error = exception.error();
 //		return error.getMessage();
@@ -66,7 +67,7 @@ public class RestResponseHandler implements ResponseHandler
 
 
 	@Override
-	public String getFailMessage(Throwable throwable)
+	public String getFailMessage(@NonNull Throwable throwable)
 	{
 		int resId;
 
@@ -94,7 +95,7 @@ public class RestResponseHandler implements ResponseHandler
 
 
 	@Override
-	public HttpException createHttpException(Response<?> response)
+	public HttpException createHttpException(@NonNull Response<?> response)
 	{
 		return new RestHttpException(response);
 	}

@@ -1,5 +1,6 @@
 package com.example.fragment;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 
@@ -19,7 +20,7 @@ public class HelloWorldFragment extends BaseFragment<HelloWorldView, HelloWorldV
 
 
 	@Override
-	public FragmentHelloWorldBinding inflateBindingLayout(LayoutInflater inflater)
+	public FragmentHelloWorldBinding inflateBindingLayout(@NonNull LayoutInflater inflater)
 	{
 		return FragmentHelloWorldBinding.inflate(inflater);
 	}

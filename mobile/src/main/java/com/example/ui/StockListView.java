@@ -4,8 +4,10 @@ import android.view.View;
 
 import com.example.entity.LookupEntity;
 
+import org.alfonz.adapter.AdapterView;
 
-public interface StockListView extends BaseView
+
+public interface StockListView extends BaseView, AdapterView
 {
 	void onItemClick(View view, int position, long id, int viewType); // used by custom adapter
 	void onItemLongClick(View view, int position, long id, int viewType); // used by custom adapter
