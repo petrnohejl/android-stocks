@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import com.example.R;
 
+import org.alfonz.mvvm.widget.ToolbarIndicator;
+
 
 public class HelloWorldActivity extends BaseActivity
 {
@@ -22,6 +24,6 @@ public class HelloWorldActivity extends BaseActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hello_world);
-		setupActionBar(INDICATOR_BACK);
+		setupActionBar(ToolbarIndicator.BACK);
 	}
 }

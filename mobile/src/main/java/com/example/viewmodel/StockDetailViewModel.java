@@ -134,7 +134,7 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 
 
 		@Override
-		public void onSuccess(Call<QuoteEntity> call, Response<QuoteEntity> response)
+		public void onSuccess(@NonNull Call<QuoteEntity> call, @NonNull Response<QuoteEntity> response)
 		{
 			quote.set(response.body());
 			setState(quote);
@@ -142,7 +142,7 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 
 
 		@Override
-		public void onError(Call<QuoteEntity> call, HttpException exception)
+		public void onError(@NonNull Call<QuoteEntity> call, @NonNull HttpException exception)
 		{
 			handleError(mCallManager.getHttpErrorMessage(exception));
 			setState(quote);
@@ -150,7 +150,7 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 
 
 		@Override
-		public void onFail(Call<QuoteEntity> call, Throwable throwable)
+		public void onFail(@NonNull Call<QuoteEntity> call, @NonNull Throwable throwable)
 		{
 			handleError(mCallManager.getHttpErrorMessage(throwable));
 			setState(quote);

@@ -2,6 +2,7 @@ package com.example.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ public class StockListSimpleFragment extends BaseFragment<StockListView, StockLi
 
 
 	@Override
-	public FragmentStockListBinding inflateBindingLayout(LayoutInflater inflater)
+	public FragmentStockListBinding inflateBindingLayout(@NonNull LayoutInflater inflater)
 	{
 		return FragmentStockListBinding.inflate(inflater);
 	}

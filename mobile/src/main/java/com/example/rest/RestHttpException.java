@@ -1,5 +1,7 @@
 package com.example.rest;
 
+import android.support.annotation.NonNull;
+
 import com.example.entity.ErrorEntity;
 
 import org.alfonz.rest.HttpException;
@@ -21,7 +23,7 @@ public class RestHttpException extends HttpException
 
 
 	@Override
-	public Object parseError(Response<?> response)
+	public Object parseError(@NonNull Response<?> response)
 	{
 		try
 		{

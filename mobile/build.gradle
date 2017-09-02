@@ -18,13 +18,13 @@ apply from: "../utils.gradle"
 
 
 android {
-	compileSdkVersion 25
-	buildToolsVersion "25.0.3"
+	compileSdkVersion 26
+	buildToolsVersion "26.0.1"
 
 	defaultConfig {
 		applicationId "com.example.stocks"
 		minSdkVersion 16
-		targetSdkVersion 25
+		targetSdkVersion 26
 		versionCode getVersionCode(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_BUILD)
 		versionName getVersionName(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH)
 		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -80,14 +80,14 @@ android {
 
 dependencies {
 	compile fileTree(dir: "libs", include: ["*.jar"])
-	compile "com.android.support:support-compat:25.4.0"
-	compile "com.android.support:support-core-utils:25.4.0"
-	compile "com.android.support:support-core-ui:25.4.0"
-	compile "com.android.support:support-fragment:25.4.0"
-	compile "com.android.support:appcompat-v7:25.4.0"
-	compile "com.android.support:recyclerview-v7:25.4.0"
-	compile "com.android.support:support-annotations:25.4.0"
-	compile "com.android.support:design:25.4.0"
+	compile "com.android.support:support-compat:26.0.2"
+	compile "com.android.support:support-core-utils:26.0.2"
+	compile "com.android.support:support-core-ui:26.0.2"
+	compile "com.android.support:support-fragment:26.0.2"
+	compile "com.android.support:appcompat-v7:26.0.2"
+	compile "com.android.support:recyclerview-v7:26.0.2"
+	compile "com.android.support:support-annotations:26.0.2"
+	compile "com.android.support:design:26.0.2"
 	compile "com.android.support.constraint:constraint-layout:1.0.2"
 	compile "com.github.bumptech.glide:glide:3.8.0"
 	compile "com.github.bumptech.glide:okhttp3-integration:1.5.0@aar"
@@ -97,19 +97,19 @@ dependencies {
 	compile "com.squareup.retrofit2:retrofit:2.3.0"
 	compile "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
 	compile "com.squareup.retrofit2:converter-gson:2.3.0"
-	compile "eu.inloop:androidviewmodel:1.3.1"
+	compile "eu.inloop:androidviewmodel:1.3.3"
 	compile "io.reactivex.rxjava2:rxandroid:2.0.1"
-	compile "io.reactivex.rxjava2:rxjava:2.1.1"
-	compile "org.alfonz:alfonz-adapter:0.6.0"
-	compile "org.alfonz:alfonz-graphics:0.6.0"
-	compile "org.alfonz:alfonz-mvvm:0.6.0"
-	compile "org.alfonz:alfonz-rest:0.6.0"
-	compile "org.alfonz:alfonz-rx:0.6.0"
-	compile "org.alfonz:alfonz-utility:0.6.0"
-	compile "org.alfonz:alfonz-view:0.6.0"
+	compile "io.reactivex.rxjava2:rxjava:2.1.3"
+	compile "org.alfonz:alfonz-adapter:0.7.0"
+	compile "org.alfonz:alfonz-graphics:0.7.0"
+	compile "org.alfonz:alfonz-mvvm:0.7.0"
+	compile "org.alfonz:alfonz-rest:0.7.0"
+	compile "org.alfonz:alfonz-rx:0.7.0"
+	compile "org.alfonz:alfonz-utility:0.7.0"
+	compile "org.alfonz:alfonz-view:0.7.0"
 	debugCompile "com.squareup.leakcanary:leakcanary-android:1.5.1"
 	releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:1.5.1"
 	testCompile "com.squareup.leakcanary:leakcanary-android-no-op:1.5.1"
 	testCompile "junit:junit:4.12"
-	testCompile "org.mockito:mockito-core:2.8.9"
+	testCompile "org.mockito:mockito-core:2.9.0"
 }
