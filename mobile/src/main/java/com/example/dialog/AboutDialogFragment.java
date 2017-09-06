@@ -1,14 +1,14 @@
 package com.example.dialog;
 
 import android.app.Dialog;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
 import com.example.R;
 import com.example.databinding.DialogAboutBinding;
+
+import org.alfonz.utility.VersionUtility;
 
 
 public class AboutDialogFragment extends DialogFragment
@@ -55,21 +55,7 @@ public class AboutDialogFragment extends DialogFragment
 
 	private String getMessage()
 	{
-		return String.format("%s %s", getString(R.string.app_name), getVersion());
-	}
-
-
-	private String getVersion()
-	{
-		try
-		{
-			PackageInfo packageInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
-			return packageInfo.versionName;
-		}
-		catch(PackageManager.NameNotFoundException e)
-		{
-			e.printStackTrace();
-			return null;
-		}
+		String version = VersionUtility.getVersionName(getActivity());
+		return String.format("%s %s", getString(R.string.app_name), version);
 	}
 }
