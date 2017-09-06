@@ -3,7 +3,7 @@ package com.example.fragment;
 import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.support.annotation.StringRes;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +11,15 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.StocksApplication;
-import com.example.ui.BaseView;
+import com.example.event.SnackbarEvent;
+import com.example.event.ToastEvent;
 import com.example.viewmodel.BaseViewModel;
 
-import org.alfonz.mvvm.AlfonzBindingFragment;
+import org.alfonz.arch.AlfonzBindingFragment;
 import org.alfonz.utility.Logcat;
 
 
-public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T>, B extends ViewDataBinding> extends AlfonzBindingFragment<T, R, B> implements BaseView
+public abstract class BaseFragment<T extends BaseViewModel, B extends ViewDataBinding> extends AlfonzBindingFragment<T, B>
 {
 	@Override
 	public void onAttach(Context context)
@@ -34,11 +35,12 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 		Logcat.v("");
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
+		setupObservers();
 	}
 
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		Logcat.v("");
 		return super.onCreateView(inflater, container, savedInstanceState);
@@ -121,36 +123,24 @@ public abstract class BaseFragment<T extends BaseView, R extends BaseViewModel<T
 	}
 
 
-	@Override
-	public void showToast(@StringRes int stringRes)
-	{
-		Toast.makeText(getActivity(), stringRes, Toast.LENGTH_LONG).show();
-	}
-
-
-	@Override
 	public void showToast(String message)
 	{
 		Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
 	}
 
 
-	@Override
-	public void showSnackbar(@StringRes int stringRes)
-	{
-		if(getView() != null)
-		{
-			Snackbar.make(getView(), stringRes, Snackbar.LENGTH_LONG).show();
-		}
-	}
-
-
-	@Override
 	public void showSnackbar(String message)
 	{
 		if(getView() != null)
 		{
 			Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).show();
 		}
+	}
+
+
+	private void setupObservers()
+	{
+		getViewModel().observeEvent(this, ToastEvent.class, toastEvent -> showToast(toastEvent.message));
+		getViewModel().observeEvent(this, SnackbarEvent.class, snackbarEvent -> showSnackbar(snackbarEvent.message));
 	}
 }

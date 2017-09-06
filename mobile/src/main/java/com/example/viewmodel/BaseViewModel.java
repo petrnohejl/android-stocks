@@ -1,78 +1,32 @@
 package com.example.viewmodel;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.example.StocksApplication;
-import com.example.ui.BaseView;
+import com.example.event.ToastEvent;
 
-import org.alfonz.mvvm.AlfonzViewModel;
+import org.alfonz.arch.AlfonzViewModel;
 import org.alfonz.utility.Logcat;
 
 
-public abstract class BaseViewModel<T extends BaseView> extends AlfonzViewModel<T>
+public abstract class BaseViewModel extends AlfonzViewModel
 {
 	@Override
-	public void onCreate(@Nullable Bundle arguments, @Nullable Bundle savedInstanceState)
+	public void onCleared()
 	{
 		Logcat.v("");
-		super.onCreate(arguments, savedInstanceState);
-	}
-
-
-	@Override
-	public void onBindView(@NonNull T view)
-	{
-		Logcat.v("");
-		super.onBindView(view);
-	}
-
-
-	@Override
-	public void onStart()
-	{
-		Logcat.v("");
-		super.onStart();
-	}
-
-
-	@Override
-	public void onSaveInstanceState(@NonNull Bundle bundle)
-	{
-		Logcat.v("");
-		super.onSaveInstanceState(bundle);
-	}
-
-
-	@Override
-	public void onStop()
-	{
-		Logcat.v("");
-		super.onStop();
-	}
-
-
-	@Override
-	public void onDestroy()
-	{
-		Logcat.v("");
-		super.onDestroy();
-	}
-
-
-	public void handleError(String message)
-	{
-		if(getView() != null)
-		{
-			getView().showToast(message);
-		}
+		super.onCleared();
 	}
 
 
 	public Context getApplicationContext()
 	{
 		return StocksApplication.getContext();
+	}
+
+
+	public void handleError(String message)
+	{
+		sendEvent(new ToastEvent(message));
 	}
 }

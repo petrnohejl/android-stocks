@@ -1,9 +1,9 @@
 package com.example.fragment;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -15,16 +15,17 @@ import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 
-public class StockListMultiFragment extends BaseFragment<StockListView, StockListViewModel, FragmentStockListBinding> implements StockListView
+public class StockListMultiFragment extends BaseFragment<StockListViewModel, FragmentStockListBinding> implements StockListView
 {
 	private StockListMultiAdapter mAdapter;
 
 
-	@Nullable
 	@Override
-	public Class<StockListViewModel> getViewModelClass()
+	public StockListViewModel setupViewModel()
 	{
-		return StockListViewModel.class;
+		StockListViewModel viewModel = ViewModelProviders.of(this).get(StockListViewModel.class);
+		getLifecycle().addObserver(viewModel);
+		return viewModel;
 	}
 
 

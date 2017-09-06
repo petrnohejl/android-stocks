@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.R;
 
-import org.alfonz.mvvm.widget.ToolbarIndicator;
+import org.alfonz.arch.widget.ToolbarIndicator;
 
 
 public class StockPagerActivity extends BaseActivity

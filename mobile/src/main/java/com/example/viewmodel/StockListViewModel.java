@@ -1,5 +1,8 @@
 package com.example.viewmodel;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
 
@@ -7,7 +10,6 @@ import com.example.entity.LookupEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
 import com.example.rest.provider.StocksRxServiceProvider;
-import com.example.ui.StockListView;
 
 import org.alfonz.rest.rx.RestRxManager;
 import org.alfonz.rx.AlfonzDisposableSingleObserver;
@@ -21,7 +23,7 @@ import io.reactivex.observers.DisposableSingleObserver;
 import retrofit2.Response;
 
 
-public class StockListViewModel extends BaseViewModel<StockListView>
+public class StockListViewModel extends BaseViewModel implements LifecycleObserver
 {
 	public final ObservableField<Integer> state = new ObservableField<>();
 	public final ObservableArrayList<String> headers = new ObservableArrayList<>();
@@ -31,20 +33,18 @@ public class StockListViewModel extends BaseViewModel<StockListView>
 	private RestRxManager mRestRxManager = new RestRxManager(new RestResponseHandler(), new RestHttpLogger());
 
 
-	@Override
+	@OnLifecycleEvent(Lifecycle.Event.ON_START)
 	public void onStart()
 	{
-		super.onStart();
-
 		// load data
 		if(lookups.isEmpty()) loadData();
 	}
 
 
 	@Override
-	public void onDestroy()
+	public void onCleared()
 	{
-		super.onDestroy();
+		super.onCleared();
 
 		// unsubscribe
 		mRestRxManager.disposeAll();

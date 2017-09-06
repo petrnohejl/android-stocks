@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import com.example.R;
 import com.example.dialog.AboutDialogFragment;
 
-import org.alfonz.mvvm.widget.ToolbarIndicator;
+import org.alfonz.arch.widget.ToolbarIndicator;
 
 
 public class StockListActivity extends BaseActivity

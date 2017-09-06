@@ -2,7 +2,7 @@ package com.example.activity;
 
 import android.os.Bundle;
 
-import org.alfonz.mvvm.AlfonzActivity;
+import org.alfonz.arch.AlfonzActivity;
 
 
 public abstract class BaseActivity extends AlfonzActivity

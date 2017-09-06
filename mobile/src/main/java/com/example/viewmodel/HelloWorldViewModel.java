@@ -1,17 +1,19 @@
 package com.example.viewmodel;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.databinding.ObservableField;
 import android.os.AsyncTask;
 
 import com.example.entity.QuoteEntity;
 import com.example.task.LoadDataTask;
-import com.example.ui.HelloWorldView;
 
 import org.alfonz.utility.NetworkUtility;
 import org.alfonz.view.StatefulLayout;
 
 
-public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implements LoadDataTask.OnLoadDataListener
+public class HelloWorldViewModel extends BaseViewModel implements LifecycleObserver, LoadDataTask.OnLoadDataListener
 {
 	public final ObservableField<Integer> state = new ObservableField<>();
 	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
@@ -19,20 +21,18 @@ public class HelloWorldViewModel extends BaseViewModel<HelloWorldView> implement
 	private LoadDataTask mLoadDataTask;
 
 
-	@Override
+	@OnLifecycleEvent(Lifecycle.Event.ON_START)
 	public void onStart()
 	{
-		super.onStart();
-
 		// load data
 		if(quote.get() == null) loadData();
 	}
 
 
 	@Override
-	public void onDestroy()
+	public void onCleared()
 	{
-		super.onDestroy();
+		super.onCleared();
 
 		// cancel async tasks
 		if(mLoadDataTask != null) mLoadDataTask.cancel(true);

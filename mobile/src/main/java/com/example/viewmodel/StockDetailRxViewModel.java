@@ -1,8 +1,10 @@
 package com.example.viewmodel;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.databinding.ObservableField;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 
 import com.example.StocksConfig;
 import com.example.activity.StockDetailActivity;
@@ -10,7 +12,6 @@ import com.example.entity.QuoteEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
 import com.example.rest.provider.StocksRxServiceProvider;
-import com.example.ui.StockDetailView;
 
 import org.alfonz.rest.rx.RestRxManager;
 import org.alfonz.rx.AlfonzDisposableSingleObserver;
@@ -22,7 +23,7 @@ import io.reactivex.observers.DisposableSingleObserver;
 import retrofit2.Response;
 
 
-public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
+public class StockDetailRxViewModel extends BaseViewModel implements LifecycleObserver
 {
 	public final ObservableField<Integer> state = new ObservableField<>();
 	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
@@ -31,30 +32,25 @@ public class StockDetailRxViewModel extends BaseViewModel<StockDetailView>
 	private RestRxManager mRestRxManager = new RestRxManager(new RestResponseHandler(), new RestHttpLogger());
 
 
-	@Override
-	public void onBindView(@NonNull StockDetailView view)
+	public StockDetailRxViewModel(Bundle extras)
 	{
-		super.onBindView(view);
-
 		// handle intent extras
-		handleExtras(view.getExtras());
+		handleExtras(extras);
 	}
 
 
-	@Override
+	@OnLifecycleEvent(Lifecycle.Event.ON_START)
 	public void onStart()
 	{
-		super.onStart();
-
 		// load data
 		if(quote.get() == null) loadData();
 	}
 
 
 	@Override
-	public void onDestroy()
+	public void onCleared()
 	{
-		super.onDestroy();
+		super.onCleared();
 
 		// unsubscribe
 		mRestRxManager.disposeAll();

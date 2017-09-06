@@ -1,5 +1,8 @@
 package com.example.viewmodel;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.databinding.ObservableField;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,7 +13,6 @@ import com.example.entity.QuoteEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
 import com.example.rest.provider.StocksServiceProvider;
-import com.example.ui.StockDetailView;
 
 import org.alfonz.rest.HttpException;
 import org.alfonz.rest.call.CallManager;
@@ -22,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 
-public class StockDetailViewModel extends BaseViewModel<StockDetailView>
+public class StockDetailViewModel extends BaseViewModel implements LifecycleObserver
 {
 	public final ObservableField<Integer> state = new ObservableField<>();
 	public final ObservableField<QuoteEntity> quote = new ObservableField<>();
@@ -31,30 +33,25 @@ public class StockDetailViewModel extends BaseViewModel<StockDetailView>
 	private CallManager mCallManager = new CallManager(new RestResponseHandler(), new RestHttpLogger());
 
 
-	@Override
-	public void onBindView(@NonNull StockDetailView view)
+	public StockDetailViewModel(Bundle extras)
 	{
-		super.onBindView(view);
-
 		// handle intent extras
-		handleExtras(view.getExtras());
+		handleExtras(extras);
 	}
 
 
-	@Override
+	@OnLifecycleEvent(Lifecycle.Event.ON_START)
 	public void onStart()
 	{
-		super.onStart();
-
 		// load data
 		if(quote.get() == null) loadData();
 	}
 
 
 	@Override
-	public void onDestroy()
+	public void onCleared()
 	{
-		super.onDestroy();
+		super.onCleared();
 
 		// cancel async tasks
 		if(mCallManager != null) mCallManager.cancelRunningCalls();
