@@ -17,9 +17,9 @@ import com.example.viewmodel.StockListViewModel;
 
 public class StockListCustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-	private static final int VIEW_TYPE_HEADER = 0;
-	private static final int VIEW_TYPE_ITEM = 1;
-	private static final int VIEW_TYPE_FOOTER = 2;
+	private static final int VIEW_TYPE_HEADER = R.layout.fragment_stock_list_header;
+	private static final int VIEW_TYPE_ITEM = R.layout.fragment_stock_list_item;
+	private static final int VIEW_TYPE_FOOTER = R.layout.fragment_stock_list_footer;
 
 	private StockListView mView;
 	private StockListViewModel mViewModel;
@@ -40,17 +40,17 @@ public class StockListCustomAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 		// inflate view and create view holder
 		if(viewType == VIEW_TYPE_HEADER)
 		{
-			FragmentStockListHeaderBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_stock_list_header, parent, false);
+			FragmentStockListHeaderBinding binding = DataBindingUtil.inflate(inflater, VIEW_TYPE_HEADER, parent, false);
 			return new HeaderViewHolder(binding);
 		}
 		else if(viewType == VIEW_TYPE_ITEM)
 		{
-			FragmentStockListItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_stock_list_item, parent, false);
+			FragmentStockListItemBinding binding = DataBindingUtil.inflate(inflater, VIEW_TYPE_ITEM, parent, false);
 			return new LookupViewHolder(binding, mView);
 		}
 		else if(viewType == VIEW_TYPE_FOOTER)
 		{
-			FragmentStockListFooterBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_stock_list_footer, parent, false);
+			FragmentStockListFooterBinding binding = DataBindingUtil.inflate(inflater, VIEW_TYPE_FOOTER, parent, false);
 			return new FooterViewHolder(binding);
 		}
 		else
