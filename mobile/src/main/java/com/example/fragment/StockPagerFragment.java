@@ -5,17 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 
-import com.example.adapter.StockPagerAdapter;
+import com.example.R;
 import com.example.databinding.FragmentStockPagerBinding;
 import com.example.ui.StockPagerView;
 import com.example.viewmodel.StockPagerViewModel;
 
+import org.alfonz.adapter.SimpleDataBoundPagerAdapter;
+
 
 public class StockPagerFragment extends BaseFragment<StockPagerViewModel, FragmentStockPagerBinding> implements StockPagerView
 {
-	private StockPagerAdapter mAdapter;
-
-
 	@Override
 	public StockPagerViewModel setupViewModel()
 	{
@@ -42,10 +41,10 @@ public class StockPagerFragment extends BaseFragment<StockPagerViewModel, Fragme
 
 	private void setupAdapter()
 	{
-		if(mAdapter == null)
-		{
-			mAdapter = new StockPagerAdapter(this, getViewModel());
-			getBinding().fragmentStockPagerPager.setAdapter(mAdapter);
-		}
+		SimpleDataBoundPagerAdapter adapter = new SimpleDataBoundPagerAdapter(
+				R.layout.fragment_stock_pager_item,
+				this,
+				getViewModel().lookups);
+		getBinding().fragmentStockPagerPager.setAdapter(adapter);
 	}
 }

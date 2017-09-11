@@ -7,19 +7,18 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.example.R;
 import com.example.activity.StockDetailActivity;
-import com.example.adapter.StockListSimpleAdapter;
 import com.example.databinding.FragmentStockListBinding;
 import com.example.entity.LookupEntity;
 import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
+import org.alfonz.adapter.SimpleDataBoundRecyclerAdapter;
+
 
 public class StockListSimpleFragment extends BaseFragment<StockListViewModel, FragmentStockListBinding> implements StockListView
 {
-	private StockListSimpleAdapter mAdapter;
-
-
 	@Override
 	public StockListViewModel setupViewModel()
 	{
@@ -76,11 +75,11 @@ public class StockListSimpleFragment extends BaseFragment<StockListViewModel, Fr
 
 	private void setupAdapter()
 	{
-		if(mAdapter == null)
-		{
-			mAdapter = new StockListSimpleAdapter(this, getViewModel());
-			getBinding().fragmentStockListRecycler.setAdapter(mAdapter);
-		}
+		SimpleDataBoundRecyclerAdapter adapter = new SimpleDataBoundRecyclerAdapter(
+				R.layout.fragment_stock_list_item_clickable,
+				this,
+				getViewModel().lookups);
+		getBinding().fragmentStockListRecycler.setAdapter(adapter);
 	}
 
 

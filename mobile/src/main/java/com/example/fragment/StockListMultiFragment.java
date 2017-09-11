@@ -17,9 +17,6 @@ import com.example.viewmodel.StockListViewModel;
 
 public class StockListMultiFragment extends BaseFragment<StockListViewModel, FragmentStockListBinding> implements StockListView
 {
-	private StockListMultiAdapter mAdapter;
-
-
 	@Override
 	public StockListViewModel setupViewModel()
 	{
@@ -76,11 +73,8 @@ public class StockListMultiFragment extends BaseFragment<StockListViewModel, Fra
 
 	private void setupAdapter()
 	{
-		if(mAdapter == null)
-		{
-			mAdapter = new StockListMultiAdapter(this, getViewModel());
-			getBinding().fragmentStockListRecycler.setAdapter(mAdapter);
-		}
+		StockListMultiAdapter adapter = new StockListMultiAdapter(this, getViewModel());
+		getBinding().fragmentStockListRecycler.setAdapter(adapter);
 	}
 
 
