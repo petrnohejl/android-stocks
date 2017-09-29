@@ -5,6 +5,7 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
+import android.databinding.ObservableList;
 
 import com.example.entity.LookupEntity;
 import com.example.rest.RestHttpLogger;
@@ -16,6 +17,7 @@ import org.alfonz.rx.AlfonzDisposableSingleObserver;
 import org.alfonz.utility.NetworkUtility;
 import org.alfonz.view.StatefulLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
@@ -26,7 +28,7 @@ import retrofit2.Response;
 public class StockPagerViewModel extends BaseViewModel implements LifecycleObserver
 {
 	public final ObservableField<Integer> state = new ObservableField<>();
-	public final ObservableArrayList<StockPagerItemViewModel> lookups = new ObservableArrayList<>();
+	public final ObservableList<StockPagerItemViewModel> lookups = new ObservableArrayList<>();
 
 	private RestRxManager mRestRxManager = new RestRxManager(new RestResponseHandler(), new RestHttpLogger());
 
@@ -84,11 +86,14 @@ public class StockPagerViewModel extends BaseViewModel implements LifecycleObser
 		return AlfonzDisposableSingleObserver.newInstance(
 				response ->
 				{
-					lookups.clear();
+					List<StockPagerItemViewModel> list = new ArrayList<>();
 					for(LookupEntity e : response.body())
 					{
-						lookups.add(new StockPagerItemViewModel(e));
+						list.add(new StockPagerItemViewModel(e));
 					}
+
+					lookups.clear();
+					lookups.addAll(list);
 					setState(lookups);
 				},
 				throwable ->
@@ -100,7 +105,7 @@ public class StockPagerViewModel extends BaseViewModel implements LifecycleObser
 	}
 
 
-	private void setState(ObservableArrayList<StockPagerItemViewModel> data)
+	private void setState(ObservableList<StockPagerItemViewModel> data)
 	{
 		if(!data.isEmpty())
 		{

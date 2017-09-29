@@ -5,6 +5,7 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
+import android.databinding.ObservableList;
 
 import com.example.entity.LookupEntity;
 import com.example.rest.RestHttpLogger;
@@ -26,9 +27,9 @@ import retrofit2.Response;
 public class StockListViewModel extends BaseViewModel implements LifecycleObserver
 {
 	public final ObservableField<Integer> state = new ObservableField<>();
-	public final ObservableArrayList<String> headers = new ObservableArrayList<>();
-	public final ObservableArrayList<LookupEntity> lookups = new ObservableArrayList<>();
-	public final ObservableArrayList<Object> footers = new ObservableArrayList<>();
+	public final ObservableList<String> headers = new ObservableArrayList<>();
+	public final ObservableList<LookupEntity> lookups = new ObservableArrayList<>();
+	public final ObservableList<Object> footers = new ObservableArrayList<>();
 
 	private RestRxManager mRestRxManager = new RestRxManager(new RestResponseHandler(), new RestHttpLogger());
 
@@ -147,7 +148,7 @@ public class StockListViewModel extends BaseViewModel implements LifecycleObserv
 	}
 
 
-	private void setState(ObservableArrayList<LookupEntity> data)
+	private void setState(ObservableList<LookupEntity> data)
 	{
 		if(!data.isEmpty())
 		{

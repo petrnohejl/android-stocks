@@ -39,7 +39,7 @@ public class StockListSimpleFragment extends BaseFragment<StockListViewModel, Fr
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		getBinding().executePendingBindings(); // set layout manager in recycler via binding adapter
+		getBinding().executePendingBindings(); // helps to reload recycler scroll position after orientation change
 		setupAdapter();
 	}
 
@@ -61,7 +61,6 @@ public class StockListSimpleFragment extends BaseFragment<StockListViewModel, Fr
 	{
 		startStockDetailActivity(lookup.getSymbol());
 //		getViewModel().addItem();
-//		mAdapter.notifyDataSetChanged();
 	}
 
 
