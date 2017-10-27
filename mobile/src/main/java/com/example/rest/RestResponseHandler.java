@@ -89,7 +89,7 @@ public class RestResponseHandler implements ResponseHandler
 			resId = R.string.global_network_parse_fail;
 		else
 			resId = R.string.global_network_fail;
-		
+
 		return StocksApplication.getContext().getString(resId);
 	}
 
