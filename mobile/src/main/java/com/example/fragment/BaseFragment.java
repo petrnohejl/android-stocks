@@ -48,7 +48,7 @@ public abstract class BaseFragment<T extends BaseViewModel, B extends ViewDataBi
 
 
 	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState)
+	public void onViewCreated(@NonNull View view, Bundle savedInstanceState)
 	{
 		Logcat.v("");
 		super.onViewCreated(view, savedInstanceState);
