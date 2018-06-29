@@ -1,16 +1,19 @@
-package com.example.rest.provider;
+package com.example.rest.router;
 
 import com.example.entity.LookupEntity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.RetrofitClient;
 
-import retrofit2.Call;
+import java.util.List;
+
+import io.reactivex.Single;
+import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
-public class StocksServiceProvider
+public class StocksRxRouter
 {
 	public static final String QUOTE_CALL_TYPE = "quote";
 	public static final String LOOKUP_CALL_TYPE = "lookup";
@@ -21,21 +24,21 @@ public class StocksServiceProvider
 	public interface StocksService
 	{
 		@GET("Quote/{format}")
-		Call<QuoteEntity> quote(@Path("format") String format, @Query("symbol") String symbol);
+		Single<Response<QuoteEntity>> quote(@Path("format") String format, @Query("symbol") String symbol);
 
 		@GET("Lookup/{format}")
-		Call<LookupEntity[]> lookup(@Path("format") String format, @Query("input") String input);
+		Single<Response<List<LookupEntity>>> lookup(@Path("format") String format, @Query("input") String input);
 	}
 
 
-	private StocksServiceProvider() {}
+	private StocksRxRouter() {}
 
 
 	public static StocksService getService()
 	{
 		if(sService == null)
 		{
-			synchronized(StocksServiceProvider.class)
+			synchronized(StocksRxRouter.class)
 			{
 				if(sService == null)
 				{

@@ -11,7 +11,7 @@ import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
-import com.example.rest.provider.StocksRxServiceProvider;
+import com.example.rest.router.StocksRxRouter;
 
 import org.alfonz.rest.rx.RestRxManager;
 import org.alfonz.rx.AlfonzDisposableSingleObserver;
@@ -79,14 +79,14 @@ public class StockDetailRxViewModel extends BaseViewModel implements LifecycleOb
 	{
 		if(NetworkUtility.isOnline(getApplicationContext()))
 		{
-			String callType = StocksRxServiceProvider.QUOTE_CALL_TYPE;
+			String callType = StocksRxRouter.QUOTE_CALL_TYPE;
 			if(!mRestRxManager.isRunning(callType))
 			{
 				// show progress
 				state.set(StatefulLayout.PROGRESS);
 
 				// subscribe
-				Single<Response<QuoteEntity>> rawSingle = StocksRxServiceProvider.getService().quote("json", symbol);
+				Single<Response<QuoteEntity>> rawSingle = StocksRxRouter.getService().quote("json", symbol);
 				Single<Response<QuoteEntity>> single = mRestRxManager.setupRestSingleWithSchedulers(rawSingle, callType);
 				single.subscribeWith(createQuoteObserver());
 			}

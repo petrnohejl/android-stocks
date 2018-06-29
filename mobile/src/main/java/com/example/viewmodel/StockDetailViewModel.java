@@ -12,7 +12,7 @@ import com.example.activity.StockDetailActivity;
 import com.example.entity.QuoteEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
-import com.example.rest.provider.StocksServiceProvider;
+import com.example.rest.router.StocksRouter;
 
 import org.alfonz.rest.HttpException;
 import org.alfonz.rest.call.CallManager;
@@ -80,14 +80,14 @@ public class StockDetailViewModel extends BaseViewModel implements LifecycleObse
 	{
 		if(NetworkUtility.isOnline(getApplicationContext()))
 		{
-			String callType = StocksServiceProvider.QUOTE_CALL_TYPE;
+			String callType = StocksRouter.QUOTE_CALL_TYPE;
 			if(!mCallManager.hasRunningCall(callType))
 			{
 				// show progress
 				state.set(StatefulLayout.PROGRESS);
 
 				// enqueue call
-				Call<QuoteEntity> call = StocksServiceProvider.getService().quote("json", symbol);
+				Call<QuoteEntity> call = StocksRouter.getService().quote("json", symbol);
 				QuoteCallback callback = new QuoteCallback(mCallManager);
 				mCallManager.enqueueCall(call, callback, callType);
 			}

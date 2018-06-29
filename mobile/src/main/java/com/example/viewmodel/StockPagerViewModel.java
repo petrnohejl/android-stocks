@@ -10,7 +10,7 @@ import android.databinding.ObservableList;
 import com.example.entity.LookupEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
-import com.example.rest.provider.StocksRxServiceProvider;
+import com.example.rest.router.StocksRxRouter;
 
 import org.alfonz.rest.rx.RestRxManager;
 import org.alfonz.rx.AlfonzDisposableSingleObserver;
@@ -61,14 +61,14 @@ public class StockPagerViewModel extends BaseViewModel implements LifecycleObser
 	{
 		if(NetworkUtility.isOnline(getApplicationContext()))
 		{
-			String callType = StocksRxServiceProvider.LOOKUP_CALL_TYPE;
+			String callType = StocksRxRouter.LOOKUP_CALL_TYPE;
 			if(!mRestRxManager.isRunning(callType))
 			{
 				// show progress
 				state.set(StatefulLayout.PROGRESS);
 
 				// subscribe
-				Single<Response<List<LookupEntity>>> rawSingle = StocksRxServiceProvider.getService().lookup("json", input);
+				Single<Response<List<LookupEntity>>> rawSingle = StocksRxRouter.getService().lookup("json", input);
 				Single<Response<List<LookupEntity>>> single = mRestRxManager.setupRestSingleWithSchedulers(rawSingle, callType);
 				single.subscribeWith(createLookupObserver());
 			}
