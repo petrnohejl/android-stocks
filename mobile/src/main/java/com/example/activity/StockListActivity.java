@@ -49,15 +49,15 @@ public class StockListActivity extends BaseActivity
 		// action bar menu behavior
 		switch(item.getItemId())
 		{
-			case R.id.menu_activity_stock_list_hello:
+			case R.id.menu_stock_list_hello:
 				startHelloWorldActivity();
 				return true;
 
-			case R.id.menu_activity_stock_list_pager:
+			case R.id.menu_stock_list_pager:
 				startStockPagerActivity();
 				return true;
 
-			case R.id.menu_activity_stock_list_about:
+			case R.id.menu_stock_list_about:
 				showAboutDialogFragment();
 				return true;
 

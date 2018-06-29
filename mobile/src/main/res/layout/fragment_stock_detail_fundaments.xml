@@ -18,52 +18,52 @@
 		android:orientation="vertical">
 
 		<TextView
-			android:id="@+id/fragment_stock_detail_symbol"
+			android:id="@+id/stock_detail_symbol"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAppearance="@style/TextAppearance.Stocks.Body1"
-			android:text="@{@string/fragment_stock_detail_symbol(viewModel.quote.symbol)}"
+			android:text="@{@string/stock_detail_symbol(viewModel.quote.symbol)}"
 			android:onClick="@{view::onClick}"
 			tools:text="INTC" />
 
 		<TextView
-			android:id="@+id/fragment_stock_detail_name"
+			android:id="@+id/stock_detail_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAppearance="@style/TextAppearance.Stocks.Body1"
-			android:text="@{@string/fragment_stock_detail_name(viewModel.quote.name)}"
+			android:text="@{@string/stock_detail_name(viewModel.quote.name)}"
 			android:onClick="@{view::onClick}"
 			tools:text="Intel" />
 
 		<TextView
-			android:id="@+id/fragment_stock_detail_last_price"
+			android:id="@+id/stock_detail_last_price"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAppearance="@style/TextAppearance.Stocks.Body1"
-			android:text="@{@string/fragment_stock_detail_price(viewModel.quote.lastPrice)}"
+			android:text="@{@string/stock_detail_price(viewModel.quote.lastPrice)}"
 			android:onClick="@{view::onClick}"
 			tools:text="$30.5" />
 
 		<TextView
-			android:id="@+id/fragment_stock_detail_last_change"
+			android:id="@+id/stock_detail_last_change"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAppearance="@style/TextAppearance.Stocks.Body1"
-			android:text="@{@string/fragment_stock_detail_change(viewModel.quote.changePercent)}"
+			android:text="@{@string/stock_detail_change(viewModel.quote.changePercent)}"
 			android:onClick="@{view::onClick}"
 			tools:text="0.5%" />
 
 		<TextView
-			android:id="@+id/fragment_stock_detail_last_capitalization"
+			android:id="@+id/stock_detail_last_capitalization"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAppearance="@style/TextAppearance.Stocks.Body1"
-			android:text="@{@string/fragment_stock_detail_capitalization(viewModel.quote.marketCap)}"
+			android:text="@{@string/stock_detail_capitalization(viewModel.quote.marketCap)}"
 			android:onClick="@{view::onClick}"
 			tools:text="$2000000" />
 
 		<ImageView
-			android:id="@+id/fragment_stock_detail_chart"
+			android:id="@+id/stock_detail_chart"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:adjustViewBounds="true"

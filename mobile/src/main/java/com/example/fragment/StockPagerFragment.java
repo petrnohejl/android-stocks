@@ -45,6 +45,6 @@ public class StockPagerFragment extends BaseFragment<StockPagerViewModel, Fragme
 				R.layout.fragment_stock_pager_item,
 				this,
 				getViewModel().lookups);
-		getBinding().fragmentStockPagerPager.setAdapter(adapter);
+		getBinding().stockPagerPager.setAdapter(adapter);
 	}
 }

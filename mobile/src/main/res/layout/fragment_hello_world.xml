@@ -12,7 +12,7 @@
 	</data>
 
 	<org.alfonz.view.StatefulLayout
-		android:id="@+id/fragment_hello_world_stateful_layout"
+		android:id="@+id/hello_world_stateful_layout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:animateLayoutChanges="true"
@@ -29,22 +29,22 @@
 			android:background="@color/global_bg_front">
 
 			<android.support.constraint.ConstraintLayout
-				android:id="@+id/fragment_hello_world_constraint_layout"
+				android:id="@+id/hello_world_constraint_layout"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:padding="@dimen/global_keyline_16">
 
 				<TextView
-					android:id="@+id/fragment_hello_world_name"
+					android:id="@+id/hello_world_name"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textAppearance="@style/TextAppearance.Stocks.Body1"
 					android:text="@{viewModel.quote.name}"
 					android:onClick="@{() -> view.onClick()}"
-					app:layout_constraintBottom_toBottomOf="@+id/fragment_hello_world_constraint_layout"
-					app:layout_constraintLeft_toLeftOf="@+id/fragment_hello_world_constraint_layout"
-					app:layout_constraintRight_toRightOf="@+id/fragment_hello_world_constraint_layout"
-					app:layout_constraintTop_toTopOf="@+id/fragment_hello_world_constraint_layout"
+					app:layout_constraintBottom_toBottomOf="@+id/hello_world_constraint_layout"
+					app:layout_constraintLeft_toLeftOf="@+id/hello_world_constraint_layout"
+					app:layout_constraintRight_toRightOf="@+id/hello_world_constraint_layout"
+					app:layout_constraintTop_toTopOf="@+id/hello_world_constraint_layout"
 					tools:layout_constraintBottom_creator="1"
 					tools:layout_constraintLeft_creator="1"
 					tools:layout_constraintRight_creator="1"

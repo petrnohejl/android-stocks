@@ -82,7 +82,7 @@ public class StockListCustomFragment extends BaseFragment<StockListViewModel, Fr
 		if(mAdapter == null)
 		{
 			mAdapter = new StockListCustomAdapter(this, getViewModel());
-			getBinding().fragmentStockListRecycler.setAdapter(mAdapter);
+			getBinding().stockListRecycler.setAdapter(mAdapter);
 		}
 	}
 

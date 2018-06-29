@@ -78,7 +78,7 @@ public class StockListSimpleFragment extends BaseFragment<StockListViewModel, Fr
 				R.layout.fragment_stock_list_item_clickable,
 				this,
 				getViewModel().lookups);
-		getBinding().fragmentStockListRecycler.setAdapter(adapter);
+		getBinding().stockListRecycler.setAdapter(adapter);
 	}
 
 

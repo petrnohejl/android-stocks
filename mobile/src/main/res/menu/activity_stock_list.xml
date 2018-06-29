@@ -4,20 +4,20 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<item
-		android:id="@+id/menu_activity_stock_list_hello"
-		android:title="@string/menu_activity_stock_list_hello"
+		android:id="@+id/menu_stock_list_hello"
+		android:title="@string/menu_stock_list_hello"
 		android:icon="@null"
 		app:showAsAction="never" />
 
 	<item
-		android:id="@+id/menu_activity_stock_list_pager"
-		android:title="@string/menu_activity_stock_list_pager"
+		android:id="@+id/menu_stock_list_pager"
+		android:title="@string/menu_stock_list_pager"
 		android:icon="@null"
 		app:showAsAction="never" />
 
 	<item
-		android:id="@+id/menu_activity_stock_list_about"
-		android:title="@string/menu_activity_stock_list_about"
+		android:id="@+id/menu_stock_list_about"
+		android:title="@string/menu_stock_list_about"
 		android:icon="@null"
 		app:showAsAction="never" />
 

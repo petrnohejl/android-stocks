@@ -10,7 +10,7 @@
 	</data>
 
 	<LinearLayout
-		android:id="@+id/fragment_stock_list_footer"
+		android:id="@+id/stock_list_footer"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"

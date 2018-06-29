@@ -15,7 +15,7 @@
 		android:layout_height="match_parent">
 
 		<ImageView
-			android:id="@+id/fragment_stock_pager_item_chart"
+			android:id="@+id/stock_pager_item_chart"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:adjustViewBounds="true"

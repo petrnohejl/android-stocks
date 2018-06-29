@@ -73,7 +73,7 @@ public class StockListMultiFragment extends BaseFragment<StockListViewModel, Fra
 	private void setupAdapter()
 	{
 		StockListMultiAdapter adapter = new StockListMultiAdapter(this, getViewModel());
-		getBinding().fragmentStockListRecycler.setAdapter(adapter);
+		getBinding().stockListRecycler.setAdapter(adapter);
 	}
 
 
