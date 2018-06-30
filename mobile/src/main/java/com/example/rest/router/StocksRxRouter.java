@@ -12,17 +12,13 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-
-public class StocksRxRouter
-{
+public class StocksRxRouter {
 	public static final String QUOTE_CALL_TYPE = "quote";
 	public static final String LOOKUP_CALL_TYPE = "lookup";
 
 	private static volatile StocksService sService;
 
-
-	public interface StocksService
-	{
+	public interface StocksService {
 		@GET("Quote/{format}")
 		Single<Response<QuoteEntity>> quote(@Path("format") String format, @Query("symbol") String symbol);
 
@@ -30,18 +26,12 @@ public class StocksRxRouter
 		Single<Response<List<LookupEntity>>> lookup(@Path("format") String format, @Query("input") String input);
 	}
 
-
 	private StocksRxRouter() {}
 
-
-	public static StocksService getService()
-	{
-		if(sService == null)
-		{
-			synchronized(StocksRxRouter.class)
-			{
-				if(sService == null)
-				{
+	public static StocksService getService() {
+		if (sService == null) {
+			synchronized (StocksRxRouter.class) {
+				if (sService == null) {
 					sService = RetrofitClient.createService(StocksService.class);
 				}
 			}

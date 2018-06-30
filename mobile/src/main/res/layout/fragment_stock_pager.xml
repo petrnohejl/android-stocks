@@ -5,9 +5,11 @@
 
 	<data>
 		<variable
-			name="view" type="com.example.ui.StockPagerView" />
+			name="view"
+			type="com.example.ui.StockPagerView" />
 		<variable
-			name="viewModel" type="com.example.viewmodel.StockPagerViewModel" />
+			name="viewModel"
+			type="com.example.viewmodel.StockPagerViewModel" />
 	</data>
 
 	<org.alfonz.view.StatefulLayout

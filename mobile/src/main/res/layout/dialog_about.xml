@@ -4,7 +4,8 @@
 
 	<data>
 		<variable
-			name="data" type="String" />
+			name="data"
+			type="String" />
 	</data>
 
 	<FrameLayout

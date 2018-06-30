@@ -6,9 +6,11 @@
 
 	<data>
 		<variable
-			name="view" type="com.example.ui.HelloWorldView" />
+			name="view"
+			type="com.example.ui.HelloWorldView" />
 		<variable
-			name="viewModel" type="com.example.viewmodel.HelloWorldViewModel" />
+			name="viewModel"
+			type="com.example.viewmodel.HelloWorldViewModel" />
 	</data>
 
 	<org.alfonz.view.StatefulLayout

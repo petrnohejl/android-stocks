@@ -11,40 +11,30 @@ import com.example.databinding.DialogAboutBinding;
 
 import org.alfonz.utility.VersionUtility;
 
-
-public class AboutDialogFragment extends DialogFragment
-{
+public class AboutDialogFragment extends DialogFragment {
 	private DialogAboutBinding mBinding;
 
-
-	public static AboutDialogFragment newInstance()
-	{
+	public static AboutDialogFragment newInstance() {
 		return new AboutDialogFragment();
 	}
 
-
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setCancelable(true);
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
 		// cancelable on touch outside
-		if(getDialog() != null) getDialog().setCanceledOnTouchOutside(true);
+		if (getDialog() != null) getDialog().setCanceledOnTouchOutside(true);
 	}
-
 
 	@NonNull
 	@Override
-	public Dialog onCreateDialog(Bundle savedInstanceState)
-	{
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		mBinding = DialogAboutBinding.inflate(getActivity().getLayoutInflater());
 		mBinding.setData(getMessage());
 
@@ -54,9 +44,7 @@ public class AboutDialogFragment extends DialogFragment
 		return builder.create();
 	}
 
-
-	private String getMessage()
-	{
+	private String getMessage() {
 		String version = VersionUtility.getVersionName(getActivity());
 		return String.format("%s %s", getString(R.string.app_name), version);
 	}

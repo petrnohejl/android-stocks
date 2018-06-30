@@ -7,23 +7,17 @@ import android.support.annotation.NonNull;
 
 import com.example.viewmodel.StockDetailRxViewModel;
 
-
-public class StockDetailRxViewModelFactory extends ViewModelProvider.NewInstanceFactory
-{
+public class StockDetailRxViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 	private final Bundle mExtras;
 
-
-	public StockDetailRxViewModelFactory(Bundle extras)
-	{
+	public StockDetailRxViewModelFactory(Bundle extras) {
 		mExtras = extras;
 	}
-
 
 	@NonNull
 	@Override
 	@SuppressWarnings("unchecked")
-	public <T extends ViewModel> T create(@NonNull Class<T> modelClass)
-	{
+	public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
 		return (T) new StockDetailRxViewModel(mExtras);
 	}
 }

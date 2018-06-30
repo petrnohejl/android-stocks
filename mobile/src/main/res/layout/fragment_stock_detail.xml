@@ -5,9 +5,11 @@
 
 	<data>
 		<variable
-			name="view" type="com.example.ui.StockDetailView" />
+			name="view"
+			type="com.example.ui.StockDetailView" />
 		<variable
-			name="viewModel" type="com.example.viewmodel.StockDetailRxViewModel" />
+			name="viewModel"
+			type="com.example.viewmodel.StockDetailRxViewModel" />
 	</data>
 
 	<org.alfonz.view.StatefulLayout

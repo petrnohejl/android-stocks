@@ -4,47 +4,34 @@ import android.os.Bundle;
 
 import org.alfonz.arch.AlfonzActivity;
 
-
-public abstract class BaseActivity extends AlfonzActivity
-{
+public abstract class BaseActivity extends AlfonzActivity {
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
-
 	@Override
-	public void onStart()
-	{
+	public void onStart() {
 		super.onStart();
 	}
 
-
 	@Override
-	public void onResume()
-	{
+	public void onResume() {
 		super.onResume();
 	}
 
-
 	@Override
-	public void onPause()
-	{
+	public void onPause() {
 		super.onPause();
 	}
 
-
 	@Override
-	public void onStop()
-	{
+	public void onStop() {
 		super.onStop();
 	}
 
-
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		super.onDestroy();
 	}
 }

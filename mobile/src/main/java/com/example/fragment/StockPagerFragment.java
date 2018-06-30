@@ -12,35 +12,26 @@ import com.example.viewmodel.StockPagerViewModel;
 
 import org.alfonz.adapter.SimpleDataBoundPagerAdapter;
 
-
-public class StockPagerFragment extends BaseFragment<StockPagerViewModel, FragmentStockPagerBinding> implements StockPagerView
-{
+public class StockPagerFragment extends BaseFragment<StockPagerViewModel, FragmentStockPagerBinding> implements StockPagerView {
 	@Override
-	public StockPagerViewModel setupViewModel()
-	{
+	public StockPagerViewModel setupViewModel() {
 		StockPagerViewModel viewModel = ViewModelProviders.of(this).get(StockPagerViewModel.class);
 		getLifecycle().addObserver(viewModel);
 		return viewModel;
 	}
 
-
 	@Override
-	public FragmentStockPagerBinding inflateBindingLayout(@NonNull LayoutInflater inflater)
-	{
+	public FragmentStockPagerBinding inflateBindingLayout(@NonNull LayoutInflater inflater) {
 		return FragmentStockPagerBinding.inflate(inflater);
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setupAdapter();
 	}
 
-
-	private void setupAdapter()
-	{
+	private void setupAdapter() {
 		SimpleDataBoundPagerAdapter adapter = new SimpleDataBoundPagerAdapter(
 				R.layout.fragment_stock_pager_item,
 				this,

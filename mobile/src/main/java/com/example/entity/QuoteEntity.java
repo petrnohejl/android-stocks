@@ -5,9 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-
-public class QuoteEntity extends ErrorEntity
-{
+public class QuoteEntity extends ErrorEntity {
 	public static final String STATUS_SUCCESS = "SUCCESS";
 
 	@SerializedName("Status")
@@ -56,194 +54,130 @@ public class QuoteEntity extends ErrorEntity
 	@Expose
 	private double open;
 
-
-	public QuoteEntity()
-	{
+	public QuoteEntity() {
 	}
 
-
-	public boolean isSuccess()
-	{
+	public boolean isSuccess() {
 		return STATUS_SUCCESS.equals(getStatus());
 	}
 
-
-	public String getStatus()
-	{
+	public String getStatus() {
 		return status;
 	}
 
-
-	public void setStatus(String status)
-	{
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
-
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
-
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 
-
-	public String getSymbol()
-	{
+	public String getSymbol() {
 		return symbol;
 	}
 
-
-	public void setSymbol(String symbol)
-	{
+	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
 
-
-	public double getLastPrice()
-	{
+	public double getLastPrice() {
 		return lastPrice;
 	}
 
-
-	public void setLastPrice(double lastPrice)
-	{
+	public void setLastPrice(double lastPrice) {
 		this.lastPrice = lastPrice;
 	}
 
-
-	public double getChange()
-	{
+	public double getChange() {
 		return change;
 	}
 
-
-	public void setChange(double change)
-	{
+	public void setChange(double change) {
 		this.change = change;
 	}
 
-
-	public double getChangePercent()
-	{
+	public double getChangePercent() {
 		return changePercent;
 	}
 
-
-	public void setChangePercent(double changePercent)
-	{
+	public void setChangePercent(double changePercent) {
 		this.changePercent = changePercent;
 	}
 
-
-	public Date getTimestamp()
-	{
+	public Date getTimestamp() {
 		return timestamp;
 	}
 
-
-	public void setTimestamp(Date timestamp)
-	{
+	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
 
-
-	public double getMSDate()
-	{
+	public double getMSDate() {
 		return msDate;
 	}
 
-
-	public void setMSDate(double msDate)
-	{
+	public void setMSDate(double msDate) {
 		this.msDate = msDate;
 	}
 
-
-	public long getMarketCap()
-	{
+	public long getMarketCap() {
 		return marketCap;
 	}
 
-
-	public void setMarketCap(long marketCap)
-	{
+	public void setMarketCap(long marketCap) {
 		this.marketCap = marketCap;
 	}
 
-
-	public long getVolume()
-	{
+	public long getVolume() {
 		return volume;
 	}
 
-
-	public void setVolume(long volume)
-	{
+	public void setVolume(long volume) {
 		this.volume = volume;
 	}
 
-
-	public double getChangeYTD()
-	{
+	public double getChangeYTD() {
 		return changeYTD;
 	}
 
-
-	public void setChangeYTD(double changeYTD)
-	{
+	public void setChangeYTD(double changeYTD) {
 		this.changeYTD = changeYTD;
 	}
 
-
-	public double getChangePercentYTD()
-	{
+	public double getChangePercentYTD() {
 		return changePercentYTD;
 	}
 
-
-	public void setChangePercentYTD(double changePercentYTD)
-	{
+	public void setChangePercentYTD(double changePercentYTD) {
 		this.changePercentYTD = changePercentYTD;
 	}
 
-
-	public double getHigh()
-	{
+	public double getHigh() {
 		return high;
 	}
 
-
-	public void setHigh(double high)
-	{
+	public void setHigh(double high) {
 		this.high = high;
 	}
 
-
-	public double getLow()
-	{
+	public double getLow() {
 		return low;
 	}
 
-
-	public void setLow(double low)
-	{
+	public void setLow(double low) {
 		this.low = low;
 	}
 
-
-	public double getOpen()
-	{
+	public double getOpen() {
 		return open;
 	}
 
-
-	public void setOpen(double open)
-	{
+	public void setOpen(double open) {
 		this.open = open;
 	}
 }

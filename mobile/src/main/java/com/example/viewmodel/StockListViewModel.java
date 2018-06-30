@@ -23,9 +23,7 @@ import io.reactivex.Single;
 import io.reactivex.observers.DisposableSingleObserver;
 import retrofit2.Response;
 
-
-public class StockListViewModel extends BaseViewModel implements LifecycleObserver
-{
+public class StockListViewModel extends BaseViewModel implements LifecycleObserver {
 	public final ObservableField<Integer> state = new ObservableField<>();
 	public final ObservableList<String> headers = new ObservableArrayList<>();
 	public final ObservableList<LookupEntity> lookups = new ObservableArrayList<>();
@@ -33,39 +31,29 @@ public class StockListViewModel extends BaseViewModel implements LifecycleObserv
 
 	private RestRxManager mRestRxManager = new RestRxManager(new RestResponseHandler(), new RestHttpLogger());
 
-
 	@OnLifecycleEvent(Lifecycle.Event.ON_START)
-	public void onStart()
-	{
+	public void onStart() {
 		// load data
-		if(lookups.isEmpty()) loadData();
+		if (lookups.isEmpty()) loadData();
 	}
 
-
 	@Override
-	public void onCleared()
-	{
+	public void onCleared() {
 		super.onCleared();
 
 		// unsubscribe
 		mRestRxManager.disposeAll();
 	}
 
-
-	public void loadData()
-	{
+	public void loadData() {
 		sendLookup("bank");
 	}
 
-
-	public void refreshData()
-	{
+	public void refreshData() {
 		sendLookup("bank");
 	}
 
-
-	public void addItem()
-	{
+	public void addItem() {
 		LookupEntity lookup = new LookupEntity();
 		lookup.setSymbol("YOYO");
 		lookup.setName("Yoyo " + System.currentTimeMillis());
@@ -73,37 +61,27 @@ public class StockListViewModel extends BaseViewModel implements LifecycleObserv
 		lookups.add(0, lookup);
 	}
 
-
-	public void updateItem(int lookupPosition)
-	{
+	public void updateItem(int lookupPosition) {
 		LookupEntity lookup = lookups.get(lookupPosition);
 		lookup.setSymbol("YOYO");
 		lookup.setName("Yoyo " + System.currentTimeMillis());
 		lookup.setExchange("NYSE");
 	}
 
-
-	public void updateItem(LookupEntity lookup)
-	{
+	public void updateItem(LookupEntity lookup) {
 		lookup.setSymbol("YOYO");
 		lookup.setName("Yoyo " + System.currentTimeMillis());
 		lookup.setExchange("NYSE");
 	}
 
-
-	public void removeItem()
-	{
+	public void removeItem() {
 		lookups.remove(0);
 	}
 
-
-	private void sendLookup(String input)
-	{
-		if(NetworkUtility.isOnline(getApplicationContext()))
-		{
+	private void sendLookup(String input) {
+		if (NetworkUtility.isOnline(getApplicationContext())) {
 			String callType = StocksRxRouter.LOOKUP_CALL_TYPE;
-			if(!mRestRxManager.isRunning(callType))
-			{
+			if (!mRestRxManager.isRunning(callType)) {
 				// show progress
 				state.set(StatefulLayout.PROGRESS);
 
@@ -112,17 +90,13 @@ public class StockListViewModel extends BaseViewModel implements LifecycleObserv
 				Single<Response<List<LookupEntity>>> single = mRestRxManager.setupRestSingleWithSchedulers(rawSingle, callType);
 				single.subscribeWith(createLookupObserver());
 			}
-		}
-		else
-		{
+		} else {
 			// show offline
 			state.set(StatefulLayout.OFFLINE);
 		}
 	}
 
-
-	private DisposableSingleObserver<Response<List<LookupEntity>>> createLookupObserver()
-	{
+	private DisposableSingleObserver<Response<List<LookupEntity>>> createLookupObserver() {
 		return AlfonzDisposableSingleObserver.newInstance(
 				response ->
 				{
@@ -147,15 +121,10 @@ public class StockListViewModel extends BaseViewModel implements LifecycleObserv
 		);
 	}
 
-
-	private void setState(ObservableList<LookupEntity> data)
-	{
-		if(!data.isEmpty())
-		{
+	private void setState(ObservableList<LookupEntity> data) {
+		if (!data.isEmpty()) {
 			state.set(StatefulLayout.CONTENT);
-		}
-		else
-		{
+		} else {
 			state.set(StatefulLayout.EMPTY);
 		}
 	}

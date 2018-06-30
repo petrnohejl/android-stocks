@@ -16,64 +16,47 @@ import com.example.viewmodel.StockListViewModel;
 
 import org.alfonz.adapter.SimpleDataBoundRecyclerAdapter;
 
-
-public class StockListSimpleFragment extends BaseFragment<StockListViewModel, FragmentStockListBinding> implements StockListView
-{
+public class StockListSimpleFragment extends BaseFragment<StockListViewModel, FragmentStockListBinding> implements StockListView {
 	@Override
-	public StockListViewModel setupViewModel()
-	{
+	public StockListViewModel setupViewModel() {
 		StockListViewModel viewModel = ViewModelProviders.of(this).get(StockListViewModel.class);
 		getLifecycle().addObserver(viewModel);
 		return viewModel;
 	}
 
-
 	@Override
-	public FragmentStockListBinding inflateBindingLayout(@NonNull LayoutInflater inflater)
-	{
+	public FragmentStockListBinding inflateBindingLayout(@NonNull LayoutInflater inflater) {
 		return FragmentStockListBinding.inflate(inflater);
 	}
 
-
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState)
-	{
+	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		getBinding().executePendingBindings(); // helps to reload recycler scroll position after orientation change
 		setupAdapter();
 	}
 
-
 	@Override
-	public void onItemClick(View view, int position, long id, int viewType)
-	{
+	public void onItemClick(View view, int position, long id, int viewType) {
 	}
 
-
 	@Override
-	public void onItemLongClick(View view, int position, long id, int viewType)
-	{
+	public void onItemLongClick(View view, int position, long id, int viewType) {
 	}
 
-
 	@Override
-	public void onItemClick(LookupEntity lookup)
-	{
+	public void onItemClick(LookupEntity lookup) {
 		startStockDetailActivity(lookup.getSymbol());
 //		getViewModel().addItem();
 	}
 
-
 	@Override
-	public boolean onItemLongClick(LookupEntity lookup)
-	{
+	public boolean onItemLongClick(LookupEntity lookup) {
 		getViewModel().updateItem(lookup);
 		return true;
 	}
 
-
-	private void setupAdapter()
-	{
+	private void setupAdapter() {
 		SimpleDataBoundRecyclerAdapter adapter = new SimpleDataBoundRecyclerAdapter(
 				R.layout.fragment_stock_list_item_clickable,
 				this,
@@ -81,9 +64,7 @@ public class StockListSimpleFragment extends BaseFragment<StockListViewModel, Fr
 		getBinding().stockListRecycler.setAdapter(adapter);
 	}
 
-
-	private void startStockDetailActivity(String symbol)
-	{
+	private void startStockDetailActivity(String symbol) {
 		Intent intent = StockDetailActivity.newIntent(getActivity(), symbol);
 		getActivity().startActivity(intent);
 	}

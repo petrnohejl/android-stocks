@@ -6,9 +6,11 @@
 	<data>
 		<import type="org.alfonz.adapter.utility.BindingUtility" />
 		<variable
-			name="view" type="com.example.ui.StockListView" />
+			name="view"
+			type="com.example.ui.StockListView" />
 		<variable
-			name="viewModel" type="com.example.viewmodel.StockListViewModel" />
+			name="viewModel"
+			type="com.example.viewmodel.StockListViewModel" />
 	</data>
 
 	<org.alfonz.view.StatefulLayout

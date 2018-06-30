@@ -4,9 +4,11 @@
 
 	<data>
 		<variable
-			name="view" type="com.example.ui.StockListView" />
+			name="view"
+			type="com.example.ui.StockListView" />
 		<variable
-			name="data" type="com.example.entity.LookupEntity" />
+			name="data"
+			type="com.example.entity.LookupEntity" />
 	</data>
 
 	<LinearLayout

@@ -8,40 +8,30 @@ import com.squareup.leakcanary.RefWatcher;
 
 import org.alfonz.utility.Logcat;
 
-
-public class StocksApplication extends Application
-{
+public class StocksApplication extends Application {
 	private static StocksApplication sInstance;
 
 	private RefWatcher mRefWatcher;
 
-
-	public StocksApplication()
-	{
+	public StocksApplication() {
 		sInstance = this;
 	}
 
-
-	public static Context getContext()
-	{
+	public static Context getContext() {
 		return sInstance;
 	}
 
-
-	public static RefWatcher getRefWatcher()
-	{
+	public static RefWatcher getRefWatcher() {
 		StocksApplication application = (StocksApplication) getContext();
 		return application.mRefWatcher;
 	}
 
-
 	@Override
-	public void onCreate()
-	{
+	public void onCreate() {
 		super.onCreate();
 
 		// this process is dedicated to leak canary for heap analysis
-		if(LeakCanary.isInAnalyzerProcess(this)) return;
+		if (LeakCanary.isInAnalyzerProcess(this)) return;
 
 		// init leak canary
 		mRefWatcher = LeakCanary.install(this);
