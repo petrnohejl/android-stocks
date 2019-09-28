@@ -1,9 +1,5 @@
 package com.example.viewmodel;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.OnLifecycleEvent;
-import android.databinding.ObservableField;
 import android.os.Bundle;
 
 import com.example.StocksConfig;
@@ -18,6 +14,10 @@ import org.alfonz.rx.AlfonzDisposableSingleObserver;
 import org.alfonz.utility.NetworkUtility;
 import org.alfonz.view.StatefulLayout;
 
+import androidx.databinding.ObservableField;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 import io.reactivex.Single;
 import io.reactivex.observers.DisposableSingleObserver;
 import retrofit2.Response;

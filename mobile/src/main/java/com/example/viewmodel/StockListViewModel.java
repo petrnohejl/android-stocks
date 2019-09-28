@@ -1,12 +1,5 @@
 package com.example.viewmodel;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.OnLifecycleEvent;
-import android.databinding.ObservableArrayList;
-import android.databinding.ObservableField;
-import android.databinding.ObservableList;
-
 import com.example.entity.LookupEntity;
 import com.example.rest.RestHttpLogger;
 import com.example.rest.RestResponseHandler;
@@ -19,6 +12,12 @@ import org.alfonz.view.StatefulLayout;
 
 import java.util.List;
 
+import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableList;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 import io.reactivex.Single;
 import io.reactivex.observers.DisposableSingleObserver;
 import retrofit2.Response;

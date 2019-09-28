@@ -1,11 +1,12 @@
 package com.example.viewmodel.factory;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 
 import com.example.viewmodel.StockDetailViewModel;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 public class StockDetailViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 	private final Bundle mExtras;

@@ -2,14 +2,15 @@ package com.example.dialog;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
 
 import com.example.R;
 import com.example.databinding.DialogAboutBinding;
 
 import org.alfonz.utility.VersionUtility;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
 
 public class AboutDialogFragment extends DialogFragment {
 	private DialogAboutBinding mBinding;

@@ -1,7 +1,6 @@
 package com.example.rest;
 
 import android.net.ParseException;
-import android.support.annotation.NonNull;
 
 import com.example.R;
 import com.example.StocksApplication;
@@ -18,6 +17,7 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import retrofit2.Response;
 
 public class RestResponseHandler implements ResponseHandler {

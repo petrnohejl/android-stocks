@@ -14,16 +14,16 @@ apply plugin: "com.android.application"
 apply from: "../utils.gradle"
 
 android {
-	compileSdkVersion 27
-	buildToolsVersion "27.0.3"
+	compileSdkVersion 29
+	buildToolsVersion "29.0.2"
 
 	defaultConfig {
 		applicationId "com.example.stocks"
 		minSdkVersion 16
-		targetSdkVersion 27
+		targetSdkVersion 29
 		versionCode getVersionCode(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_BUILD)
 		versionName getVersionName(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH)
-		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 	}
 
 	signingConfigs {
@@ -75,35 +75,35 @@ android {
 
 dependencies {
 	implementation fileTree(dir: "libs", include: ["*.jar"])
-	implementation "com.android.support:support-compat:27.1.1"
-	implementation "com.android.support:support-core-utils:27.1.1"
-	implementation "com.android.support:support-core-ui:27.1.1"
-	implementation "com.android.support:support-fragment:27.1.1"
-	implementation "com.android.support:appcompat-v7:27.1.1"
-	implementation "com.android.support:recyclerview-v7:27.1.1"
-	implementation "com.android.support:support-annotations:27.1.1"
-	implementation "com.android.support:design:27.1.1"
-	implementation "com.android.support.constraint:constraint-layout:1.1.2"
+	implementation "androidx.annotation:annotation:1.1.0"
+	implementation "androidx.appcompat:appcompat:1.1.0"
+	implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+	implementation "androidx.fragment:fragment:1.1.0"
+	implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
+	implementation "androidx.lifecycle:lifecycle-runtime:2.1.0"
+	implementation "androidx.recyclerview:recyclerview:1.0.0"
+	implementation "androidx.viewpager:viewpager:1.0.0"
 	implementation "com.github.bumptech.glide:glide:3.8.0"
 	implementation "com.github.bumptech.glide:okhttp3-integration:1.5.0@aar"
+	implementation "com.google.android.material:material:1.0.0"
 	implementation "com.google.code.gson:gson:2.8.5"
-	implementation "com.squareup.okhttp3:okhttp:3.10.0"
-	implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
-	implementation "com.squareup.retrofit2:retrofit:2.4.0"
-	implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
-	implementation "com.squareup.retrofit2:converter-gson:2.4.0"
-	implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
-	implementation "io.reactivex.rxjava2:rxjava:2.1.16"
-	implementation "org.alfonz:alfonz-adapter:0.9.0"
-	implementation "org.alfonz:alfonz-arch:0.9.0"
-	implementation "org.alfonz:alfonz-graphics:0.9.0"
-	implementation "org.alfonz:alfonz-rest:0.9.0"
-	implementation "org.alfonz:alfonz-rx:0.9.0"
-	implementation "org.alfonz:alfonz-utility:0.9.0"
-	implementation "org.alfonz:alfonz-view:0.9.0"
-	debugImplementation "com.squareup.leakcanary:leakcanary-android:1.5.4"
-	releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4"
-	testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4"
+	implementation "com.squareup.okhttp3:logging-interceptor:4.2.0"
+	implementation "com.squareup.okhttp3:okhttp:4.2.0"
+	implementation "com.squareup.retrofit2:adapter-rxjava2:2.6.2"
+	implementation "com.squareup.retrofit2:converter-gson:2.6.2"
+	implementation "com.squareup.retrofit2:retrofit:2.6.2"
+	implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+	implementation "io.reactivex.rxjava2:rxjava:2.2.12"
+	implementation "org.alfonz:alfonz-adapter:0.9.1"
+	implementation "org.alfonz:alfonz-arch:0.9.1"
+	implementation "org.alfonz:alfonz-graphics:0.9.1"
+	implementation "org.alfonz:alfonz-rest:0.9.1"
+	implementation "org.alfonz:alfonz-rx:0.9.1"
+	implementation "org.alfonz:alfonz-utility:0.9.1"
+	implementation "org.alfonz:alfonz-view:0.9.1"
+	debugImplementation "com.squareup.leakcanary:leakcanary-android:1.6.3"
+	releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.3"
+	testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.6.3"
 	testImplementation "junit:junit:4.12"
-	testImplementation "org.mockito:mockito-core:2.19.0"
+	testImplementation "org.mockito:mockito-core:3.0.0"
 }

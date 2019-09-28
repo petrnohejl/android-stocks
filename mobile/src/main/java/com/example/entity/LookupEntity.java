@@ -1,11 +1,11 @@
 package com.example.entity;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-
 import com.example.BR;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 public class LookupEntity extends BaseObservable {
 	@Bindable

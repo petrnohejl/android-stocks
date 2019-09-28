@@ -1,8 +1,6 @@
 package com.example.fragment;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 
 import com.example.R;
@@ -11,6 +9,9 @@ import com.example.ui.StockPagerView;
 import com.example.viewmodel.StockPagerViewModel;
 
 import org.alfonz.adapter.SimpleDataBoundPagerAdapter;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProviders;
 
 public class StockPagerFragment extends BaseFragment<StockPagerViewModel, FragmentStockPagerBinding> implements StockPagerView {
 	@Override

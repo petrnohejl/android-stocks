@@ -3,7 +3,6 @@ package com.example.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,6 +11,8 @@ import com.example.R;
 import com.example.dialog.AboutDialogFragment;
 
 import org.alfonz.arch.widget.ToolbarIndicator;
+
+import androidx.fragment.app.DialogFragment;
 
 public class StockListActivity extends BaseActivity {
 	public static Intent newIntent(Context context) {

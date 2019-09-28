@@ -1,6 +1,5 @@
 package com.example.utility;
 
-import android.databinding.BindingAdapter;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
@@ -10,6 +9,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.R;
+
+import androidx.databinding.BindingAdapter;
 
 public final class BindingUtility {
 	private BindingUtility() {}

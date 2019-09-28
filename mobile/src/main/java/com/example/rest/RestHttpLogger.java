@@ -1,9 +1,9 @@
 package com.example.rest;
 
-import android.support.annotation.NonNull;
-
 import org.alfonz.rest.HttpLogger;
 import org.alfonz.utility.Logcat;
+
+import androidx.annotation.NonNull;
 
 public class RestHttpLogger implements HttpLogger {
 	@Override

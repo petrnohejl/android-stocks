@@ -1,11 +1,6 @@
 package com.example.viewmodel;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.OnLifecycleEvent;
-import android.databinding.ObservableField;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 
 import com.example.StocksConfig;
 import com.example.activity.StockDetailActivity;
@@ -20,6 +15,11 @@ import org.alfonz.rest.call.Callback;
 import org.alfonz.utility.NetworkUtility;
 import org.alfonz.view.StatefulLayout;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 import retrofit2.Call;
 import retrofit2.Response;
 

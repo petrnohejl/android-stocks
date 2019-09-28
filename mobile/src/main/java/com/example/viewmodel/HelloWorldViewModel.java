@@ -1,9 +1,5 @@
 package com.example.viewmodel;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.OnLifecycleEvent;
-import android.databinding.ObservableField;
 import android.os.AsyncTask;
 
 import com.example.entity.QuoteEntity;
@@ -11,6 +7,11 @@ import com.example.task.LoadDataTask;
 
 import org.alfonz.utility.NetworkUtility;
 import org.alfonz.view.StatefulLayout;
+
+import androidx.databinding.ObservableField;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 
 public class HelloWorldViewModel extends BaseViewModel implements LifecycleObserver, LoadDataTask.OnLoadDataListener {
 	public final ObservableField<Integer> state = new ObservableField<>();

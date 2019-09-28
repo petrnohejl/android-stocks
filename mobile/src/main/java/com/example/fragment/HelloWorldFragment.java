@@ -1,12 +1,13 @@
 package com.example.fragment;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 
 import com.example.databinding.FragmentHelloWorldBinding;
 import com.example.ui.HelloWorldView;
 import com.example.viewmodel.HelloWorldViewModel;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProviders;
 
 public class HelloWorldFragment extends BaseFragment<HelloWorldViewModel, FragmentHelloWorldBinding> implements HelloWorldView {
 	@Override
