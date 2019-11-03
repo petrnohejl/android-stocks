@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.ViewDataBinding;
+
 import com.example.StocksApplication;
 import com.example.event.SnackbarEvent;
 import com.example.event.ToastEvent;
@@ -15,9 +18,6 @@ import com.google.android.material.snackbar.Snackbar;
 
 import org.alfonz.arch.AlfonzBindingFragment;
 import org.alfonz.utility.Logcat;
-
-import androidx.annotation.NonNull;
-import androidx.databinding.ViewDataBinding;
 
 public abstract class BaseFragment<T extends BaseViewModel, B extends ViewDataBinding> extends AlfonzBindingFragment<T, B> {
 	@Override

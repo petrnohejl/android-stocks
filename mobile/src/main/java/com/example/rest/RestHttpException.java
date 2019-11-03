@@ -1,5 +1,7 @@
 package com.example.rest;
 
+import androidx.annotation.NonNull;
+
 import com.example.entity.ErrorEntity;
 
 import org.alfonz.rest.HttpException;
@@ -7,7 +9,6 @@ import org.alfonz.rest.HttpException;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 
-import androidx.annotation.NonNull;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 import retrofit2.Response;

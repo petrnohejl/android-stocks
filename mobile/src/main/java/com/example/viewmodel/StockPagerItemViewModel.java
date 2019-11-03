@@ -1,9 +1,9 @@
 package com.example.viewmodel;
 
+import androidx.databinding.BaseObservable;
+
 import com.example.StocksConfig;
 import com.example.entity.LookupEntity;
-
-import androidx.databinding.BaseObservable;
 
 public class StockPagerItemViewModel extends BaseObservable {
 	public final LookupEntity lookup;

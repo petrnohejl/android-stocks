@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.example.R;
 import com.example.activity.StockDetailActivity;
 import com.example.databinding.FragmentStockListBinding;
@@ -13,9 +16,6 @@ import com.example.ui.StockListView;
 import com.example.viewmodel.StockListViewModel;
 
 import org.alfonz.adapter.SimpleDataBoundRecyclerAdapter;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProviders;
 
 public class StockListSimpleFragment extends BaseFragment<StockListViewModel, FragmentStockListBinding> implements StockListView {
 	@Override

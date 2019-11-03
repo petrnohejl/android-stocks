@@ -3,14 +3,14 @@ package com.example.dialog;
 import android.app.Dialog;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+
 import com.example.R;
 import com.example.databinding.DialogAboutBinding;
 
 import org.alfonz.utility.VersionUtility;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
 
 public class AboutDialogFragment extends DialogFragment {
 	private DialogAboutBinding mBinding;
