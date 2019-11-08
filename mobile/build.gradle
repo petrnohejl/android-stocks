@@ -28,11 +28,11 @@ android {
 
 	signingConfigs {
 		release {
-			// passwords and alias are obtained via askForPasswords task
+			def keystoreProperties = getKeystoreProperties file("../${project.property('keystore.properties')}")
 			storeFile file("../${project.property('keystore.file')}")
-			storePassword ""
-			keyAlias ""
-			keyPassword ""
+			storePassword keystoreProperties["keystore.store.password"]
+			keyAlias keystoreProperties["keystore.key.alias"]
+			keyPassword keystoreProperties["keystore.key.password"]
 		}
 	}
 
@@ -67,7 +67,7 @@ android {
 
 	applicationVariants.all {
 		variant ->
-			if (variant.buildType.name.equals("release")) {
+			if (variant.buildType.name == "release") {
 				renameArtifact("stocks", variant)
 			}
 	}
