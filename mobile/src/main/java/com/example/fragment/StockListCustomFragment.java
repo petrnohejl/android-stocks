@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.activity.StockDetailActivity;
 import com.example.adapter.StockListCustomAdapter;
@@ -20,7 +20,7 @@ public class StockListCustomFragment extends BaseFragment<StockListViewModel, Fr
 
 	@Override
 	public StockListViewModel setupViewModel() {
-		StockListViewModel viewModel = ViewModelProviders.of(this).get(StockListViewModel.class);
+		StockListViewModel viewModel = new ViewModelProvider(this).get(StockListViewModel.class);
 		getLifecycle().addObserver(viewModel);
 		return viewModel;
 	}

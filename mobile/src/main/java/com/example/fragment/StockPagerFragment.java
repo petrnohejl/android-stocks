@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.R;
 import com.example.databinding.FragmentStockPagerBinding;
@@ -16,7 +16,7 @@ import org.alfonz.adapter.SimpleDataBoundPagerAdapter;
 public class StockPagerFragment extends BaseFragment<StockPagerViewModel, FragmentStockPagerBinding> implements StockPagerView {
 	@Override
 	public StockPagerViewModel setupViewModel() {
-		StockPagerViewModel viewModel = ViewModelProviders.of(this).get(StockPagerViewModel.class);
+		StockPagerViewModel viewModel = new ViewModelProvider(this).get(StockPagerViewModel.class);
 		getLifecycle().addObserver(viewModel);
 		return viewModel;
 	}

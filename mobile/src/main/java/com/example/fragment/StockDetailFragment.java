@@ -4,7 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.databinding.FragmentStockDetailBinding;
 import com.example.ui.StockDetailView;
@@ -15,7 +15,7 @@ public class StockDetailFragment extends BaseFragment<StockDetailRxViewModel, Fr
 	@Override
 	public StockDetailRxViewModel setupViewModel() {
 		StockDetailRxViewModelFactory factory = new StockDetailRxViewModelFactory(getActivity().getIntent().getExtras());
-		StockDetailRxViewModel viewModel = ViewModelProviders.of(this, factory).get(StockDetailRxViewModel.class);
+		StockDetailRxViewModel viewModel = new ViewModelProvider(this, factory).get(StockDetailRxViewModel.class);
 		getLifecycle().addObserver(viewModel);
 		return viewModel;
 	}

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +29,7 @@ public class StockListCustomAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 		mViewModel = viewModel;
 	}
 
+	@NonNull
 	@Override
 	public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 		LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -48,7 +50,7 @@ public class StockListCustomAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 	}
 
 	@Override
-	public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+	public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
 		if (viewHolder instanceof HeaderViewHolder) {
 			((HeaderViewHolder) viewHolder).bindData(mView, mViewModel.headers.get(getHeaderPosition(position)));
 		} else if (viewHolder instanceof LookupViewHolder) {

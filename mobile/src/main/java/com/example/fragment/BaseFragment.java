@@ -22,7 +22,7 @@ import leakcanary.AppWatcher;
 
 public abstract class BaseFragment<T extends BaseViewModel, B extends ViewDataBinding> extends AlfonzBindingFragment<T, B> {
 	@Override
-	public void onAttach(Context context) {
+	public void onAttach(@NonNull Context context) {
 		Logcat.v("");
 		super.onAttach(context);
 	}
@@ -90,7 +90,8 @@ public abstract class BaseFragment<T extends BaseViewModel, B extends ViewDataBi
 
 		// leak canary watcher
 		AppWatcher.INSTANCE.getObjectWatcher().watch(this, "Watch Fragment");
-		if (getActivity().isFinishing()) AppWatcher.INSTANCE.getObjectWatcher().watch(getViewModel(), "Watch ViewModel");
+		if (getActivity().isFinishing())
+			AppWatcher.INSTANCE.getObjectWatcher().watch(getViewModel(), "Watch ViewModel");
 	}
 
 	@Override

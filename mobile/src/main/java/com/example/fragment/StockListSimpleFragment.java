@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.R;
 import com.example.activity.StockDetailActivity;
@@ -20,7 +20,7 @@ import org.alfonz.adapter.SimpleDataBoundRecyclerAdapter;
 public class StockListSimpleFragment extends BaseFragment<StockListViewModel, FragmentStockListBinding> implements StockListView {
 	@Override
 	public StockListViewModel setupViewModel() {
-		StockListViewModel viewModel = ViewModelProviders.of(this).get(StockListViewModel.class);
+		StockListViewModel viewModel = new ViewModelProvider(this).get(StockListViewModel.class);
 		getLifecycle().addObserver(viewModel);
 		return viewModel;
 	}

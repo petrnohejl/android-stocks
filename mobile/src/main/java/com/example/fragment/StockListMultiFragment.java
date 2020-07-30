@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.activity.StockDetailActivity;
 import com.example.adapter.StockListMultiAdapter;
@@ -18,7 +18,7 @@ import com.example.viewmodel.StockListViewModel;
 public class StockListMultiFragment extends BaseFragment<StockListViewModel, FragmentStockListBinding> implements StockListView {
 	@Override
 	public StockListViewModel setupViewModel() {
-		StockListViewModel viewModel = ViewModelProviders.of(this).get(StockListViewModel.class);
+		StockListViewModel viewModel = new ViewModelProvider(this).get(StockListViewModel.class);
 		getLifecycle().addObserver(viewModel);
 		return viewModel;
 	}

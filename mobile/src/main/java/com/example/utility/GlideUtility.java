@@ -23,7 +23,7 @@ public final class GlideUtility {
 		builder.diskCacheStrategy(DiskCacheStrategy.RESULT);
 
 		if (builder instanceof DrawableRequestBuilder) {
-			((DrawableRequestBuilder) builder).crossFade();
+			((DrawableRequestBuilder<?>) builder).crossFade();
 		}
 
 		if (StocksConfig.LOGS) {
@@ -41,7 +41,7 @@ public final class GlideUtility {
 		}
 	}
 
-	public static Target createCircularTarget(final ImageView imageView) {
+	public static Target<?> createCircularTarget(final ImageView imageView) {
 		return new BitmapImageViewTarget(imageView) {
 			@Override
 			protected void setResource(Bitmap resource) {

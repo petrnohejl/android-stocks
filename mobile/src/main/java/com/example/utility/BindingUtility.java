@@ -30,7 +30,7 @@ public final class BindingUtility {
 	public static void setImageUrl(ImageView imageView, String url, boolean circular, Drawable placeholder, Drawable error) {
 		RequestManager requestManager = Glide.with(imageView.getContext());
 		if (!circular) {
-			DrawableTypeRequest builder = requestManager.load(url);
+			DrawableTypeRequest<?> builder = requestManager.load(url);
 			GlideUtility.setupRequestBuilder(builder, placeholder, error);
 			builder.into(imageView);
 		} else {
