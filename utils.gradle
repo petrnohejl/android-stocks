@@ -15,11 +15,8 @@ ext.getKeystoreProperties = {
 		return keystoreProperties
 }
 
-ext.renameArtifact = {
-	name, variant ->
-		variant.outputs.all {
-			output ->
-				def date = new Date().format("yyyyMMdd")
-				outputFileName = "${name}-${project.name}-${variant.versionName}-${variant.versionCode}-${date}-${variant.name}.apk"
-		}
+ext.getArtifactName = {
+	defaultConfig ->
+		def date = new Date().format("yyyyMMdd")
+		return defaultConfig.applicationId + "-" + project.name + "-" + defaultConfig.versionName + "-" + defaultConfig.versionCode + "-" + date
 }

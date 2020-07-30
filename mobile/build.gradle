@@ -65,12 +65,7 @@ android {
 		enabled = true
 	}
 
-	applicationVariants.all {
-		variant ->
-			if (variant.buildType.name == "release") {
-				renameArtifact("stocks", variant)
-			}
-	}
+	setProperty("archivesBaseName", getArtifactName(defaultConfig))
 }
 
 dependencies {
