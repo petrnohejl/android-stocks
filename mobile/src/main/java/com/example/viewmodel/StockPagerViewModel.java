@@ -20,8 +20,8 @@ import org.alfonz.view.StatefulLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Single;
-import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.observers.DisposableSingleObserver;
 import retrofit2.Response;
 
 public class StockPagerViewModel extends BaseViewModel implements LifecycleObserver {
