@@ -19,7 +19,7 @@ android {
 
 	defaultConfig {
 		applicationId "com.example.stocks"
-		minSdkVersion 16
+		minSdkVersion 19
 		targetSdkVersion 29
 		versionCode getVersionCode(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_BUILD)
 		versionName getVersionName(VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH)
