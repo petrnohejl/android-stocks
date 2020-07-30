@@ -1,5 +1,5 @@
-Stocks
-======
+Stocks [DEPRECATED]
+===================
 
 Experimental Android app with MVVM architecture. Purpose of this project is to explore different architectural approaches and also "new age" technologies like Android Data Binding, RxJava, Lambdas, Retrofit, Dagger etc.
 
